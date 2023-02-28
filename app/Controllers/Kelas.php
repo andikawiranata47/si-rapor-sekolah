@@ -3,21 +3,25 @@
 namespace App\Controllers;
 
 use App\Models\KelasModel;
+use App\Models\MasterUserModel;
 
 class Kelas extends BaseController
 {
-    protected $kelasModel;
+    protected $kelasModel, $masterUserModel;
     public function __construct()
     {
         $this->kelasModel = new KelasModel();
+        $this->masterUserModel = new MasterUserModel();
     }
 
     public function index()
     {
         $kelas = $this->kelasModel->getKelas()->getResult();
+        $nama = $this->masterUserModel->getUser()->getResult();
         $data = [
             'judul' => 'Kelas',
-            'kelas' => $kelas
+            'kelas' => $kelas,
+            'nama' => $nama
         ];
         return view('pages/kelas', $data);
     }

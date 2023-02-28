@@ -36,7 +36,7 @@
                     <td> <?= $k->Kelas; ?> </td>
                     <td> <?= $k->Nama; ?> </td>
                     <td class="text-center">
-                      <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_kelas="<?= $k->Id_Kelas; ?>" data-wali_kelas="<?= $k->Wali_Kelas; ?>" data-tingkat="<?= $k->Tingkat; ?>" data-jurusan="<?= $k->Jurusan; ?>" data-abjad="<?= $k->Abjad; ?>">Edit</button>
+                      <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_kelas="<?= $k->Id_Kelas; ?>" data-wali_kelas="<?= $k->Nama; ?>" data-tingkat="<?= $k->Tingkat; ?>" data-jurusan="<?= $k->Jurusan; ?>" data-abjad="<?= $k->Abjad; ?>">Edit</button>
                       <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_kelas="<?= $k->Id_Kelas; ?>">Hapus</button>
                     </td>
                   </tr>
@@ -59,10 +59,6 @@
             </div>
             <div class="modal-body">
               <div class="form-group">
-                <label>Wali Kelas</label>
-                <input type="text" class="form-control" name="wali_kelas" placeholder="" required>
-              </div>
-              <div class="form-group">
                 <label>Tingkat</label>
                 <input type="text" class="form-control" name="tingkat" placeholder="" required>
               </div>
@@ -74,7 +70,17 @@
                 <label>Abjad</label>
                 <input type="text" class="form-control" name="abjad" placeholder="" required>
               </div>
+              <div class="form-group">
+                <label>Wali Kelas</label>
+                <select name="wali_kelas" class="form-control wali_kelas">
+                  <option value="">Pilih Wali Kelas</option>
+                  <?php foreach ($nama as $n) : ?>
+                    <option value="<?= $n->Id_User; ?>"><?= $n->Nama; ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
             </div>
+
             <div class="modal-footer">
               <!-- <input type="hidden" name="id_user" class="id_user1"> -->
               <button type="submit" class="btn btn-success">Simpan</button>
@@ -97,10 +103,6 @@
             </div>
             <div class="modal-body">
               <div class="form-group">
-                <label>Wali Kelas</label>
-                <input type="text" class="form-control wali_kelas" name="wali_kelas" placeholder="" required>
-              </div>
-              <div class="form-group">
                 <label>Tingkat</label>
                 <input type="text" class="form-control tingkat" name="tingkat" placeholder="" required>
               </div>
@@ -112,7 +114,17 @@
                 <label>Abjad</label>
                 <input type="text" class="form-control abjad" name="abjad" placeholder="" required>
               </div>
+              <div class="form-group">
+                <label>Wali Kelas</label>
+                <select name="wali_kelas" class="form-control wali_kelas">
+                  <option value="">Pilih Wali Kelas</option>
+                  <?php foreach ($nama as $n) : ?>
+                    <option value="<?= $n->Id_User; ?>"><?= $n->Nama; ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
             </div>
+
             <div class="modal-footer">
               <input type="hidden" name="id_kelas" class="id_kelas1">
               <button type="submit" class="btn btn-success">Simpan</button>
@@ -151,16 +163,16 @@
         $('.btn-edit').on('click', function() {
           // get data from button edit
           const id = $(this).data('id_kelas');
-          const wali_kelas = $(this).data('wali_kelas');
           const tingkat = $(this).data('tingkat');
           const jurusan = $(this).data('jurusan');
           const abjad = $(this).data('abjad');
+          const wali_kelas = $(this).data('wali_kelas');
           // Set data to Form Edit
           $('.id_kelas1').val(id);
-          $('.wali_kelas').val(wali_kelas);
           $('.tingkat').val(tingkat);
           $('.jurusan').val(jurusan);
           $('.abjad').val(abjad);
+          $('.wali_kelas').val(wali_kelas).trigger('change');
           // Call Modal Edit
           $('#editModal').modal('show');
         });
