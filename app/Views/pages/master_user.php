@@ -24,10 +24,10 @@
               <thead>
                 <tr>
                   <th> No </th>
+                  <th> Nama </th>
                   <th> Email </th>
                   <th> Password </th>
-                  <th> Nama </th>
-                  <th> Hak Akses </th>
+                  <th> Akses </th>
                   <th> </th>
                 </tr>
               </thead>
@@ -36,12 +36,12 @@
                 <?php foreach ($user as $u) : ?>
                   <tr>
                     <td> <?= $i++; ?> </td>
+                    <td> <?= $u->Nama; ?> </td>
                     <td> <?= $u->Email; ?> </td>
                     <td> <?= $u->Password; ?> </td>
-                    <td> <?= $u->Nama; ?> </td>
-                    <td> <?= $u->Hak_Akses; ?> </td>
+                    <td style="max-width: 200px; white-space: normal !important;"> <?= $u->Akses; ?> </td>
                     <td class="text-center">
-                      <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_user="<?= $u->Id_User; ?>" data-email="<?= $u->Email; ?>" data-password="<?= $u->Password; ?>" data-nama="<?= $u->Nama; ?>" data-hak_akses="<?= $u->Hak_Akses; ?>">Edit</button>
+                      <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_user="<?= $u->Id_User; ?>" data-email="<?= $u->Email; ?>" data-password="<?= $u->Password; ?>" data-nama="<?= $u->Nama; ?>" data-akses="<?= $u->Akses; ?>">Edit</button>
                       <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_user="<?= $u->Id_User; ?>">Hapus</button>
                     </td>
                   </tr>
@@ -76,8 +76,8 @@
                 <input type="text" class="form-control" name="nama" placeholder="" required>
               </div>
               <div class="form-group">
-                <label>Hak Akses</label>
-                <select name="hak_akses" class="form-control hak_akses" required>
+                <!-- <label>Admin</label> -->
+                <!-- <select name="hak_akses" class="form-control hak_akses" required>
                   <option value="">Pilih</option>
                   <option value="Admin">Admin</option>
                   <option value="Guru Mata Pelajaran">Guru Mata Pelajaran</option>
@@ -85,7 +85,32 @@
                   <option value="Pembina Ekstrakurikuler">Pembina Ekstrakurikuler</option>
                   <option value="Guru BK">Guru BK</option>
                   <option value="Wali Kelas">Wali Kelas</option>
-                </select>
+                </select> -->
+                <!-- <input type="checkbox" class="admin" name="admin" value="1" required> -->
+                <div class="form-check form-check-flat form-check-primary">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input akses" name="akses[]" value="Admin"> Admin </label>
+                </div>
+                <div class="form-check form-check-flat form-check-primary">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input akses" name="akses[]" value="Guru Mata Pelajaran"> Guru Mata Pelajaran </label>
+                </div>
+                <div class="form-check form-check-flat form-check-primary">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input akses" name="akses[]" value="Guru Monitoring"> Guru Monitoring </label>
+                </div>
+                <div class="form-check form-check-flat form-check-primary">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input akses" name="akses[]" value="Pembina Ekstrakurikuler"> Pembina Ekstrakurikuler </label>
+                </div>
+                <div class="form-check form-check-flat form-check-primary">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input akses" name="akses[]" value="Guru BK"> Guru BK </label>
+                </div>
+                <div class="form-check form-check-flat form-check-primary">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input akses" name="akses[]" value="Wali Kelas"> Wali Kelas </label>
+                </div>
               </div>
             </div>
             <div class="modal-footer">
@@ -122,8 +147,8 @@
                 <input type="text" class="form-control nama" name="nama" placeholder="" value="" required>
               </div>
               <div class="form-group">
-                <label>Hak Akses</label>
-                <select name="hak_akses" class="form-control hak_akses" required>
+                <label>Akses</label><br>
+                <!-- <select name="akses" class="form-control akses" required>
                   <option value="">Pilih</option>
                   <option value="Admin">Admin</option>
                   <option value="Guru Mata Pelajaran">Guru Mata Pelajaran</option>
@@ -131,7 +156,33 @@
                   <option value="Pembina Ekstrakurikuler">Pembina Ekstrakurikuler</option>
                   <option value="Guru BK">Guru BK</option>
                   <option value="Wali Kelas">Wali Kelas</option>
-                </select>
+                  <option value="1">1</option>
+                  <option value="0">0</option>
+                </select> -->
+                <div class="form-check form-check-flat form-check-primary">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input akses" name="akses[]" value="Admin"> Admin </label>
+                </div>
+                <div class="form-check form-check-flat form-check-primary">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input akses" name="akses[]" value="Guru Mata Pelajaran"> Guru Mata Pelajaran </label>
+                </div>
+                <div class="form-check form-check-flat form-check-primary">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input akses" name="akses[]" value="Guru Monitoring"> Guru Monitoring </label>
+                </div>
+                <div class="form-check form-check-flat form-check-primary">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input akses" name="akses[]" value="Pembina Ekstrakurikuler"> Pembina Ekstrakurikuler </label>
+                </div>
+                <div class="form-check form-check-flat form-check-primary">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input akses" name="akses[]" value="Guru BK"> Guru BK </label>
+                </div>
+                <div class="form-check form-check-flat form-check-primary">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input akses" name="akses[]" value="Wali Kelas"> Wali Kelas </label>
+                </div>
               </div>
             </div>
             <div class="modal-footer">
@@ -175,13 +226,13 @@
           const email = $(this).data('email');
           const password = $(this).data('password');
           const nama = $(this).data('nama');
-          const hak_akses = $(this).data('hak_akses');
+
           // Set data to Form Edit
           $('.id_user1').val(id);
           $('.email').val(email);
           $('.password').val(password);
           $('.nama').val(nama);
-          $('.hak_akses').val(hak_akses).trigger('change');
+
           // Call Modal Edit
           $('#editModal').modal('show');
         });

@@ -63,19 +63,21 @@ class MasterUser extends BaseController
     //     return redirect()->to('/masteruser');
     // }
 
-    protected $masterUserModel;
+    protected $masterUserModel, $hakAksesModel;
     public function __construct()
     {
         $this->masterUserModel = new MasterUserModel();
-        $this->hakAksesModel = new HakAksesModel();
+        // $this->hakAksesModel = new HakAksesModel();
     }
 
     public function index()
     {
         $user = $this->masterUserModel->getUser()->getResult();
+        $akses_user = $this->masterUserModel->select('Akses');
         $data = [
             'judul' => 'Master User',
-            'user' => $user
+            'user' => $user,
+            'akses_user' => $akses_user
             // 'validation' => \Config\Services::validation()
         ];
         return view('pages/master_user', $data);
@@ -83,19 +85,20 @@ class MasterUser extends BaseController
 
     public function save()
     {
-        $data1 = [
+        $data = [
             'email' => $this->request->getPost('email'),
             'password' => $this->request->getPost('password'),
-            'nama' => $this->request->getPost('nama')
+            'nama' => $this->request->getPost('nama'),
+            'akses' => implode(", ", $this->request->getPost('akses'))
             // 'hak_akses' => $this->request
             // 'hak_akses' => $this->hakAksesModel->getConcat()->getResult()
         ];
-        $data2 = [
-            'id_user' => $this->masterUserModel->saveUser($data1),
-            'hak_akses' => $this->request->getPost('hak_akses')
-        ];
+        // $data2 = [
+        //     'id_user' => $this->masterUserModel->saveUser($data1),
+        //     'hak_akses' => $this->request->getPost('hak_akses')
+        // ];
 
-        $this->hakAksesModel->saveHak($data2);
+        $this->masterUserModel->saveUser($data);
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
         return redirect()->to('/masteruser');
     }
@@ -107,6 +110,7 @@ class MasterUser extends BaseController
             'email' => $this->request->getPost('email'),
             'password' => $this->request->getPost('password'),
             'nama' => $this->request->getPost('nama'),
+            'akses' => implode(", ", $this->request->getPost('akses'))
         );
         $this->masterUserModel->updateUser($data, $id);
         session()->setFlashdata('pesan', 'Data berhasil diubah');

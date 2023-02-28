@@ -2,19 +2,17 @@
 
 namespace App\Models;
 
-use App\Controllers\MasterUser;
 use CodeIgniter\Model;
 
 class MasterUserModel extends Model
 {
     protected $table = 'user';
     protected $primaryKey = 'Id_User';
-    protected $allowedFields = ['Email', 'Password', 'Nama'];
+    protected $allowedFields = ['Email', 'Password', 'Nama', 'Akses'];
 
     public function getUser()
     {
         $query = $this->db->table('user')
-            ->join('hak_akses', 'hak_akses.Id_User = user.Id_User')
             ->orderBy('Email')
             ->get();
         return $query;
