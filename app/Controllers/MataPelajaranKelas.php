@@ -4,24 +4,34 @@ namespace App\Controllers;
 
 use App\Models\MataPelajaranKelasModel;
 use App\Models\KelasModel;
+use App\Models\MataPelajaranModel;
+use App\Models\MasterUserModel;
 
 class MataPelajaranKelas extends BaseController
 {
-    protected $mapelKelasModel, $kelasModel;
+    protected $mapelKelasModel, $kelasModel, $mapelModel, $userModel;
     public function __construct()
     {
         $this->mapelKelasModel = new MataPelajaranKelasModel();
         $this->kelasModel = new KelasModel();
+        $this->mapelModel = new MataPelajaranModel();
+        $this->userModel = new MasterUserModel();
     }
 
     public function index()
     {
+        $id = null;
         $mapel = $this->mapelKelasModel->getMapelKelas()->getResult();
         $kelas = $this->kelasModel->getKelas()->getResult();
+        $mapel1 = $this->mapelModel->getMapel()->getResult();
+        $user = $this->userModel->getUser()->getResult();
         $data = [
             'judul' => 'Mata Pelajaran Kelas',
+            'id' => $id,
             'mapelKelas' => $mapel,
-            'kelas' => $kelas
+            'kelas' => $kelas,
+            'mapel' => $mapel1,
+            'user' => $user
         ];
         return view('pages/mata_pelajaran_kelas', $data);
     }
@@ -31,10 +41,15 @@ class MataPelajaranKelas extends BaseController
         $id = $this->request->getPost('pilih_kelas');
         $mapel = $this->mapelKelasModel->getPilihKelas($id)->getResult();
         $kelas = $this->kelasModel->getKelas()->getResult();
+        $mapel1 = $this->mapelModel->getMapel()->getResult();
+        $user = $this->userModel->getUser()->getResult();
         $data = [
-            'judul' => "Mata Pelajaran Kelas $id",
+            'judul' => "Mata Pelajaran Kelas",
+            'id' => $id,
             'mapelKelas' => $mapel,
-            'kelas' => $kelas
+            'kelas' => $kelas,
+            'mapel' => $mapel1,
+            'user' => $user
         ];
         return view('pages/mata_pelajaran_kelas', $data);
     }
@@ -48,7 +63,7 @@ class MataPelajaranKelas extends BaseController
         ];
         $this->mapelKelasModel->saveMapelKelas($data1);
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
-        return redirect()->to('/matapelajarankelas');
+        return redirect()->to('/MataPelajaranKelas/get');
     }
 
     public function edit()
@@ -61,7 +76,7 @@ class MataPelajaranKelas extends BaseController
         );
         $this->mapelKelasModel->updateMapelKelas($data, $id);
         session()->setFlashdata('pesan', 'Data berhasil diubah');
-        return redirect()->to('/matapelajarankelas');
+        return redirect()->to('/MataPelajaranKelas/get');
     }
 
     public function delete()
@@ -69,6 +84,6 @@ class MataPelajaranKelas extends BaseController
         $id = $this->request->getPost('id_mapelkelas');
         $this->mapelKelasModel->deleteMapelKelas($id);
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
-        return redirect()->to('/matapelajarankelas');
+        return redirect()->to('/MataPelajaranKelas/get');
     }
 }

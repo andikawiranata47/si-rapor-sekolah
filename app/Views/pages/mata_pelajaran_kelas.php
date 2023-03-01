@@ -15,7 +15,7 @@
             <form class="form-inline" action="/MataPelajaranKelas/get" method="post">
               <?= csrf_field(); ?>
               <div class="form-group mr-4 my-sm-3">
-                <select name="pilih_kelas" class="form-control pr-xl-5 pilih_kelas">
+                <select name="pilih_kelas" class="form-control pr-xl-5 pilih_kelas" id="pilih_kelas">
                   <option value="">Pilih Kelas</option>
                   <?php foreach ($kelas as $k) : ?>
                     <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
@@ -25,47 +25,52 @@
               <button type="submit" class="btn btn-primary mb-2">Pilih</button>
             </form>
 
-            <div class="float-right">
-              <?php if (session()->getFlashdata('pesan')) : ?>
-                <p class="card-description mr-3 text-success d-inline">
-                  <?= session()->getFlashdata('pesan'); ?>
-                </p>
-              <?php endif; ?>
-              <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#addModal">Tambah</button>
-            </div>
 
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th> No </th>
-                  <th hidden> Kelas </th>
-                  <th> Mata Pelajaran </th>
-                  <th> Guru Mata Pelajaran </th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php $i = 1; ?>
-                <?php foreach ($mapelKelas as $m) : ?>
+            <?php if ($id == null) {
+            } else {
+            ?>
+              <div class="float-right">
+                <?php if (session()->getFlashdata('pesan')) : ?>
+                  <p class="card-description mr-3 text-success d-inline">
+                    <?= session()->getFlashdata('pesan'); ?>
+                  </p>
+                <?php endif; ?>
+                <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#addModal">Tambah</button>
+              </div>
+              <table class="table table-bordered">
+                <thead>
                   <tr>
-                    <td> <?= $i++; ?> </td>
-                    <td hidden> <?= $m->Kelas; ?> </td>
-                    <td> <?= $m->Mata_Pelajaran; ?> </td>
-                    <td> <?= $m->Nama; ?> </td>
-                    <td class="text-center">
-                      <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_mapelkelas="<?= $m->Id_Mapel_Kelas; ?>" data-kelas="<?= $m->Id_Kelas; ?>" data-mapel="<?= $m->Id_Mata_Pelajaran; ?>" data-guru="<?= $m->Guru_Mapel; ?>">Edit</button>
-                      <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_mapelkelas="<?= $m->Id_Mapel_Kelas; ?>">Hapus</button>
-                    </td>
+                    <th> No </th>
+                    <th> Kelas </th>
+                    <th> Mata Pelajaran </th>
+                    <th> Guru Mata Pelajaran </th>
                   </tr>
-                <?php endforeach; ?>
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  <?php $i = 1; ?>
+                  <?php foreach ($mapelKelas as $m) : ?>
+                    <tr>
+                      <td> <?= $i++; ?> </td>
+                      <td> <?= $m->Kelas; ?> </td>
+                      <td> <?= $m->Mata_Pelajaran; ?> </td>
+                      <td> <?= $m->Nama; ?> </td>
+                      <td class="text-center">
+                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_mapelkelas="<?= $m->Id_Mapel_Kelas; ?>" data-kelas="<?= $m->Id_Kelas; ?>" data-mapel="<?= $m->Id_Mata_Pelajaran; ?>" data-guru="<?= $m->Guru_Mapel; ?>">Edit</button>
+                        <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_mapelkelas="<?= $m->Id_Mapel_Kelas; ?>">Hapus</button>
+                      </td>
+                    </tr>
+                  <?php endforeach; ?>
+                </tbody>
+              </table>
+            <?php }; ?>
+
           </div>
         </div>
       </div>
     </div>
 
     <!-- Modal Tambah -->
-    <form action="/MataPelajaranKelas/save" method="post">
+    <form action="/matapelajarankelas/save" method="post">
       <?= csrf_field(); ?>
       <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -76,15 +81,36 @@
             <div class="modal-body">
               <div class="form-group">
                 <label>Kelas</label>
-                <input type="text" class="form-control" name="kelas" placeholder="" disabled>
+                <select name="kelas" class="form-control kelas" disabled>
+                  <option value="">Pilih Kelas</option>
+                  <?php foreach ($kelas as $k) : ?>
+                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
+                  <?php endforeach; ?>
+                </select>
+                <select name="kelas" class="form-control kelas" hidden>
+                  <option value="">Pilih Kelas</option>
+                  <?php foreach ($kelas as $k) : ?>
+                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
+                  <?php endforeach; ?>
+                </select>
               </div>
               <div class="form-group">
                 <label>Mata Pelajaran</label>
-                <input type="text" class="form-control" name="mapel" placeholder="" required>
+                <select name="mapel" class="form-control mapel">
+                  <option value="">Pilih Mata Pelajaran</option>
+                  <?php foreach ($mapel as $m) : ?>
+                    <option value="<?= $m->Id_Mata_Pelajaran; ?>"><?= $m->Mata_Pelajaran; ?></option>
+                  <?php endforeach; ?>
+                </select>
               </div>
               <div class="form-group">
                 <label>Guru Mata Pelajaran</label>
-                <input type="text" class="form-control" name="guru" placeholder="" required>
+                <select name="guru" class="form-control guru">
+                  <option value="">Pilih Guru Mata Pelajaran</option>
+                  <?php foreach ($user as $u) : ?>
+                    <option value="<?= $u->Id_User; ?>"><?= $u->Nama; ?></option>
+                  <?php endforeach; ?>
+                </select>
               </div>
             </div>
             <div class="modal-footer">
@@ -110,19 +136,40 @@
             <div class="modal-body">
               <div class="form-group">
                 <label>Kelas</label>
-                <input type="text" class="form-control kelas" name="kelas" placeholder="" required>
+                <select name="kelas" class="form-control kelas" disabled>
+                  <option value="">Pilih Kelas</option>
+                  <?php foreach ($kelas as $k) : ?>
+                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
+                  <?php endforeach; ?>
+                </select>
+                <select name="kelas" class="form-control kelas" hidden>
+                  <option value="">Pilih Kelas</option>
+                  <?php foreach ($kelas as $k) : ?>
+                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
+                  <?php endforeach; ?>
+                </select>
               </div>
               <div class="form-group">
                 <label>Mata Pelajaran</label>
-                <input type="text" class="form-control mapel" name="mapel" placeholder="" required>
+                <select name="mapel" class="form-control mapel">
+                  <option value="">Pilih Mata Pelajaran</option>
+                  <?php foreach ($mapel as $m) : ?>
+                    <option value="<?= $m->Id_Mata_Pelajaran; ?>"><?= $m->Mata_Pelajaran; ?></option>
+                  <?php endforeach; ?>
+                </select>
               </div>
               <div class="form-group">
                 <label>Guru Mata Pelajaran</label>
-                <input type="text" class="form-control guru" name="guru" placeholder="" required>
+                <select name="guru" class="form-control guru">
+                  <option value="">Pilih Guru Mata Pelajaran</option>
+                  <?php foreach ($user as $u) : ?>
+                    <option value="<?= $u->Id_User; ?>"><?= $u->Nama; ?></option>
+                  <?php endforeach; ?>
+                </select>
               </div>
             </div>
             <div class="modal-footer">
-              <input type="hidden" name="id_kelas" class="id_mapelkelas1">
+              <input type="hidden" name="id_mapelkelas" class="id_mapelkelas1">
               <button type="submit" class="btn btn-success">Simpan</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
             </div>
@@ -142,7 +189,7 @@
               <h5 class="modal-title" id="exampleModalLabel" style="color: #001737 !important;">Apakah anda yakin menghapus data ini?</h5>
             </div>
             <div class="modal-footer">
-              <input type="hidden" name="id_kelas" class="id_mapelkelas2">
+              <input type="hidden" name="id_mapelkelas" class="id_mapelkelas2">
               <button type="submit" class="btn btn-success">Ya</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
             </div>
@@ -182,6 +229,15 @@
         });
 
       });
+    </script>
+
+    <script>
+      $('#pilih_kelas').change(function(event) {
+        var selectedcategory = $(this).children("option:selected").val();
+        sessionStorage.setItem("itemName", selectedcategory);
+      });
+
+      $('select').find('option[value=' + sessionStorage.getItem('itemName') + ']').attr('selected', 'selected');
     </script>
 
     <?= $this->endSection() ?>

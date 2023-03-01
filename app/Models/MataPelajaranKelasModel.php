@@ -13,7 +13,6 @@ class MataPelajaranKelasModel extends Model
     public function getMapelKelas()
     {
         $query = $this->db->table('mata_pelajaran_suatu_kelas')
-            // ->where()
             ->join('mata_pelajaran', 'mata_pelajaran_suatu_kelas.Id_Mata_Pelajaran = mata_pelajaran.Id_Mata_Pelajaran', 'left')
             ->join('kelas', 'mata_pelajaran_suatu_kelas.Id_Kelas = kelas.Id_Kelas', 'left')
             ->join('user', 'mata_pelajaran_suatu_kelas.Guru_Mapel = user.Id_User', 'left')
