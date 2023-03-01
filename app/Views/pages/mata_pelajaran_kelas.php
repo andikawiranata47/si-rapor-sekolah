@@ -11,6 +11,20 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title d-inline">Tabel Mata Pelajaran Kelas</h4>
+
+            <form class="form-inline" action="/MataPelajaranKelas/get" method="post">
+              <?= csrf_field(); ?>
+              <div class="form-group mr-4 my-sm-3">
+                <select name="pilih_kelas" class="form-control pr-xl-5 pilih_kelas">
+                  <option value="">Pilih Kelas</option>
+                  <?php foreach ($kelas as $k) : ?>
+                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary mb-2">Pilih</button>
+            </form>
+
             <div class="float-right">
               <?php if (session()->getFlashdata('pesan')) : ?>
                 <p class="card-description mr-3 text-success d-inline">
@@ -24,7 +38,7 @@
               <thead>
                 <tr>
                   <th> No </th>
-                  <th> Kelas </th>
+                  <th hidden> Kelas </th>
                   <th> Mata Pelajaran </th>
                   <th> Guru Mata Pelajaran </th>
                 </tr>
@@ -34,9 +48,9 @@
                 <?php foreach ($mapelKelas as $m) : ?>
                   <tr>
                     <td> <?= $i++; ?> </td>
-                    <td> <?= $m->Id_Kelas; ?> </td>
-                    <td> <?= $m->Id_Mata_Pelajaran; ?> </td>
-                    <td> <?= $m->Guru_Mapel; ?> </td>
+                    <td hidden> <?= $m->Kelas; ?> </td>
+                    <td> <?= $m->Mata_Pelajaran; ?> </td>
+                    <td> <?= $m->Nama; ?> </td>
                     <td class="text-center">
                       <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_mapelkelas="<?= $m->Id_Mapel_Kelas; ?>" data-kelas="<?= $m->Id_Kelas; ?>" data-mapel="<?= $m->Id_Mata_Pelajaran; ?>" data-guru="<?= $m->Guru_Mapel; ?>">Edit</button>
                       <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_mapelkelas="<?= $m->Id_Mapel_Kelas; ?>">Hapus</button>
@@ -62,7 +76,7 @@
             <div class="modal-body">
               <div class="form-group">
                 <label>Kelas</label>
-                <input type="text" class="form-control" name="kelas" placeholder="" required>
+                <input type="text" class="form-control" name="kelas" placeholder="" disabled>
               </div>
               <div class="form-group">
                 <label>Mata Pelajaran</label>
@@ -94,7 +108,7 @@
               <h5 class="modal-title" id="exampleModalLabel" style="color: #001737 !important;">Edit User</h5>
             </div>
             <div class="modal-body">
-            <div class="form-group">
+              <div class="form-group">
                 <label>Kelas</label>
                 <input type="text" class="form-control kelas" name="kelas" placeholder="" required>
               </div>

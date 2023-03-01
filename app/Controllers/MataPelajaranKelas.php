@@ -3,21 +3,38 @@
 namespace App\Controllers;
 
 use App\Models\MataPelajaranKelasModel;
+use App\Models\KelasModel;
 
 class MataPelajaranKelas extends BaseController
 {
-    protected $mapelKelasModel;
+    protected $mapelKelasModel, $kelasModel;
     public function __construct()
     {
         $this->mapelKelasModel = new MataPelajaranKelasModel();
+        $this->kelasModel = new KelasModel();
     }
 
     public function index()
     {
         $mapel = $this->mapelKelasModel->getMapelKelas()->getResult();
+        $kelas = $this->kelasModel->getKelas()->getResult();
         $data = [
             'judul' => 'Mata Pelajaran Kelas',
-            'mapelKelas' => $mapel
+            'mapelKelas' => $mapel,
+            'kelas' => $kelas
+        ];
+        return view('pages/mata_pelajaran_kelas', $data);
+    }
+
+    public function get()
+    {
+        $id = $this->request->getPost('pilih_kelas');
+        $mapel = $this->mapelKelasModel->getPilihKelas($id)->getResult();
+        $kelas = $this->kelasModel->getKelas()->getResult();
+        $data = [
+            'judul' => "Mata Pelajaran Kelas $id",
+            'mapelKelas' => $mapel,
+            'kelas' => $kelas
         ];
         return view('pages/mata_pelajaran_kelas', $data);
     }
