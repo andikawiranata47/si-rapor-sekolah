@@ -107,10 +107,10 @@
                   <label class="form-check-label">
                     <input type="checkbox" class="form-check-input akses" name="akses[]" value="Guru BK"> Guru BK </label>
                 </div>
-                <div class="form-check form-check-flat form-check-primary">
+                <!-- <div class="form-check form-check-flat form-check-primary">
                   <label class="form-check-label">
                     <input type="checkbox" class="form-check-input akses" name="akses[]" value="Wali Kelas"> Wali Kelas </label>
-                </div>
+                </div> -->
               </div>
             </div>
             <div class="modal-footer">
@@ -179,10 +179,10 @@
                   <label class="form-check-label">
                     <input type="checkbox" class="form-check-input akses" name="akses[]" value="Guru BK"> Guru BK </label>
                 </div>
-                <div class="form-check form-check-flat form-check-primary">
+                <!-- <div class="form-check form-check-flat form-check-primary">
                   <label class="form-check-label">
                     <input type="checkbox" class="form-check-input akses" name="akses[]" value="Wali Kelas"> Wali Kelas </label>
-                </div>
+                </div> -->
               </div>
             </div>
             <div class="modal-footer">
