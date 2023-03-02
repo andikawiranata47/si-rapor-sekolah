@@ -26,16 +26,14 @@
             </form>
 
 
-            <?php if ($id == null) {
-            } else {
-            ?>
+            <?php if ($id != null) { ?>
               <div class="float-right">
                 <?php if (session()->getFlashdata('pesan')) : ?>
                   <p class="card-description mr-3 text-success d-inline">
                     <?= session()->getFlashdata('pesan'); ?>
                   </p>
                 <?php endif; ?>
-                <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#addModal">Tambah</button>
+                <button type="button" class="btn btn-success mb-2 btn-add" data-toggle="modal" data-target="#addModal" data-kelas="<?= $id; ?>">Tambah</button>
               </div>
               <table class="table table-bordered">
                 <thead>
@@ -56,7 +54,7 @@
                       <td> <?= $m->Nama; ?> </td>
                       <td class="text-center">
                         <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_mapelkelas="<?= $m->Id_Mapel_Kelas; ?>" data-kelas="<?= $m->Id_Kelas; ?>" data-mapel="<?= $m->Id_Mata_Pelajaran; ?>" data-guru="<?= $m->Guru_Mapel; ?>">Edit</button>
-                        <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_mapelkelas="<?= $m->Id_Mapel_Kelas; ?>">Hapus</button>
+                        <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_mapelkelas="<?= $m->Id_Mapel_Kelas; ?>" data-kelas="<?= $m->Id_Kelas; ?>">Hapus</button>
                       </td>
                     </tr>
                   <?php endforeach; ?>
@@ -81,13 +79,13 @@
             <div class="modal-body">
               <div class="form-group">
                 <label>Kelas</label>
-                <select name="kelas" class="form-control" disabled>
+                <select name="kelas" class="form-control kelas" disabled>
                   <option value="">Pilih Kelas</option>
                   <?php foreach ($kelas as $k) : ?>
                     <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
                   <?php endforeach; ?>
                 </select>
-                <select name="kelas" class="form-control" hidden>
+                <select name="kelas" class="form-control kelas" hidden>
                   <option value="">Pilih Kelas</option>
                   <?php foreach ($kelas as $k) : ?>
                     <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
@@ -188,6 +186,12 @@
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel" style="color: #001737 !important;">Apakah anda yakin menghapus data ini?</h5>
             </div>
+            <select name="kelas" class="form-control kelas" hidden>
+              <option value="">Pilih Kelas</option>
+              <?php foreach ($kelas as $k) : ?>
+                <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
+              <?php endforeach; ?>
+            </select>
             <div class="modal-footer">
               <input type="hidden" name="id_mapelkelas" class="id_mapelkelas2">
               <button type="submit" class="btn btn-success">Ya</button>
@@ -200,6 +204,19 @@
     <!-- End Modal Hapus -->
     <script src="<?php echo base_url(); ?>/assets/js/jquery-3.4.1.min.js"></script>
     <script>
+      $(document).ready(function() {
+
+        // get Edit Product
+        $('.btn-add').on('click', function() {
+          // get data from button edit
+          const kelas = $(this).data('kelas');
+          // Set data to Form Edit
+          $('.kelas').val(kelas);
+          // Call Modal Edit
+          $('#addModal').modal('show');
+        });
+      });
+
       $(document).ready(function() {
 
         // get Edit Product
@@ -222,8 +239,10 @@
         $('.btn-delete').on('click', function() {
           // get data from button edit
           const id = $(this).data('id_mapelkelas');
+          const kelas = $(this).data('kelas');
           // Set data to Form Edit
           $('.id_mapelkelas2').val(id);
+          $('.kelas').val(kelas);
           // Call Modal Edit
           $('#deleteModal').modal('show');
         });
@@ -250,7 +269,7 @@
           $('#pilih_kelas').val(localStorage.getItem("pilih_kelas"));
         }
       });
-      if(!window.location.href.includes("/get")){
+      if (!window.location.href.includes("/get")) {
         localStorage.removeItem("pilih_kelas");
       }
     </script>

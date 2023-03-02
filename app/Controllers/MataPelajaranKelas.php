@@ -21,6 +21,9 @@ class MataPelajaranKelas extends BaseController
     public function index()
     {
         $id = $this->request->getPost('pilih_kelas');
+        if(session()->getFlashdata('id') !== null){
+            $id = session()->getFlashdata('id');
+        }
         $mapel = $this->mapelKelasModel->getMapelKelas()->getResult();
         $kelas = $this->kelasModel->getKelas()->getResult();
         $mapel1 = $this->mapelModel->getMapel()->getResult();
@@ -39,6 +42,9 @@ class MataPelajaranKelas extends BaseController
     public function get()
     {
         $id = $this->request->getPost('pilih_kelas');
+        if(session()->getFlashdata('id') !== null){
+            $id = session()->getFlashdata('id');
+        }
         $mapel = $this->mapelKelasModel->getPilihKelas($id)->getResult();
         $kelas = $this->kelasModel->getKelas()->getResult();
         $mapel1 = $this->mapelModel->getMapel()->getResult();
@@ -51,6 +57,7 @@ class MataPelajaranKelas extends BaseController
             'mapel' => $mapel1,
             'user' => $user
         ];
+        
         return view('pages/mata_pelajaran_kelas', $data);
     }
 
@@ -63,6 +70,7 @@ class MataPelajaranKelas extends BaseController
         ];
         $this->mapelKelasModel->saveMapelKelas($data1);
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
+        session()->setFlashdata('id', $this->request->getPost('kelas'));
         return redirect()->to('/MataPelajaranKelas/get');
     }
 
@@ -76,6 +84,7 @@ class MataPelajaranKelas extends BaseController
         );
         $this->mapelKelasModel->updateMapelKelas($data, $id);
         session()->setFlashdata('pesan', 'Data berhasil diubah');
+        session()->setFlashdata('id', $this->request->getPost('kelas'));
         return redirect()->to('/MataPelajaranKelas/get');
     }
 
@@ -84,6 +93,7 @@ class MataPelajaranKelas extends BaseController
         $id = $this->request->getPost('id_mapelkelas');
         $this->mapelKelasModel->deleteMapelKelas($id);
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
+        session()->setFlashdata('id', $this->request->getPost('kelas'));
         return redirect()->to('/MataPelajaranKelas/get');
     }
 }
