@@ -64,16 +64,16 @@
             </div>
             <div class="modal-body">
               <div class="form-group">
+                <label>Nama</label>
+                <input type="text" class="form-control" name="nama" placeholder="" required>
+              </div>
+              <div class="form-group">
                 <label>Email</label>
                 <input type="text" class="form-control" name="email" placeholder="" required>
               </div>
               <div class="form-group">
                 <label>Password</label>
                 <input type="text" class="form-control" name="password" placeholder="" required>
-              </div>
-              <div class="form-group">
-                <label>Nama</label>
-                <input type="text" class="form-control" name="nama" placeholder="" required>
               </div>
               <div class="form-group">
                 <!-- <label>Admin</label> -->
@@ -135,6 +135,10 @@
             </div>
             <div class="modal-body">
               <div class="form-group">
+                <label>Nama</label>
+                <input type="text" class="form-control nama" name="nama" placeholder="" value="" required>
+              </div>
+              <div class="form-group">
                 <label>Email</label>
                 <input type="text" class="form-control email" name="email" placeholder="" value="" required>
               </div>
@@ -142,10 +146,7 @@
                 <label>Password</label>
                 <input type="text" class="form-control password" name="password" placeholder="" value="" required>
               </div>
-              <div class="form-group">
-                <label>Nama</label>
-                <input type="text" class="form-control nama" name="nama" placeholder="" value="" required>
-              </div>
+
               <div class="form-group">
                 <label>Akses</label><br>
                 <!-- <select name="akses" class="form-control akses" required>
