@@ -81,13 +81,13 @@
             <div class="modal-body">
               <div class="form-group">
                 <label>Kelas</label>
-                <select name="kelas" class="form-control kelas" disabled>
+                <select name="kelas" class="form-control" disabled>
                   <option value="">Pilih Kelas</option>
                   <?php foreach ($kelas as $k) : ?>
                     <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
                   <?php endforeach; ?>
                 </select>
-                <select name="kelas" class="form-control kelas" hidden>
+                <select name="kelas" class="form-control" hidden>
                   <option value="">Pilih Kelas</option>
                   <?php foreach ($kelas as $k) : ?>
                     <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
@@ -96,7 +96,7 @@
               </div>
               <div class="form-group">
                 <label>Mata Pelajaran</label>
-                <select name="mapel" class="form-control mapel">
+                <select name="mapel" class="form-control">
                   <option value="">Pilih Mata Pelajaran</option>
                   <?php foreach ($mapel as $m) : ?>
                     <option value="<?= $m->Id_Mata_Pelajaran; ?>"><?= $m->Mata_Pelajaran; ?></option>
@@ -105,7 +105,7 @@
               </div>
               <div class="form-group">
                 <label>Guru Mata Pelajaran</label>
-                <select name="guru" class="form-control guru">
+                <select name="guru" class="form-control">
                   <option value="">Pilih Guru Mata Pelajaran</option>
                   <?php foreach ($user as $u) : ?>
                     <option value="<?= $u->Id_User; ?>"><?= $u->Nama; ?></option>
@@ -231,13 +231,28 @@
       });
     </script>
 
-    <script>
+    <!-- <script>
       $('#pilih_kelas').change(function(event) {
         var selectedcategory = $(this).children("option:selected").val();
         sessionStorage.setItem("itemName", selectedcategory);
       });
 
       $('select').find('option[value=' + sessionStorage.getItem('itemName') + ']').attr('selected', 'selected');
+    </script> -->
+
+    <script>
+      $('#pilih_kelas').on('change', function() {
+        // Save value in localstorage
+        localStorage.setItem("pilih_kelas", $(this).val());
+      });
+      $(document).ready(function() {
+        if ($('#pilih_kelas').length) {
+          $('#pilih_kelas').val(localStorage.getItem("pilih_kelas"));
+        }
+      });
+      if(!window.location.href.includes("/get")){
+        localStorage.removeItem("pilih_kelas");
+      }
     </script>
 
     <?= $this->endSection() ?>

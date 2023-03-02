@@ -36,7 +36,7 @@
                     <td> <?= $k->Kelas; ?> </td>
                     <td> <?= $k->Nama; ?> </td>
                     <td class="text-center">
-                      <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_kelas="<?= $k->Id_Kelas; ?>" data-wali_kelas="<?= $k->Nama; ?>" data-tingkat="<?= $k->Tingkat; ?>" data-jurusan="<?= $k->Jurusan; ?>" data-abjad="<?= $k->Abjad; ?>">Edit</button>
+                      <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_kelas="<?= $k->Id_Kelas; ?>" data-wali_kelas="<?= $k->Wali_Kelas; ?>" data-tingkat="<?= $k->Tingkat; ?>" data-jurusan="<?= $k->Jurusan; ?>" data-abjad="<?= $k->Abjad; ?>">Edit</button>
                       <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_kelas="<?= $k->Id_Kelas; ?>">Hapus</button>
                     </td>
                   </tr>
