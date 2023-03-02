@@ -26,6 +26,8 @@
                   <th> No </th>
                   <th> NIS </th>
                   <th> Nama </th>
+                  <th> Jenis Kelamin </th>
+                  <th> Tempat dan Tanggal Lahir </th>
                   <th>  </th>
                   <!-- <th> Jenis Kelamin </th>
                   <th> Tempat Lahir </th>
@@ -57,6 +59,8 @@
                     <td class="number"> <?= $i++; ?> </td>
                     <td> <?= $s->NIS; ?> </td>
                     <td> <?= $s->Nama; ?> </td>
+                    <td> <?= $s->Jenis_Kelamin; ?> </td>
+                    <td> <?= $s->Tempat_Lahir; ?>, <?= $s->Tanggal_Lahir; ?> </td>
                     <td class="text-center">
                       <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" 
                       data-id_siswa="<?= $s->Id_Siswa; ?>" 
