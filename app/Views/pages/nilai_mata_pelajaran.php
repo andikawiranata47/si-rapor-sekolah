@@ -37,7 +37,7 @@
                 <?php $i = 1; ?>
                 <?php foreach ($nilaiMapel as $n) : ?>
                   <tr>
-                    <td> <?= $i++; ?> </td>
+                    <td class="number"> <?= $i++; ?> </td>
                     <td> <?= $n->NIS; ?> </td>
                     <td> <?= $n->Id_Mata_Pelajaran; ?> </td>
                     <td> <?= $n->Jenis_Nilai; ?> </td>

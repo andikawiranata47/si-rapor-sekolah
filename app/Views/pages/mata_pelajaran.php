@@ -33,7 +33,7 @@
                 <?php $i = 1; ?>
                 <?php foreach ($mapel as $m) : ?>
                   <tr>
-                    <td> <?= $i++; ?> </td>
+                    <td class="number"> <?= $i++; ?> </td>
                     <td> <?= $m->Mata_Pelajaran; ?> </td>
                     <td> <?= $m->Kelompok; ?> </td>
                     <td> <?= $m->KKM; ?> </td>

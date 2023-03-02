@@ -25,27 +25,68 @@
                 <tr>
                   <th> No </th>
                   <th> NIS </th>
-                  <!-- <th> Kelas </th> -->
                   <th> Nama </th>
-                  <th> Tanggal Masuk </th>
-                  <th> Nama Orang tua </th>
+                  <th>  </th>
+                  <!-- <th> Jenis Kelamin </th>
+                  <th> Tempat Lahir </th>
+                  <th> Tanggal Lahir </th>
+                  <th> Agama </th>
                   <th> Alamat </th>
+                  <th> Nomor Telepon Siswa </th>
+                  <th> Sekolah Asal </th>
+                  <th> Tahun Lulus </th>
+                  <th> Nomor Ijazah </th>
+                  <th> Diterima di Kelas </th>
+                  <th> Diterima pada </th>
+                  <th> Nama Ayah </th>
+                  <th> Pekerjaan Ayah </th>
+                  <th> Nama Ibu </th>
+                  <th> Pekerjaan Ibu </th>
+                  <th> Alamat Orang Tua </th>
+                  <th> Nomor Telepon Orang Tua </th>
+                  <th> Nama Wali </th>
+                  <th> Alamat Wali </th>
+                  <th> Nomor Telepon Wali </th>
+                  <th> Pekerjaan Wali </th> -->
                 </tr>
               </thead>
               <tbody>
                 <?php $i = 1; ?>
                 <?php foreach ($siswa as $s) : ?>
                   <tr>
-                    <td> <?= $i++; ?> </td>
+                    <td class="number"> <?= $i++; ?> </td>
                     <td> <?= $s->NIS; ?> </td>
-
                     <td> <?= $s->Nama; ?> </td>
-                    <td> <?= $s->Tanggal_Masuk; ?> </td>
-                    <td> <?= $s->Nama_Orangtua; ?> </td>
-                    <td> <?= $s->Alamat; ?> </td>
                     <td class="text-center">
-                      <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-nis="<?= $s->NIS; ?>"     data-nama="<?= $s->Nama; ?>" data-tanggal_masuk="<?= $s->Tanggal_Masuk; ?>" data-orangtua="<?= $s->Nama_Orangtua; ?>" data-alamat="<?= $s->Alamat; ?>">Edit</button>
-                      <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-nis="<?= $s->NIS; ?>">Hapus</button>
+                      <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" 
+                      data-id_siswa="<?= $s->Id_Siswa; ?>" 
+                      data-nis="<?= $s->NIS; ?>" 
+                      data-nisn="<?= $s->NISN; ?>" 
+                      data-nama="<?= $s->Nama; ?>" 
+                      data-jenis_kelamin="<?= $s->Jenis_Kelamin; ?>" 
+                      data-tempat_lahir="<?= $s->Tempat_Lahir; ?>" 
+                      data-tanggal_lahir="<?= $s->Tanggal_Lahir; ?>" 
+                      data-agama="<?= $s->Agama; ?>" 
+                      data-alamat="<?= $s->Alamat; ?>"
+                      data-telp="<?= $s->Telp; ?>"
+                      data-sekolah_asal="<?= $s->Sekolah_Asal; ?>"
+                      data-tahun_lulus="<?= $s->Tahun_Lulus; ?>"
+                      data-nomor_lulus="<?= $s->Nomor_Lulus; ?>"
+                      data-diterima_tingkat="<?= $s->Diterima_Tingkat; ?>"
+                      data-diterima_tanggal="<?= $s->Diterima_Tanggal; ?>"
+                      data-nama_ayah="<?= $s->Nama_Ayah; ?>"
+                      data-kerja_ayah="<?= $s->Kerja_Ayah; ?>"
+                      data-nama_ibu="<?= $s->Nama_Ibu; ?>"
+                      data-kerja_ibu="<?= $s->Kerja_Ibu; ?>"
+                      data-alamat_ortu="<?= $s->Alamat_Ortu; ?>"
+                      data-telp_ortu="<?= $s->Telp_Ortu; ?>"
+                      data-nama_wali="<?= $s->Nama_Wali; ?>"
+                      data-alamat_wali="<?= $s->Alamat_Wali; ?>"
+                      data-telp_wali="<?= $s->Telp_Wali; ?>"
+                      data-kerja_wali="<?= $s->Kerja_Wali; ?>"
+                      >Edit</button>
+
+                      <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_siswa="<?= $s->Id_Siswa; ?>">Hapus</button>
                     </td>
                   </tr>
                 <?php endforeach; ?>
@@ -70,25 +111,97 @@
                 <label>NIS</label>
                 <input type="text" class="form-control" name="nis" placeholder="" required>
               </div>
-              <!-- <div class="form-group">
-                <label>Kelas</label>
-                <input type="text" class="form-control" name="kelas" placeholder="" required>
-              </div> -->
+              <div class="form-group">
+                <label>NISN</label>
+                <input type="text" class="form-control" name="nisn" placeholder="" required>
+              </div>
               <div class="form-group">
                 <label>Nama</label>
                 <input type="text" class="form-control" name="nama" placeholder="" required>
               </div>
               <div class="form-group">
-                <label>Tanggal Masuk</label>
-                <input type="text" class="form-control" name="tanggal_masuk" placeholder="" required>
+                <label>Jenis Kelamin</label>
+                <input type="text" class="form-control" name="jenis_kelamin" placeholder="" required>
               </div>
               <div class="form-group">
-                <label>Nama Orang Tua</label>
-                <input type="text" class="form-control" name="orangtua" placeholder="" required>
+                <label>Tempat Lahir</label>
+                <input type="text" class="form-control" name="tempat_lahir" placeholder="" required>
+              </div>
+              <div class="form-group">
+                <label>Tanggal Lahir</label>
+                <input type="text" class="form-control" name="tanggal_lahir" placeholder="" required>
+              </div>
+              <div class="form-group">
+                <label>Agama</label>
+                <input type="text" class="form-control" name="agama" placeholder="" required>
               </div>
               <div class="form-group">
                 <label>Alamat</label>
                 <input type="text" class="form-control" name="alamat" placeholder="" required>
+              </div>
+              <div class="form-group">
+                <label>Nomor Telepon</label>
+                <input type="text" class="form-control" name="telp" placeholder="">
+              </div>
+              <div class="form-group">
+                <label>Sekolah Asal</label>
+                <input type="text" class="form-control" name="sekolah_asal" placeholder="" required>
+              </div>
+              <div class="form-group">
+                <label>Tahun Lulus</label>
+                <input type="text" class="form-control" name="tahun_lulus" placeholder="" required>
+              </div>
+              <div class="form-group">
+                <label>Nomor Ijazah</label>
+                <input type="text" class="form-control" name="nomor_lulus" placeholder="" required>
+              </div>
+              <div class="form-group">
+                <label>Diterima di Tingkat</label>
+                <input type="text" class="form-control" name="diterima_tingkat" placeholder="" required>
+              </div>
+              <div class="form-group">
+                <label>Diterima pada</label>
+                <input type="text" class="form-control" name="diterima_tanggal" placeholder="" required>
+              </div>
+              <div class="form-group">
+                <label>Nama Ayah</label>
+                <input type="text" class="form-control" name="nama_ayah" placeholder="">
+              </div>
+              <div class="form-group">
+                <label>Pekerjaan Ayah</label>
+                <input type="text" class="form-control" name="kerja_ayah" placeholder="">
+              </div>
+              <div class="form-group">
+                <label>Nama Ibu</label>
+                <input type="text" class="form-control" name="nama_ibu" placeholder="">
+              </div>
+              <div class="form-group">
+                <label>Pekerjaan Ibu</label>
+                <input type="text" class="form-control" name="kerja_ibu" placeholder="">
+              </div>
+              <div class="form-group">
+                <label>Alamat Orang Tua</label>
+                <input type="text" class="form-control" name="alamat_ortu" placeholder="">
+              </div>
+              <div class="form-group">
+                <label>Nomor Telepon Orang Tua</label>
+                <input type="text" class="form-control" name="telp_ortu" placeholder="">
+              </div>
+              <div class="form-group">
+                <label>Nama Wali</label>
+                <input type="text" class="form-control" name="nama_wali" placeholder="">
+              </div>
+              <div class="form-group">
+                <label>Pekerjaan Wali</label>
+                <input type="text" class="form-control" name="kerja_wali" placeholder="">
+              </div>
+              <div class="form-group">
+                <label>Alamat Wali</label>
+                <input type="text" class="form-control" name="alamat_wali" placeholder="">
+              </div>
+              <div class="form-group">
+                <label>Nomor Telepon Wali</label>
+                <input type="text" class="form-control" name="telp_wali" placeholder="">
               </div>
             </div>
             <div class="modal-footer">
@@ -112,33 +225,105 @@
               <h5 class="modal-title" id="exampleModalLabel" style="color: #001737 !important;">Edit User</h5>
             </div>
             <div class="modal-body">
-            <div class="form-group">
+              <div class="form-group">
                 <label>NIS</label>
                 <input type="text" class="form-control nis" name="nis" placeholder="" required>
               </div>
-              <!-- <div class="form-group">
-                <label>Kelas</label>
-                <input type="text" class="form-control" name="kelas" placeholder="" required>
-              </div> -->
+              <div class="form-group">
+                <label>NISN</label>
+                <input type="text" class="form-control nisn" name="nisn" placeholder="" required>
+              </div>
               <div class="form-group">
                 <label>Nama</label>
                 <input type="text" class="form-control nama" name="nama" placeholder="" required>
               </div>
               <div class="form-group">
-                <label>Tanggal Masuk</label>
-                <input type="text" class="form-control tanggal_masuk" name="tanggal_masuk" placeholder="" required>
+                <label>Jenis Kelamin</label>
+                <input type="text" class="form-control jenis_kelamin" name="jenis_kelamin" placeholder="" required>
               </div>
               <div class="form-group">
-                <label>Nama Orang Tua</label>
-                <input type="text" class="form-control orangtua" name="orangtua" placeholder="" required>
+                <label>Tempat Lahir</label>
+                <input type="text" class="form-control tempat_lahir" name="tempat_lahir" placeholder="" required>
+              </div>
+              <div class="form-group">
+                <label>Tanggal Lahir</label>
+                <input type="text" class="form-control tanggal_lahir" name="tanggal_lahir" placeholder="" required>
+              </div>
+              <div class="form-group">
+                <label>Agama</label>
+                <input type="text" class="form-control agama" name="agama" placeholder="" required>
               </div>
               <div class="form-group">
                 <label>Alamat</label>
                 <input type="text" class="form-control alamat" name="alamat" placeholder="" required>
               </div>
+              <div class="form-group">
+                <label>Nomor Telepon</label>
+                <input type="text" class="form-control telp" name="telp" placeholder="">
+              </div>
+              <div class="form-group">
+                <label>Sekolah Asal</label>
+                <input type="text" class="form-control sekolah_asal" name="sekolah_asal" placeholder="" required>
+              </div>
+              <div class="form-group">
+                <label>Tahun Lulus</label>
+                <input type="text" class="form-control tahun_lulus" name="tahun_lulus" placeholder="" required>
+              </div>
+              <div class="form-group">
+                <label>Nomor Ijazah</label>
+                <input type="text" class="form-control nomor_lulus" name="nomor_lulus" placeholder="" required>
+              </div>
+              <div class="form-group">
+                <label>Diterima di Tingkat</label>
+                <input type="text" class="form-control diterima_tingkat" name="diterima_tingkat" placeholder="" required>
+              </div>
+              <div class="form-group">
+                <label>Diterima pada</label>
+                <input type="text" class="form-control diterima_tanggal" name="diterima_tanggal" placeholder="" required>
+              </div>
+              <div class="form-group">
+                <label>Nama Ayah</label>
+                <input type="text" class="form-control nama_ayah" name="nama_ayah" placeholder="">
+              </div>
+              <div class="form-group">
+                <label>Pekerjaan Ayah</label>
+                <input type="text" class="form-control kerja_ayah" name="kerja_ayah" placeholder="">
+              </div>
+              <div class="form-group">
+                <label>Nama Ibu</label>
+                <input type="text" class="form-control nama_ibu" name="nama_ibu" placeholder="">
+              </div>
+              <div class="form-group">
+                <label>Pekerjaan Ibu</label>
+                <input type="text" class="form-control kerja_ibu" name="kerja_ibu" placeholder="">
+              </div>
+              <div class="form-group">
+                <label>Alamat Orang Tua</label>
+                <input type="text" class="form-control alamat_ortu" name="alamat_ortu" placeholder="">
+              </div>
+              <div class="form-group">
+                <label>Nomor Telepon Orang Tua</label>
+                <input type="text" class="form-control telp_ortu" name="telp_ortu" placeholder="">
+              </div>
+              <div class="form-group">
+                <label>Nama Wali</label>
+                <input type="text" class="form-control nama_wali" name="nama_wali" placeholder="">
+              </div>
+              <div class="form-group">
+                <label>Pekerjaan Wali</label>
+                <input type="text" class="form-control kerja_wali" name="kerja_wali" placeholder="">
+              </div>
+              <div class="form-group">
+                <label>Alamat Wali</label>
+                <input type="text" class="form-control alamat_wali" name="alamat_wali" placeholder="">
+              </div>
+              <div class="form-group">
+                <label>Nomor Telepon Wali</label>
+                <input type="text" class="form-control telp_wali" name="telp_wali" placeholder="">
+              </div>
             </div>
             <div class="modal-footer">
-              <input type="hidden" name="nis" class="nis1">
+              <input type="hidden" name="id_siswa" class="id_siswa1">
               <button type="submit" class="btn btn-success">Simpan</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
             </div>
@@ -158,7 +343,7 @@
               <h5 class="modal-title" id="exampleModalLabel" style="color: #001737 !important;">Apakah anda yakin menghapus data ini?</h5>
             </div>
             <div class="modal-footer">
-              <input type="hidden" name="nis" class="nis2">
+              <input type="hidden" name="id_siswa" class="id_siswa2">
               <button type="submit" class="btn btn-success">Ya</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
             </div>
@@ -174,17 +359,58 @@
         // get Edit Product
         $('.btn-edit').on('click', function() {
           // get data from button edit
+          const id_siswa = $(this).data('id_siswa');
           const nis = $(this).data('nis');
+          const nisn = $(this).data('nisn');
           const nama = $(this).data('nama');
-          const tanggal_masuk = $(this).data('tanggal_masuk');
-          const orangtua = $(this).data('orangtua');
+          const jenis_kelamin = $(this).data('jenis_kelamin');
+          const tempat_lahir = $(this).data('tempat_lahir');
+          const tanggal_lahir = $(this).data('tanggal_lahir');
+          const agama = $(this).data('agama');
           const alamat = $(this).data('alamat');
+          const telp = $(this).data('telp');
+          const sekolah_asal = $(this).data('sekolah_asal');
+          const tahun_lulus = $(this).data('tahun_lulus');
+          const nomor_lulus = $(this).data('nomor_lulus');
+          const diterima_tingkat = $(this).data('diterima_tingkat');
+          const diterima_tanggal = $(this).data('diterima_tanggal');
+          const nama_ayah = $(this).data('nama_ayah');
+          const kerja_ayah = $(this).data('kerja_ayah');
+          const nama_ibu = $(this).data('nama_ibu');
+          const kerja_ibu = $(this).data('kerja_ibu');
+          const alamat_ortu = $(this).data('alamat_ortu');
+          const telp_ortu = $(this).data('telp_ortu');
+          const nama_wali = $(this).data('nama_wali');
+          const alamat_wali = $(this).data('alamat_wali');
+          const telp_wali = $(this).data('telp_wali');
+          const kerja_wali = $(this).data('kerja_wali');
+                      
           // Set data to Form Edit
+          $('.id_siswa1').val(id_siswa);
           $('.nis').val(nis);
+          $('.nisn').val(nisn);
           $('.nama').val(nama);
-          $('.tanggal_masuk').val(tanggal_masuk);
-          $('.orangtua').val(orangtua);
+          $('.jenis_kelamin').val(jenis_kelamin);
+          $('.tempat_lahir').val(tempat_lahir);
+          $('.tanggal_lahir').val(tanggal_lahir);
+          $('.agama').val(agama);
           $('.alamat').val(alamat);
+          $('.telp').val(telp);
+          $('.sekolah_asal').val(sekolah_asal);
+          $('.tahun_lulus').val(tahun_lulus);
+          $('.nomor_lulus').val(nomor_lulus);
+          $('.diterima_tingkat').val(diterima_tingkat);
+          $('.diterima_tanggal').val(diterima_tanggal);
+          $('.nama_ayah').val(nama_ayah);
+          $('.kerja_ayah').val(kerja_ayah);
+          $('.nama_ibu').val(nama_ibu);
+          $('.kerja_ibu').val(kerja_ibu);
+          $('.alamat_ortu').val(alamat_ortu);
+          $('.telp_ortu').val(telp_ortu);
+          $('.nama_wali').val(nama_wali);
+          $('.alamat_wali').val(alamat_wali);
+          $('.telp_wali').val(telp_wali);
+          $('.kerja_wali').val(kerja_wali);
           // Call Modal Edit
           $('#editModal').modal('show');
         });
@@ -192,9 +418,9 @@
         // get Delete Product
         $('.btn-delete').on('click', function() {
           // get data from button edit
-          const nis = $(this).data('nis');
+          const id_siswa = $(this).data('id_siswa');
           // Set data to Form Edit
-          $('.nis2').val(nis);
+          $('.id_siswa2').val(id_siswa);
           // Call Modal Edit
           $('#deleteModal').modal('show');
         });

@@ -25,7 +25,7 @@
                 <?php $i = 1; ?>
                 <?php foreach ($nilaiEkstra as $n) : ?>
                 <tr>
-                  <td> <?= $i++; ?> </td>
+                  <td class="number"> <?= $i++; ?> </td>
                   <td> <?= $n->NIS; ?> </td>
                   <td> <?= $n->Nama; ?> </td>
                   <td> <?= $n->Nama_Ekstrakurikuler; ?> </td>

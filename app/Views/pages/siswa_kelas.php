@@ -34,7 +34,7 @@
                 <?php $i = 1; ?>
                 <?php foreach ($siswaKelas as $s) : ?>
                   <tr>
-                    <td> <?= $i++; ?> </td>
+                    <td class="number"> <?= $i++; ?> </td>
                     <td> <?= $s->Kelas; ?> </td>
                     <td> <?= $s->NIS; ?> </td>
                     <td> <?= $s->Nama; ?> </td>

@@ -50,7 +50,7 @@
                   <?php $i = 1; ?>
                   <?php foreach ($mapelKelas as $m) : ?>
                     <tr>
-                      <td> <?= $i++; ?> </td>
+                      <td class="number"> <?= $i++; ?> </td>
                       <td> <?= $m->Kelas; ?> </td>
                       <td> <?= $m->Mata_Pelajaran; ?> </td>
                       <td> <?= $m->Nama; ?> </td>

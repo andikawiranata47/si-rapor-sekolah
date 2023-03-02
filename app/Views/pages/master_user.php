@@ -35,7 +35,7 @@
                 <?php $i = 1; ?>
                 <?php foreach ($user as $u) : ?>
                   <tr>
-                    <td> <?= $i++; ?> </td>
+                    <td class="number"> <?= $i++; ?> </td>
                     <td> <?= $u->Nama; ?> </td>
                     <td> <?= $u->Email; ?> </td>
                     <td> <?= $u->Password; ?> </td>

@@ -32,7 +32,7 @@
                 <?php $i = 1; ?>
                 <?php foreach ($kelas as $k) : ?>
                   <tr>
-                    <td> <?= $i++; ?> </td>
+                    <td class="number"> <?= $i++; ?> </td>
                     <td> <?= $k->Kelas; ?> </td>
                     <td> <?= $k->Nama; ?> </td>
                     <td class="text-center">
