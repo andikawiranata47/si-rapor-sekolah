@@ -3,12 +3,12 @@
 namespace App\Controllers;
 
 use App\Models\SiswaModel;
-use App\Models\SiswaKelasModel;
 use App\Models\KelasModel;
+use App\Models\SiswaKelasModel;
 
 class SiswaKelas extends BaseController
 {
-    protected $siswaModel;
+    protected $siswaModel, $kelasModel, $siswaKelasModel;
     public function __construct()
     {
         $this->kelasModel = new KelasModel();
@@ -18,37 +18,51 @@ class SiswaKelas extends BaseController
 
     public function index()
     {
+        $id = $this->request->getPost('pilih_kelas');
         $kelas = $this->kelasModel->getKelas()->getResult();
-        // $siswa = $this->siswaModel->getSiswa()->getResult();
-        $siswaKelas = $this->siswaKelasModel->getSiswaKelas()->getResult();
+        $siswa = $this->siswaModel->getSiswa()->getResult();
         $data = [
             'judul' => 'Siswa Kelas',
+            'id' => $id,
             'kelas' => $kelas,
-            // 'siswa' => $siswa,
+            'siswa' => $siswa
+        ];
+        return view('pages/siswa_kelas', $data);
+    }
+
+    public function get()
+    {
+        $id = $this->request->getPost('pilih_kelas');
+        $siswaKelas = $this->siswaKelasModel->getPilihKelas($id)->getResult();
+        $kelas = $this->kelasModel->getKelas()->getResult();
+        $siswa = $this->siswaModel->getSiswa()->getResult();
+        $data = [
+            'judul' => 'Siswa Kelas',
+            'id' => $id,
+            'kelas' => $kelas,
+            'siswa' => $siswa,
             'siswaKelas' => $siswaKelas
         ];
         return view('pages/siswa_kelas', $data);
     }
 
-    public function save()
-    {
-        $data1 = [
-            'kelas' => $this->request->getPost('kelas'),
-            // 'nis' => $this->request->getPost('nis'),
-            // 'nama' => $this->request->getPost('nama')
-        ];
-        $this->siswaKelasModel->saveSiswaKelas($data1);
-        session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
-        return redirect()->to('/siswakelas');
-    }
+    // public function save()
+    // {
+    //     $data1 = [
+    //         'kelas' => $this->request->getPost('siswa'),
+    //         // 'nis' => $this->request->getPost('nis'),
+    //         // 'nama' => $this->request->getPost('nama')
+    //     ];
+    //     $this->siswaKelasModel->updateSiswaKelas($data1);
+    //     session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
+    //     return redirect()->to('/siswakelas');
+    // }
 
     public function edit()
     {
-        $id = $this->request->getPost('nis');
+        $id = $this->request->getPost('id_siswa');
         $data = array(
-            'kelas' => $this->request->getPost('kelas')
-            // 'nis' => $this->request->getPost('nis'),
-            // 'nama' => $this->request->getPost('nama'),
+            'id_kelas' => $this->request->getPost('pilih_kelas')
         );
         $this->siswaKelasModel->updateSiswaKelas($data, $id);
         session()->setFlashdata('pesan', 'Data berhasil diubah');
@@ -57,7 +71,7 @@ class SiswaKelas extends BaseController
 
     public function delete()
     {
-        $id = $this->request->getPost('nis');
+        $id = $this->request->getPost('id_siswa');
         $this->siswaKelasModel->deleteSiswaKelas($id);
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('/siswakelas');

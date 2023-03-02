@@ -11,48 +11,65 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title d-inline">Tabel Daftar Siswa Kelas</h4>
-            <div class="float-right">
-              <?php if (session()->getFlashdata('pesan')) : ?>
-                <p class="card-description mr-3 text-success d-inline">
-                  <?= session()->getFlashdata('pesan'); ?>
-                </p>
-              <?php endif; ?>
-              <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#addModal">Tambah</button>
-            </div>
 
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th> No </th>
-                  <th> Kelas </th>
-                  <th> NIS </th>
-                  <!-- <th> Kelas </th> -->
-                  <th> Nama </th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php $i = 1; ?>
-                <?php foreach ($siswaKelas as $s) : ?>
+            <form class="form-inline" action="/SiswaKelas/get" method="post">
+              <?= csrf_field(); ?>
+              <div class="form-group mr-4 my-sm-3">
+                <select name="pilih_kelas" class="form-control pr-xl-5 pilih_kelas" id="pilih_kelas">
+                  <option value="">Pilih Kelas</option>
+                  <?php foreach ($kelas as $k) : ?>
+                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary mb-2">Pilih</button>
+            </form>
+
+            <?php if ($id == null) {
+            } else {
+            ?>
+              <div class="float-right">
+                <?php if (session()->getFlashdata('pesan')) : ?>
+                  <p class="card-description mr-3 text-success d-inline">
+                    <?= session()->getFlashdata('pesan'); ?>
+                  </p>
+                <?php endif; ?>
+                <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#addModal">Tambah</button>
+              </div>
+
+              <table class="table table-bordered">
+                <thead>
                   <tr>
-                    <td class="number"> <?= $i++; ?> </td>
-                    <td> <?= $s->Kelas; ?> </td>
-                    <td> <?= $s->NIS; ?> </td>
-                    <td> <?= $s->Nama; ?> </td>
-                    <td class="text-center">
-                      <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-kelas="<?= $s->Id_Kelas; ?>" data-nis="<?= $s->NIS; ?>" >Edit</button>
-                      <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-nis="<?= $s->NIS; ?>">Hapus</button>
-                    </td>
+                    <th> No </th>
+                    <th> Kelas </th>
+                    <th> NIS </th>
+                    <th> Nama </th>
                   </tr>
-                <?php endforeach; ?>
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  <?php $i = 1; ?>
+                  <?php foreach ($siswaKelas as $s) : ?>
+                    <tr>
+                      <td class="number"> <?= $i++; ?> </td>
+                      <td> <?= $s->Kelas; ?> </td>
+                      <td> <?= $s->NIS; ?> </td>
+                      <td> <?= $s->Nama; ?> </td>
+                      <td class="text-center">
+                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_siswa="<?= $s->Id_Siswa; ?>">Edit</button>
+                        <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_siswa="<?= $s->Id_Siswa; ?>">Hapus</button>
+                      </td>
+                    </tr>
+                  <?php endforeach; ?>
+                </tbody>
+              </table>
+            <?php }; ?>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Modal Tambah -->
-    <form action="/Siswa/save" method="post">
+    <form action="/SiswaKelas/edit" method="post">
       <?= csrf_field(); ?>
       <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -61,30 +78,20 @@
               <h5 class="modal-title" id="exampleModalLabel" style="color: #001737 !important;">Tambah Siswa</h5>
             </div>
             <div class="modal-body">
+
               <div class="form-group">
-                <label>Kelas</label>
-                <!-- <input type="text" class="form-control" name="kelas" placeholder="" required> -->
-                <select name="kelas" class="form-control kelas" required>
-                  <option value="">Pilih</option>
-                  <?php foreach ($kelas as $k) : ?>
-                    <option value="<?= $k->Kelas; ?>"><?= $k->Kelas; ?></option>
-                  <?php endforeach; ?>
-                </select>
-              </div>
-              <div class="form-group">
-                <label>NIS</label>
-                <!-- <input type="text" class="form-control" name="nis" placeholder="" required> -->
-                <select name="nis" class="form-control nis" required>
-                  <option value="">Pilih</option>
-                  <?php foreach ($siswaKelas as $s) : ?>
-                    <option value="<?= $s->NIS; ?>"><?= $s->NIS; ?></option>
+                <label>Siswa</label>
+                <select name="id_siswa" class="form-control" required>
+                  <option value="">Pilih Siswa</option>
+                  <?php foreach ($siswa as $s) : ?>
+                    <option value="<?= $s->Id_Siswa; ?>"><?= $s->Nama; ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
 
             </div>
             <div class="modal-footer">
-              <!-- <input type="hidden" name="id_user" class="id_user1"> -->
+              <!-- <input type="hidden" name="id_siswa" class="id_siswa1"> -->
               <button type="submit" class="btn btn-success">Simpan</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
             </div>
@@ -95,7 +102,7 @@
     <!-- End Modal Tambah -->
 
     <!-- Modal Edit -->
-    <form action="/Siswa/edit/" method="post">
+    <form action="/SiswaKelas/edit/" method="post">
       <?= csrf_field(); ?>
       <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -104,10 +111,7 @@
               <h5 class="modal-title" id="exampleModalLabel" style="color: #001737 !important;">Edit User</h5>
             </div>
             <div class="modal-body">
-              <div class="form-group">
-                <label>Kelas</label>
-                <input type="text" class="form-control kelas" name="kelas" placeholder="" required>
-              </div>
+
               <div class="form-group">
                 <label>NIS</label>
                 <input type="text" class="form-control nis" name="nis" placeholder="" required>
@@ -115,7 +119,7 @@
 
             </div>
             <div class="modal-footer">
-              <input type="hidden" name="nis" class="nis1">
+              <input type="hidden" name="id_siswa" class="id_siswa1">
               <button type="submit" class="btn btn-success">Simpan</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
             </div>
@@ -126,7 +130,7 @@
     <!-- End Modal Edit -->
 
     <!-- Modal Hapus -->
-    <form action="/Siswa/delete/" method="post">
+    <form action="/SiswaKelas/delete/" method="post">
       <?= csrf_field(); ?>
       <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -135,7 +139,7 @@
               <h5 class="modal-title" id="exampleModalLabel" style="color: #001737 !important;">Apakah anda yakin menghapus data ini?</h5>
             </div>
             <div class="modal-footer">
-              <input type="hidden" name="nis" class="nis2">
+              <input type="hidden" name="id_siswa" class="id_siswa2">
               <button type="submit" class="btn btn-success">Ya</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
             </div>
