@@ -20,7 +20,7 @@ class MataPelajaranKelas extends BaseController
 
     public function index()
     {
-        $id = null;
+        $id = $this->request->getPost('pilih_kelas');
         $mapel = $this->mapelKelasModel->getMapelKelas()->getResult();
         $kelas = $this->kelasModel->getKelas()->getResult();
         $mapel1 = $this->mapelModel->getMapel()->getResult();
