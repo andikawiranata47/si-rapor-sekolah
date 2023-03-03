@@ -76,6 +76,15 @@
               <h5 class="modal-title" id="exampleModalLabel" style="color: #001737 !important;">Tambah Siswa</h5>
             </div>
             <div class="modal-body">
+              <div class="form-group">
+                <!-- <label>Kelas lama</label> -->
+                <select name="kelas_lama" class="form-control kelas_lama" hidden>
+                  <option value="">Pilih Kelas</option>
+                  <?php foreach ($kelas as $k) : ?>
+                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
               <select name="kelas" class="form-control kelas" hidden>
                 <option value="">Pilih Kelas</option>
                 <?php foreach ($kelas as $k) : ?>
@@ -174,8 +183,17 @@
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel" style="color: #001737 !important;">Apakah anda yakin menghapus data ini?</h5>
             </div>
+            <div class="form-group">
+              <!-- <label>Kelas lama</label> -->
+              <select name="kelas_lama" class="form-control kelas_lama" hidden>
+                <option value="">Pilih Kelas</option>
+                <?php foreach ($kelas as $k) : ?>
+                  <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
+                <?php endforeach; ?>
+              </select>
+            </div>
             <div class="modal-footer">
-              <input type="hidden" name="id_siswa" class="id_siswa2">
+              <input type="hidden" name="siswa" class="id_siswa">
               <button type="submit" class="btn btn-success">Ya</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
             </div>
@@ -192,8 +210,10 @@
         $('.btn-add').on('click', function() {
           // get data from button edit
           const kelas = $(this).data('id_kelas');
+          const kelas_lama = $(this).data('id_kelas');
           // Set data to Form Edit
           $('.kelas').val(kelas);
+          $('.kelas_lama').val(kelas_lama);
           // Call Modal Edit
           $('#addModal').modal('show');
         });
@@ -221,10 +241,10 @@
         $('.btn-delete').on('click', function() {
           // get data from button edit
           const siswa = $(this).data('id_siswa');
-          const kelas = $(this).data('id_kelas');
+          const kelas_lama = $(this).data('id_kelas');
           // Set data to Form Edit
-          $('.siswa').val(siswa);
-          $('.kelas').val(kelas);
+          $('.id_siswa').val(siswa);
+          $('.kelas_lama').val(kelas_lama);
           // Call Modal Edit
           $('#deleteModal').modal('show');
         });

@@ -79,15 +79,18 @@ class SiswaKelas extends BaseController
         $this->siswaKelasModel->updateSiswaKelas($data, $id);
         session()->setFlashdata('pesan', 'Data berhasil diubah');
         session()->setFlashdata('id', $this->request->getPost('kelas_lama'));
-        return redirect()->to('/siswakelas/get');
+        return redirect()->to('/SiswaKelas/get');
     }
 
     public function delete()
     {
-        $id = $this->request->getPost('id_siswa');
-        $this->siswaKelasModel->deleteSiswaKelas($id);
+        $id = $this->request->getPost('siswa');
+        $data = array(
+            'id_kelas' => null
+        );
+        $this->siswaKelasModel->updateSiswaKelas($data, $id);
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
-        session()->setFlashdata('id', $this->request->getPost('kelas'));
-        return redirect()->to('/siswakelas/get');
+        session()->setFlashdata('id', $this->request->getPost('kelas_lama'));
+        return redirect()->to('/SiswaKelas/get');
     }
 }
