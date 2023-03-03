@@ -20,9 +20,9 @@
             element.addClass('active');
           }
         }
-      } else {
+      } else if((element.attr('href').indexOf(current) !== -1 && element.attr('href').length == current.length)) {
         //for other url
-        if ((element.attr('href').indexOf(current) !== -1 && element.attr('href').length == current.length)) {
+        // if ((true)) {
           element.parents('.nav-item').last().addClass('active');
           if (element.parents('.sub-menu').length) {
             element.closest('.collapse').addClass('show');
@@ -31,9 +31,8 @@
           if (element.parents('.submenu-item').length) {
             element.addClass('active');
           }
-        }
-        
-      }
+        // }
+      } 
     }
 
     var current = location.pathname;

@@ -39,8 +39,8 @@
                 <thead>
                   <tr>
                     <th> No </th>
-                    <th> Kelas </th>
-                    <th> NIS </th>
+                    <th style="width: 150px;"> Kelas </th>
+                    <th style="width: 200px;"> NIS </th>
                     <th> Nama </th>
                   </tr>
                 </thead>
