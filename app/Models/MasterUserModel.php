@@ -8,7 +8,7 @@ class MasterUserModel extends Model
 {
     protected $table = 'user';
     protected $primaryKey = 'Id_User';
-    protected $allowedFields = ['Email', 'Password', 'Nama', 'Akses'];
+    protected $allowedFields = ['Email', 'Password', 'Nama', 'NIP', 'Akses'];
 
     public function getUser()
     {

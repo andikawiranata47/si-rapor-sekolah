@@ -25,8 +25,8 @@
                 <tr>
                   <th> No </th>
                   <th> Nama </th>
+                  <th> NIP </th>
                   <th> Email </th>
-                  <th> Password </th>
                   <th> Akses </th>
                   <th> </th>
                 </tr>
@@ -37,11 +37,11 @@
                   <tr>
                     <td class="number"> <?= $i++; ?> </td>
                     <td> <?= $u->Nama; ?> </td>
+                    <td> <?= $u->NIP; ?> </td>
                     <td> <?= $u->Email; ?> </td>
-                    <td> <?= $u->Password; ?> </td>
                     <td style="max-width: 200px; white-space: normal !important;"> <?= $u->Akses; ?> </td>
                     <td class="text-center">
-                      <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_user="<?= $u->Id_User; ?>" data-email="<?= $u->Email; ?>" data-password="<?= $u->Password; ?>" data-nama="<?= $u->Nama; ?>" data-akses="<?= $u->Akses; ?>">Edit</button>
+                      <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_user="<?= $u->Id_User; ?>" data-email="<?= $u->Email; ?>" data-password="<?= $u->Password; ?>" data-nama="<?= $u->Nama; ?>" data-nip="<?= $u->NIP; ?>" data-akses="<?= $u->Akses; ?>">Edit</button>
                       <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_user="<?= $u->Id_User; ?>">Hapus</button>
                     </td>
                   </tr>
@@ -66,6 +66,10 @@
               <div class="form-group">
                 <label>Nama</label>
                 <input type="text" class="form-control" name="nama" placeholder="" required>
+              </div>
+              <div class="form-group">
+                <label>NIP</label>
+                <input type="text" class="form-control" name="nip" placeholder="">
               </div>
               <div class="form-group">
                 <label>Email</label>
@@ -137,6 +141,10 @@
               <div class="form-group">
                 <label>Nama</label>
                 <input type="text" class="form-control nama" name="nama" placeholder="" value="" required>
+              </div>
+              <div class="form-group">
+                <label>NIP</label>
+                <input type="text" class="form-control nip" name="nip" placeholder="" value="">
               </div>
               <div class="form-group">
                 <label>Email</label>
@@ -227,13 +235,13 @@
           const email = $(this).data('email');
           const password = $(this).data('password');
           const nama = $(this).data('nama');
-
+          const nip = $(this).data('nip');
           // Set data to Form Edit
           $('.id_user1').val(id);
           $('.email').val(email);
           $('.password').val(password);
           $('.nama').val(nama);
-
+          $('.nip').val(nip);
           // Call Modal Edit
           $('#editModal').modal('show');
         });

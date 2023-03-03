@@ -30,6 +30,7 @@ class MasterUser extends BaseController
                 'email' => $this->request->getPost('email'),
                 'password' => $this->request->getPost('password'),
                 'nama' => $this->request->getPost('nama'),
+                'nip' => $this->request->getPost('nip'),
                 'akses' => implode(", ", $this->request->getPost('akses'))
             ];
         } else {
@@ -37,6 +38,7 @@ class MasterUser extends BaseController
                 'email' => $this->request->getPost('email'),
                 'password' => $this->request->getPost('password'),
                 'nama' => $this->request->getPost('nama'),
+                'nip' => $this->request->getPost('nip')
             ];
         }
 
@@ -53,6 +55,7 @@ class MasterUser extends BaseController
                 'email' => $this->request->getPost('email'),
                 'password' => $this->request->getPost('password'),
                 'nama' => $this->request->getPost('nama'),
+                'nip' => $this->request->getPost('nip'),
                 'akses' => implode(", ", $this->request->getPost('akses'))
             ];
         } else {
@@ -60,6 +63,7 @@ class MasterUser extends BaseController
                 'email' => $this->request->getPost('email'),
                 'password' => $this->request->getPost('password'),
                 'nama' => $this->request->getPost('nama'),
+                'nip' => $this->request->getPost('nip')
             ];
         }
         $this->masterUserModel->updateUser($data, $id);
