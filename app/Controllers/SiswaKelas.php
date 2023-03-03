@@ -19,6 +19,10 @@ class SiswaKelas extends BaseController
     public function index()
     {
         $id = $this->request->getPost('pilih_kelas');
+        if(session()->getFlashdata('id') !== null){
+            $id = session()->getFlashdata('id');
+        }
+        // $id = $this->request->getPost('pilih_kelas');
         $kelas = $this->kelasModel->getKelas()->getResult();
         $siswa = $this->siswaModel->getSiswa()->getResult();
         $data = [
@@ -33,7 +37,12 @@ class SiswaKelas extends BaseController
     public function get()
     {
         $id = $this->request->getPost('pilih_kelas');
+        if(session()->getFlashdata('id') !== null){
+            $id = session()->getFlashdata('id');
+        }
+        // $id = $this->request->getPost('pilih_kelas');
         $siswaKelas = $this->siswaKelasModel->getPilihKelas($id)->getResult();
+        $siswaKelas1 = $this->siswaKelasModel->getSiswaKelas()->getResult();
         $kelas = $this->kelasModel->getKelas()->getResult();
         $siswa = $this->siswaModel->getSiswa()->getResult();
         $data = [
@@ -41,7 +50,8 @@ class SiswaKelas extends BaseController
             'id' => $id,
             'kelas' => $kelas,
             'siswa' => $siswa,
-            'siswaKelas' => $siswaKelas
+            'siswaKelas' => $siswaKelas,
+            'siswaKelas1' => $siswaKelas1
         ];
         return view('pages/siswa_kelas', $data);
     }
@@ -60,13 +70,14 @@ class SiswaKelas extends BaseController
 
     public function edit()
     {
-        $id = $this->request->getPost('id_siswa');
+        $id = $this->request->getPost('siswa');
         $data = array(
-            'id_kelas' => $this->request->getPost('pilih_kelas')
+            'id_kelas' => $this->request->getPost('kelas')
         );
         $this->siswaKelasModel->updateSiswaKelas($data, $id);
         session()->setFlashdata('pesan', 'Data berhasil diubah');
-        return redirect()->to('/siswakelas');
+        session()->setFlashdata('id', $this->request->getPost('kelas_lama'));
+        return redirect()->to('/siswakelas/get');
     }
 
     public function delete()
@@ -74,6 +85,7 @@ class SiswaKelas extends BaseController
         $id = $this->request->getPost('id_siswa');
         $this->siswaKelasModel->deleteSiswaKelas($id);
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
-        return redirect()->to('/siswakelas');
+        session()->setFlashdata('id', $this->request->getPost('kelas'));
+        return redirect()->to('/siswakelas/get');
     }
 }
