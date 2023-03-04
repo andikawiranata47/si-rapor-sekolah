@@ -75,12 +75,22 @@ $CurPageURL = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
             <?php } ?>
 
             <li class="nav-item nav-category">Guru Mata Pelajaran</li>
-            <li class="nav-item">
-                <a class="nav-link" href="/nilaimatapelajaran">
-                    <span class="icon-bg"><i class="mdi mdi-table menu-icon"></i></span>
-                    <span class="menu-title">Nilai Mata Pelajaran</span>
-                </a>
-            </li>
+            <?php if (strpos($CurPageURL, '/NilaiMataPelajaran/get')) { ?>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/nilaimatapelajaran">
+                        <span class="icon-bg"><i class="mdi mdi-table menu-icon"></i></span>
+                        <span class="menu-title">Nilai Mata Pelajaran</span>
+                    </a>
+                </li>
+            <?php } else { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="/nilaimatapelajaran">
+                        <span class="icon-bg"><i class="mdi mdi-table menu-icon"></i></span>
+                        <span class="menu-title">Nilai Mata Pelajaran</span>
+                    </a>
+                </li>
+            <?php } ?>
+
 
             <li class="nav-item nav-category">Guru Prakerin</li>
             <li class="nav-item">

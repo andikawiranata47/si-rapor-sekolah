@@ -11,48 +11,80 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title d-inline">Tabel Daftar Nilai Mata Pelajaran</h4>
-            <div class="float-right">
-              <?php if (session()->getFlashdata('pesan')) : ?>
-                <p class="card-description mr-3 text-success d-inline">
-                  <?= session()->getFlashdata('pesan'); ?>
-                </p>
-              <?php endif; ?>
-              <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#addModal">Tambah</button>
-            </div>
 
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th> No </th>
-                  <th> NIS </th>
-                  <th> Mata Pelajaran </th>
-                  <th> Jenis Nilai </th>
-                  <th> Nilai UH </th>
-                  <th> Nilai UTS </th>
-                  <th> Nilai UAS </th>
-                  <th> Nilai Akhir </th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php $i = 1; ?>
-                <?php foreach ($nilaiMapel as $n) : ?>
-                  <tr>
-                    <td class="number"> <?= $i++; ?> </td>
-                    <td> <?= $n->NIS; ?> </td>
-                    <td> <?= $n->Id_Mata_Pelajaran; ?> </td>
-                    <td> <?= $n->Jenis_Nilai; ?> </td>
-                    <td> <?= $n->Nilai_UH; ?> </td>
-                    <td> <?= $n->Nilai_UTS; ?> </td>
-                    <td> <?= $n->Nilai_UAS; ?> </td>
-                    <td> <?= $n->Nilai_Akhir; ?> </td>
-                    <td class="text-center">
-                      <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_nilaimapel="<?= $n->Id_Nilai_Mata_Pelajaran; ?>" data-nis="<?= $n->NIS; ?>" data-mapel="<?= $n->Id_Mata_Pelajaran; ?>" data-jenis="<?= $n->Jenis_Nilai; ?>" data-uh="<?= $n->Nilai_UH; ?>" data-uts="<?= $n->Nilai_UTS; ?>" data-uas="<?= $n->Nilai_UAS; ?>">Edit</button>
-                      <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_nilaimapel="<?= $n->Id_Nilai_Mata_Pelajaran; ?>">Hapus</button>
-                    </td>
-                  </tr>
+            <form class="form-inline" action="/NilaiMataPelajaran/get" method="post">
+              <?= csrf_field(); ?>
+              <div class="form-group mr-4 my-sm-3">
+                <?php foreach ($general as $g) : ?>
+                  <input type="text" class="form-control pilih_semester" name="" value="<?= $g->Semester; ?>" disabled>
+                  <input type="text" class="form-control pilih_semester" name="pilih_semester" value="<?= $g->Semester; ?>" hidden>
+
+                  <input type="text" class="form-control mx-2 pilih_tahun" name="" value="<?= $g->Tahun_Ajaran; ?>" disabled>
+                  <input type="text" class="form-control mx-2 pilih_tahun" name="pilih_tahun" value="<?= $g->Tahun_Ajaran; ?>" hidden>
                 <?php endforeach; ?>
-              </tbody>
-            </table>
+                <select name="pilih_kelas" class="form-control pr-xl-5 pilih_kelas" id="pilih_kelas">
+                  <option value="">Pilih Kelas</option>
+                  <?php foreach ($kelas as $k) : ?>
+                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
+                  <?php endforeach; ?>
+                </select>
+                <select name="pilih_jenis" class="form-control mx-2 pr-xl-5 pilih_jenis" id="pilih_jenis">
+                  <option value="">Pilih Jenis Nilai</option>
+                  <option value="Pengetahuan">Pengetahuan</option>
+                  <option value="Keterampilan">Keterampilan</option>
+
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary mb-2">Pilih</button>
+            </form>
+
+            <?php if ($id != null) { ?>
+              <div class="float-right">
+                <?php if (session()->getFlashdata('pesan')) : ?>
+                  <p class="card-description mr-3 text-success d-inline">
+                    <?= session()->getFlashdata('pesan'); ?>
+                  </p>
+                <?php endif; ?>
+              </div>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th> No </th>
+                    <th> Nama </th>
+                    <th> Jenis Nilai </th>
+                    <!-- <th> Nilai Akhir </th> -->
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php $i = 1; ?>
+<?php foreach ($siswa as $s) : ?>
+                  <tr>
+                    
+                      <td class="number"> <?= $i++; ?> </td>
+                      <td> <?= $s->Nama; ?> </td>
+<?php foreach ($nilaiMapel as $n) : ?>
+                      <td class="number"> <?= $i++; ?> </td>
+                      <td> <?= $n->Jenis_Nilai; ?> </td>
+                      <?php break; ?>
+
+                      
+                    <?php endforeach; ?>
+
+                      <td class="text-center">
+                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal">Edit</button>
+                        <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal">Hapus</button>
+                      </td>
+                    
+                  </tr><?php endforeach; ?>
+                  <tr>
+                    
+                  </tr>
+
+                </tbody>
+              </table>
+            <?php }; ?>
+
           </div>
         </div>
       </div>
