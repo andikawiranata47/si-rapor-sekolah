@@ -14,28 +14,32 @@
 
             <form class="form-inline" action="/NilaiMataPelajaran/get" method="post">
               <?= csrf_field(); ?>
-              <div class="form-group mr-4 my-sm-3">
+              <div class="form-group my-sm-3">
                 <?php foreach ($general as $g) : ?>
-                  <input type="text" class="form-control pilih_semester" name="" value="<?= $g->Semester; ?>" disabled>
+                  <input type="text" class="form-control pilih_semester" style="width: 85px;" name="" value="<?= $g->Semester; ?>" disabled>
                   <input type="text" class="form-control pilih_semester" name="pilih_semester" value="<?= $g->Semester; ?>" hidden>
-
-                  <input type="text" class="form-control mx-2 pilih_tahun" name="" value="<?= $g->Tahun_Ajaran; ?>" disabled>
+                  <input type="text" class="form-control mx-2 pilih_tahun" style="width: 120px;" name="" value="<?= $g->Tahun_Ajaran; ?>" disabled>
                   <input type="text" class="form-control mx-2 pilih_tahun" name="pilih_tahun" value="<?= $g->Tahun_Ajaran; ?>" hidden>
                 <?php endforeach; ?>
+
                 <select name="pilih_kelas" class="form-control pr-xl-5 pilih_kelas" id="pilih_kelas">
                   <option value="">Pilih Kelas</option>
                   <?php foreach ($kelas as $k) : ?>
                     <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
                   <?php endforeach; ?>
                 </select>
-                <select name="pilih_jenis" class="form-control mx-2 pr-xl-5 pilih_jenis" id="pilih_jenis">
+                <select name="pilih_mapel" class="form-control pr-xl-5 mx-2 pilih_mapel" id="pilih_mapel">
+                  <option value="">Pilih Mata Pelajaran</option>
+                  <?php foreach ($mapel as $m) : ?>
+                    <option value="<?= $m->Id_Mata_Pelajaran; ?>"><?= $m->Mata_Pelajaran; ?></option>
+                  <?php endforeach; ?>
+                </select>
+                <select name="pilih_jenis" class="form-control mr-2 pr-xl-5 pilih_jenis" id="pilih_jenis">
                   <option value="">Pilih Jenis Nilai</option>
                   <option value="Pengetahuan">Pengetahuan</option>
                   <option value="Keterampilan">Keterampilan</option>
-
                 </select>
-              </div>
-              <button type="submit" class="btn btn-primary mb-2">Pilih</button>
+              </div><button type="submit" class="btn btn-primary mb-2">Pilih</button>
             </form>
 
             <?php if ($id != null) { ?>
@@ -45,42 +49,42 @@
                     <?= session()->getFlashdata('pesan'); ?>
                   </p>
                 <?php endif; ?>
+                <button type="button" class="btn btn-success mb-2 btn-add" data-toggle="modal" data-target="#addModal">Tambah</button>
               </div>
               <table class="table table-bordered">
                 <thead>
                   <tr>
                     <th> No </th>
                     <th> Nama </th>
+                    <th> Mata Pelajaran </th>
                     <th> Jenis Nilai </th>
-                    <!-- <th> Nilai Akhir </th> -->
-
+                    <th> Nilai UH </th>
+                    <th> Nilai UTS </th>
+                    <th> Nilai UAS </th>
+                    <th> Nilai Akhir </th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php $i = 1; ?>
-<?php foreach ($siswa as $s) : ?>
-                  <tr>
+                  <?php foreach ($nilaiMapel as $n) : ?>
                     
+                      <?php echo $i . ' dari ' . count($siswaKelas) . ' siswa'; ?>
+
+                    <tr>
                       <td class="number"> <?= $i++; ?> </td>
-                      <td> <?= $s->Nama; ?> </td>
-<?php foreach ($nilaiMapel as $n) : ?>
-                      <td class="number"> <?= $i++; ?> </td>
+                      <td> <?= $n->Nama; ?> </td>
+                      <td> <?= $n->Mata_Pelajaran; ?> </td>
                       <td> <?= $n->Jenis_Nilai; ?> </td>
-                      <?php break; ?>
-
-                      
-                    <?php endforeach; ?>
-
+                      <td> <?= $n->Nilai_UH; ?> </td>
+                      <td> <?= $n->Nilai_UTS; ?> </td>
+                      <td> <?= $n->Nilai_UAS; ?> </td>
+                      <td> <?= $n->Nilai_Akhir; ?> </td>
                       <td class="text-center">
-                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal">Edit</button>
-                        <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal">Hapus</button>
+                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_nilaimapel="<?= $n->Id_Nilai_Mata_Pelajaran; ?>" data-kelas="<?= $n->Id_Kelas; ?>" data-id_siswa="<?= $n->Id_Siswa; ?>" data-id_mapel="<?= $n->Id_Mata_Pelajaran; ?>" data-jenis_nilai="<?= $n->Jenis_Nilai; ?>" data-semester="<?= $n->Semester; ?>" data-tahun_ajaran="<?= $n->Tahun_Ajaran; ?>" data-nilai_uh="<?= $n->Nilai_UH; ?>" data-nilai_uts="<?= $n->Nilai_UTS; ?>" data-nilai_uas="<?= $n->Nilai_UAS; ?>" data-nilai_akhir="<?= $n->Nilai_Akhir; ?>">Edit</button>
+                        <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_nilaimapel="<?= $n->Id_Nilai_Mata_Pelajaran; ?>" data-kelas="<?= $n->Id_Kelas; ?>">Hapus</button>
                       </td>
-                    
-                  </tr><?php endforeach; ?>
-                  <tr>
-                    
-                  </tr>
-
+                    </tr>
+                  <?php endforeach; ?>
                 </tbody>
               </table>
             <?php }; ?>
@@ -100,41 +104,36 @@
               <h5 class="modal-title" id="exampleModalLabel" style="color: #001737 !important;">Tambah Nilai Mata Pelajaran</h5>
             </div>
             <div class="modal-body">
-              <div class="form-group">
-                <label>NIS</label>
-                <input type="text" class="form-control" name="nis" placeholder="" required>
+              <div>
+                <input type="text" class="form-control " name="pilih_kelas" value="<?= $id; ?>" hidden>
+                <input type="text" class="form-control " name="pilih_mapel" value="<?= $pmapel; ?>" hidden>
+                <input type="text" class="form-control " name="pilih_jenis" value="<?= $pjenis; ?>" hidden>
+                <input type="text" class="form-control " name="pilih_semester" value="<?= $psemester; ?>" hidden>
+                <input type="text" class="form-control " name="pilih_tahun" value="<?= $ptahun; ?>" hidden>
               </div>
               <div class="form-group">
-                <label>Mata Pelajaran</label>
-                <input type="text" class="form-control" name="mapel" placeholder="" required>
-              </div>
-              <div class="form-group">
-                <label>Jenis Nilai</label>
-                <select name="jenis" class="form-control jenis" required>
-                  <option value="">Pilih</option>
-                  <option value="Pengetahuan">Pengetahuan</option>
-                  <option value="Keterampilan">Keterampilan</option>
+                <label>Siswa</label>
+                <select name="siswa" class="form-control pr-xl-5 " id="siswa">
+                  <option value="">Pilih Siswa</option>
+                  <?php foreach ($siswaKelas as $s) : ?>
+                    <option value="<?= $s->Id_Siswa; ?>"><?= $s->Nama; ?></option>
+                  <?php endforeach; ?>
                 </select>
               </div>
               <div class="form-group">
                 <label>Nilai UH</label>
-                <input type="text" class="form-control" name="uh" placeholder="" required>
+                <input type="text" class="form-control " name="uh" required>
               </div>
               <div class="form-group">
                 <label>Nilai UTS</label>
-                <input type="text" class="form-control" name="uts" placeholder="" required>
+                <input type="text" class="form-control " name="uts" required>
               </div>
               <div class="form-group">
                 <label>Nilai UAS</label>
-                <input type="text" class="form-control" name="uas" placeholder="" required>
+                <input type="text" class="form-control " name="uas" required>
               </div>
-              <!-- <div class="form-group">
-                <label>Nilai Akhir</label>
-                <input type="text" class="form-control" name="akhir" placeholder="" required>
-              </div> -->
             </div>
             <div class="modal-footer">
-              <!-- <input type="hidden" name="id_user" class="id_user1"> -->
               <button type="submit" class="btn btn-success">Simpan</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
             </div>
@@ -256,6 +255,47 @@
         });
 
       });
+    </script>
+
+    <script>
+      $('#pilih_kelas').on('change', function() {
+        // Save value in localstorage
+        localStorage.setItem("pilih_kelas", $(this).val());
+      });
+      $(document).ready(function() {
+        if ($('#pilih_kelas').length) {
+          $('#pilih_kelas').val(localStorage.getItem("pilih_kelas"));
+        }
+      });
+      if (!window.location.href.includes("/get")) {
+        localStorage.removeItem("pilih_kelas");
+      }
+
+      $('#pilih_mapel').on('change', function() {
+        // Save value in localstorage
+        localStorage.setItem("pilih_mapel", $(this).val());
+      });
+      $(document).ready(function() {
+        if ($('#pilih_mapel').length) {
+          $('#pilih_mapel').val(localStorage.getItem("pilih_mapel"));
+        }
+      });
+      if (!window.location.href.includes("/get")) {
+        localStorage.removeItem("pilih_mapel");
+      }
+
+      $('#pilih_jenis').on('change', function() {
+        // Save value in localstorage
+        localStorage.setItem("pilih_jenis", $(this).val());
+      });
+      $(document).ready(function() {
+        if ($('#pilih_jenis').length) {
+          $('#pilih_jenis').val(localStorage.getItem("pilih_jenis"));
+        }
+      });
+      if (!window.location.href.includes("/get")) {
+        localStorage.removeItem("pilih_jenis");
+      }
     </script>
 
     <?= $this->endSection() ?>

@@ -7,10 +7,11 @@ use App\Models\SiswaModel;
 use App\Models\MataPelajaranModel;
 use App\Models\KelasModel;
 use App\Models\GeneralModel;
+use App\Models\SiswaKelasModel;
 
 class NilaiMataPelajaran extends BaseController
 {
-    protected $nilaiMapelModel, $siswaModel, $mataPelajaranModel, $kelasModel, $generalModel;
+    protected $nilaiMapelModel, $siswaModel, $mataPelajaranModel, $kelasModel, $generalModel, $siswaKelasModel;
     public function __construct()
     {
         $this->nilaiMapelModel = new NilaiMataPelajaranModel();
@@ -18,6 +19,7 @@ class NilaiMataPelajaran extends BaseController
         $this->mataPelajaranModel = new MataPelajaranModel();
         $this->kelasModel = new KelasModel();
         $this->generalModel = new GeneralModel();
+        $this->siswaKelasModel = new SiswaKelasModel();
     }
 
     public function index()
@@ -26,24 +28,32 @@ class NilaiMataPelajaran extends BaseController
         if(session()->getFlashdata('id') !== null){
             $id = session()->getFlashdata('id');
         }
-        $jenis = $this->request->getPost('pilih_jenis');
-        // $semester = $this->request->getPost('pilih_semester');
-        // $tahun = $this->request->getPost('pilih_tahun');
+        $pilihMapel = $this->request->getPost('pilih_mapel');
+        $pilihJenis = $this->request->getPost('pilih_jenis');
+        $pilihSemester = $this->request->getPost('pilih_semester');
+        $pilihTahun = $this->request->getPost('pilih_tahun');
 
         // $nilai = $this->nilaiMapelModel->getNilaiMapel()->getResult();
+        $nilai = $this->nilaiMapelModel->getPilihKelas($id, $pilihMapel, $pilihJenis, $pilihSemester, $pilihTahun)->getResult();
         $kelas = $this->kelasModel->getKelas()->getResult();
         $general = $this->generalModel->getGeneral()->getResult();
         $siswa = $this->siswaModel->getSiswa()->getResult();
+        $mapel = $this->mataPelajaranModel->getMapel()->getResult();
+        $siswaKelas = $this->siswaKelasModel->getPilihKelas($id)->getResult();
         $data = [
             'judul' => 'Nilai Mata Pelajaran',
             'id' => $id,
-            'jenis' => $jenis,
-            // 'semester' => $semester,
-            // 'tahun' => $tahun,
+            'pmapel' => $pilihMapel,
+            'pjenis' => $pilihJenis,
+            'psemester' => $pilihSemester,
+            'ptahun' => $pilihTahun,
             // 'nilaiMapel' => $nilai,
+            'nilaiMapel' => $nilai,
             'kelas' => $kelas,
             'general' => $general,
-            'siswa' => $siswa
+            'siswa' => $siswa,
+            'mapel' => $mapel,
+            'siswaKelas' => $siswaKelas
         ];
         return view('pages/nilai_mata_pelajaran', $data);
     }
@@ -54,26 +64,32 @@ class NilaiMataPelajaran extends BaseController
         if(session()->getFlashdata('id') !== null){
             $id = session()->getFlashdata('id');
         }
-        $jenis = $this->request->getPost('pilih_jenis');
-        // $semester = $this->request->getPost('pilih_semester');
-        // $tahun = $this->request->getPost('pilih_tahun');
+        $pilihMapel = $this->request->getPost('pilih_mapel');
+        $pilihJenis = $this->request->getPost('pilih_jenis');
+        $pilihSemester = $this->request->getPost('pilih_semester');
+        $pilihTahun = $this->request->getPost('pilih_tahun');
 
         // $nilai = $this->nilaiMapelModel->getNilaiMapel()->getResult();
-        $nilai = $this->nilaiMapelModel->getPilihKelas($id)->getResult();
+        $nilai = $this->nilaiMapelModel->getPilihKelas($id, $pilihMapel, $pilihJenis, $pilihSemester, $pilihTahun)->getResult();
         $kelas = $this->kelasModel->getKelas()->getResult();
         $general = $this->generalModel->getGeneral()->getResult();
         $siswa = $this->siswaModel->getSiswa()->getResult();
+        $mapel = $this->mataPelajaranModel->getMapel()->getResult();
+        $siswaKelas = $this->siswaKelasModel->getPilihKelas($id)->getResult();
         $data = [
             'judul' => 'Nilai Mata Pelajaran',
             'id' => $id,
-            'jenis' => $jenis,
-            // 'semester' => $semester,
-            // 'tahun' => $tahun,
+            'pmapel' => $pilihMapel,
+            'pjenis' => $pilihJenis,
+            'psemester' => $pilihSemester,
+            'ptahun' => $pilihTahun,
             // 'nilaiMapel' => $nilai,
             'nilaiMapel' => $nilai,
             'kelas' => $kelas,
             'general' => $general,
-            'siswa' => $siswa
+            'siswa' => $siswa,
+            'mapel' => $mapel,
+            'siswaKelas' => $siswaKelas
         ];
         return view('pages/nilai_mata_pelajaran', $data);
     }
