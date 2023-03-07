@@ -135,18 +135,19 @@
               </div>
               <div class="form-group">
                 <label>Siswa</label>
-                <select name="siswa" class="form-control pr-xl-5 siswa" id="siswa">
+                <select name="siswa" class="form-control pr-xl-5 siswa" id="siswa" disabled>
                   <option value="">Pilih Siswa</option>
                   <?php foreach ($siswaKelas as $s) : ?>
-                    <?php $a = false ?>
-                    <?php foreach ($nilaiMapel as $n) : ?>
-                      <?php if ($s->Id_Siswa === $n->Id_Siswa) {
-                        $a = $a || true;
-                      }; ?>
-                    <?php endforeach; ?>
-                    <?php if (!$a) { ?>
-                      <option value="<?= $s->Id_Siswa; ?>"><?= $s->Nama; ?></option>
-                    <?php }; ?>
+                    <option value="<?= $s->Id_Siswa; ?>"><?= $s->Nama; ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
+              <div class="">
+                <!-- <label>Siswa</label> -->
+                <select name="siswa" class="form-control pr-xl-5 siswa" id="siswa" hidden>
+                  <option value="">Pilih Siswa</option>
+                  <?php foreach ($siswaKelas as $s) : ?>
+                    <option value="<?= $s->Id_Siswa; ?>"><?= $s->Nama; ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -181,7 +182,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content bg-white">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel" style="color: #001737 !important;">Edit User</h5>
+              <h5 class="modal-title" id="exampleModalLabel" style="color: #001737 !important;">Edit Nilai Mata Pelajaran</h5>
             </div>
             <div class="modal-body">
               <div>
@@ -190,6 +191,24 @@
                 <input type="text" class="form-control " name="pilih_jenis" value="<?= $pjenis; ?>" hidden>
                 <input type="text" class="form-control " name="pilih_semester" value="<?= $psemester; ?>" hidden>
                 <input type="text" class="form-control " name="pilih_tahun" value="<?= $ptahun; ?>" hidden>
+              </div>
+              <div class="form-group">
+                <label>Siswa</label>
+                <select name="siswa" class="form-control pr-xl-5 siswa" id="siswa" disabled>
+                  <option value="">Pilih Siswa</option>
+                  <?php foreach ($siswaKelas as $s) : ?>
+                    <option value="<?= $s->Id_Siswa; ?>"><?= $s->Nama; ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
+              <div class="">
+                <!-- <label>Siswa</label> -->
+                <select name="siswa" class="form-control pr-xl-5 siswa" id="siswa" hidden>
+                  <option value="">Pilih Siswa</option>
+                  <?php foreach ($siswaKelas as $s) : ?>
+                    <option value="<?= $s->Id_Siswa; ?>"><?= $s->Nama; ?></option>
+                  <?php endforeach; ?>
+                </select>
               </div>
               <div class="form-group">
                 <label>Nilai UH</label>
@@ -258,6 +277,7 @@
         $('.btn-edit').on('click', function() {
           // get data from button edit
           const id = $(this).data('id_nilaimapel');
+          const siswa = $(this).data('id_siswa');
           const kelas = $(this).data('kelas');
           const uh = $(this).data('nilai_uh');
           const uts = $(this).data('nilai_uts');
@@ -265,6 +285,7 @@
           // const akhir = $(this).data('akhir');
           // Set data to Form Edit
           $('.id_nilaimapel').val(id);
+          $('.siswa').val(siswa);
           $('.kelas').val(kelas);
           $('.uh').val(uh);
           $('.uts').val(uts);

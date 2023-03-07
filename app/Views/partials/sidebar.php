@@ -109,12 +109,21 @@ $CurPageURL = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
             </li>
 
             <li class="nav-item nav-category">Guru BK</li>
-            <li class="nav-item">
-                <a class="nav-link" href="/kepribadiankehadiran">
-                    <span class="icon-bg"><i class="mdi mdi-table menu-icon"></i></span>
-                    <span class="menu-title">Kepribadian & Kehadiran</span>
-                </a>
-            </li>
+            <?php if (strpos($CurPageURL, '/Kepribadian/get')) { ?>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/kepribadian">
+                        <span class="icon-bg"><i class="mdi mdi-table menu-icon"></i></span>
+                        <span class="menu-title">Kepribadian & Kehadiran</span>
+                    </a>
+                </li>
+            <?php } else { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="/kepribadian">
+                        <span class="icon-bg"><i class="mdi mdi-table menu-icon"></i></span>
+                        <span class="menu-title">Kepribadian & Kehadiran</span>
+                    </a>
+                </li>
+            <?php } ?>
 
             <li class="nav-item nav-category">Wali Kelas</li>
             <li class="nav-item">

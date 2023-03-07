@@ -30,10 +30,10 @@ class NilaiMataPelajaran extends BaseController
         $pilihSemester = $this->request->getPost('pilih_semester');
         $pilihTahun = $this->request->getPost('pilih_tahun');
         if (session()->getFlashdata('id') !== null) {
-            if (session()->getFlashdata('pilih_mapel') !== null) {
-                if (session()->getFlashdata('pilih_jenis') !== null) {
-                    if (session()->getFlashdata('pilih_semester') !== null) {
-                        if (session()->getFlashdata('pilih_tahun') !== null) {
+            if (session()->getFlashdata('mapel') !== null) {
+                if (session()->getFlashdata('jenis') !== null) {
+                    if (session()->getFlashdata('semester') !== null) {
+                        if (session()->getFlashdata('tahun') !== null) {
                             $id = session()->getFlashdata('id');
                             $pilihMapel = session()->getFlashdata('mapel');
                             $pilihJenis = session()->getFlashdata('jenis');
@@ -77,10 +77,10 @@ class NilaiMataPelajaran extends BaseController
         $pilihSemester = $this->request->getPost('pilih_semester');
         $pilihTahun = $this->request->getPost('pilih_tahun');
         if (session()->getFlashdata('id') !== null) {
-            if (session()->getFlashdata('pilih_mapel') !== null) {
-                if (session()->getFlashdata('pilih_jenis') !== null) {
-                    if (session()->getFlashdata('pilih_semester') !== null) {
-                        if (session()->getFlashdata('pilih_tahun') !== null) {
+            if (session()->getFlashdata('mapel') !== null) {
+                if (session()->getFlashdata('jenis') !== null) {
+                    if (session()->getFlashdata('semester') !== null) {
+                        if (session()->getFlashdata('tahun') !== null) {
                             $id = session()->getFlashdata('id');
                             $pilihMapel = session()->getFlashdata('mapel');
                             $pilihJenis = session()->getFlashdata('jenis');
