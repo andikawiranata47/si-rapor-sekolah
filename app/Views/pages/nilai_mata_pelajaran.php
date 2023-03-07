@@ -40,16 +40,16 @@
                   <option value="Keterampilan">Keterampilan</option>
                 </select>
               </div><button type="submit" class="btn btn-primary mb-2">Pilih</button>
-            </form>
+            </form><br>
 
-            <?php if ($id != null) { ?>
+            <?php if ($id != null && $pmapel != null && $pjenis != null && $psemester != null && $ptahun != null) { ?>
               <div class="float-right">
                 <?php if (session()->getFlashdata('pesan')) : ?>
                   <p class="card-description mr-3 text-success d-inline">
                     <?= session()->getFlashdata('pesan'); ?>
                   </p>
                 <?php endif; ?>
-                <button type="button" class="btn btn-success mb-2 btn-add" data-toggle="modal" data-target="#addModal">Tambah</button>
+
               </div>
               <table class="table table-bordered">
                 <thead>
@@ -67,8 +67,9 @@
                 <tbody>
                   <?php $i = 1; ?>
                   <?php foreach ($nilaiMapel as $n) : ?>
-                    
-                      <?php echo $i . ' dari ' . count($siswaKelas) . ' siswa'; ?>
+
+                    <?php //echo $i . ' dari ' . count($siswaKelas) . ' siswa'; 
+                    ?>
 
                     <tr>
                       <td class="number"> <?= $i++; ?> </td>
@@ -81,9 +82,30 @@
                       <td> <?= $n->Nilai_Akhir; ?> </td>
                       <td class="text-center">
                         <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_nilaimapel="<?= $n->Id_Nilai_Mata_Pelajaran; ?>" data-kelas="<?= $n->Id_Kelas; ?>" data-id_siswa="<?= $n->Id_Siswa; ?>" data-id_mapel="<?= $n->Id_Mata_Pelajaran; ?>" data-jenis_nilai="<?= $n->Jenis_Nilai; ?>" data-semester="<?= $n->Semester; ?>" data-tahun_ajaran="<?= $n->Tahun_Ajaran; ?>" data-nilai_uh="<?= $n->Nilai_UH; ?>" data-nilai_uts="<?= $n->Nilai_UTS; ?>" data-nilai_uas="<?= $n->Nilai_UAS; ?>" data-nilai_akhir="<?= $n->Nilai_Akhir; ?>">Edit</button>
-                        <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_nilaimapel="<?= $n->Id_Nilai_Mata_Pelajaran; ?>" data-kelas="<?= $n->Id_Kelas; ?>">Hapus</button>
+
                       </td>
                     </tr>
+                  <?php endforeach; ?>
+                  <?php foreach ($siswaKelas as $s) : ?>
+                    <?php $a = false ?>
+                    <?php foreach ($nilaiMapel as $n) : ?>
+                      <?php if ($s->Id_Siswa === $n->Id_Siswa) {
+                        $a = $a || true;
+                      }; ?>
+                    <?php endforeach; ?>
+                    <?php if (!$a) { ?>
+                      <tr>
+                        <td class="number"> <?= $i++; ?> </td>
+                        <td><?= $s->Nama; ?></td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td> <button type="button" class="btn btn-inverse-success  mb-2 btn-add" data-toggle="modal" data-target="#addModal" data-siswa="<?= $s->Id_Siswa; ?>" data-kelas="<?= $s->Id_Kelas; ?>">Tambah</button> </td>
+                      </tr>
+                    <?php }; ?>
                   <?php endforeach; ?>
                 </tbody>
               </table>
@@ -113,10 +135,18 @@
               </div>
               <div class="form-group">
                 <label>Siswa</label>
-                <select name="siswa" class="form-control pr-xl-5 " id="siswa">
+                <select name="siswa" class="form-control pr-xl-5 siswa" id="siswa">
                   <option value="">Pilih Siswa</option>
                   <?php foreach ($siswaKelas as $s) : ?>
-                    <option value="<?= $s->Id_Siswa; ?>"><?= $s->Nama; ?></option>
+                    <?php $a = false ?>
+                    <?php foreach ($nilaiMapel as $n) : ?>
+                      <?php if ($s->Id_Siswa === $n->Id_Siswa) {
+                        $a = $a || true;
+                      }; ?>
+                    <?php endforeach; ?>
+                    <?php if (!$a) { ?>
+                      <option value="<?= $s->Id_Siswa; ?>"><?= $s->Nama; ?></option>
+                    <?php }; ?>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -134,6 +164,7 @@
               </div>
             </div>
             <div class="modal-footer">
+              <input type="hidden" name="kelas" class="kelas">
               <button type="submit" class="btn btn-success">Simpan</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
             </div>
@@ -153,40 +184,28 @@
               <h5 class="modal-title" id="exampleModalLabel" style="color: #001737 !important;">Edit User</h5>
             </div>
             <div class="modal-body">
-              <div class="form-group">
-                <label>NIS</label>
-                <input type="text" class="form-control nis" name="nis" placeholder="" required>
-              </div>
-              <div class="form-group">
-                <label>Mata Pelajaran</label>
-                <input type="text" class="form-control mapel" name="mapel" placeholder="" required>
-              </div>
-              <div class="form-group">
-                <label>Jenis Nilai</label>
-                <select name="jenis" class="form-control jenis" required>
-                  <option value="">Pilih</option>
-                  <option value="Pengetahuan">Pengetahuan</option>
-                  <option value="Keterampilan">Keterampilan</option>
-                </select>
+              <div>
+                <input type="text" class="form-control " name="pilih_kelas" value="<?= $id; ?>" hidden>
+                <input type="text" class="form-control " name="pilih_mapel" value="<?= $pmapel; ?>" hidden>
+                <input type="text" class="form-control " name="pilih_jenis" value="<?= $pjenis; ?>" hidden>
+                <input type="text" class="form-control " name="pilih_semester" value="<?= $psemester; ?>" hidden>
+                <input type="text" class="form-control " name="pilih_tahun" value="<?= $ptahun; ?>" hidden>
               </div>
               <div class="form-group">
                 <label>Nilai UH</label>
-                <input type="text" class="form-control uh" name="uh" placeholder="" required>
+                <input type="text" class="form-control uh" name="uh" required>
               </div>
               <div class="form-group">
                 <label>Nilai UTS</label>
-                <input type="text" class="form-control uts" name="uts" placeholder="" required>
+                <input type="text" class="form-control uts" name="uts" required>
               </div>
               <div class="form-group">
                 <label>Nilai UAS</label>
-                <input type="text" class="form-control uas" name="uas" placeholder="" required>
+                <input type="text" class="form-control uas" name="uas" required>
               </div>
-              <!-- <div class="form-group">
-                <label>Nilai Akhir</label>
-                <input type="text" class="form-control akhir" name="akhir" placeholder="" required>
-              </div> -->
               <div class="modal-footer">
-                <input type="hidden" name="id_nilaimapel" class="id_nilaimapel1">
+                <input type="hidden" name="kelas" class="kelas">
+                <input type="hidden" name="id_nilaimapel" class="id_nilaimapel">
                 <button type="submit" class="btn btn-success">Simpan</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
               </div>
@@ -221,21 +240,32 @@
       $(document).ready(function() {
 
         // get Edit Product
+        $('.btn-add').on('click', function() {
+          // get data from button edit
+          const siswa = $(this).data('siswa');
+          const kelas = $(this).data('kelas');
+          // Set data to Form Edit
+          $('.siswa').val(siswa);
+          $('.kelas').val(kelas);
+          // Call Modal Edit
+          $('#addModal').modal('show');
+        });
+      });
+
+      $(document).ready(function() {
+
+        // get Edit Product
         $('.btn-edit').on('click', function() {
           // get data from button edit
           const id = $(this).data('id_nilaimapel');
-          const nis = $(this).data('nis');
-          const mapel = $(this).data('mapel');
-          const jenis = $(this).data('jenis');
-          const uh = $(this).data('uh');
-          const uts = $(this).data('uts');
-          const uas = $(this).data('uas');
+          const kelas = $(this).data('kelas');
+          const uh = $(this).data('nilai_uh');
+          const uts = $(this).data('nilai_uts');
+          const uas = $(this).data('nilai_uas');
           // const akhir = $(this).data('akhir');
           // Set data to Form Edit
-          $('.id_nilaimapel1').val(id);
-          $('.nis').val(nis);
-          $('.mapel').val(mapel);
-          $('.jenis').val(jenis).trigger('change');
+          $('.id_nilaimapel').val(id);
+          $('.kelas').val(kelas);
           $('.uh').val(uh);
           $('.uts').val(uts);
           $('.uas').val(uas);

@@ -33,6 +33,15 @@ class NilaiMataPelajaranModel extends Model
         return $query;
     }
 
+    // public function getSiswa($id)
+    // {
+    //     $query = $this->db->table('siswa')
+    //         ->where('siswa.Id_Kelas', $id)
+    //         ->where('select Id_Siswa from nilai_mata_pelajaran !=', 'siswa.Id_Siswa')
+    //         ->get();
+    //     return $query;
+    // }
+
     public function saveNilaiMapel($data)
     {
         $query = $this->db->table('nilai_mata_pelajaran')->insert($data);
@@ -45,9 +54,9 @@ class NilaiMataPelajaranModel extends Model
         return $query;
     }
 
-    public function deleteNilaiMapel($id)
-    {
-        $query = $this->db->table('nilai_mata_pelajaran')->delete(array('Id_Nilai_Mata_Pelajaran' => $id));
-        return $query;
-    }
+    // public function deleteNilaiMapel($id)
+    // {
+    //     $query = $this->db->table('nilai_mata_pelajaran')->delete(array('Id_Nilai_Mata_Pelajaran' => $id));
+    //     return $query;
+    // }
 }
