@@ -93,12 +93,22 @@ $CurPageURL = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
 
 
             <li class="nav-item nav-category">Guru Prakerin</li>
-            <li class="nav-item">
-                <a class="nav-link" href="/nilaiprakerin">
-                    <span class="icon-bg"><i class="mdi mdi-table menu-icon"></i></span>
-                    <span class="menu-title">Nilai Prakerin</span>
-                </a>
-            </li>
+            <?php if (strpos($CurPageURL, '/nilaiprakerin/get')) { ?>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/nilaiprakerin">
+                        <span class="icon-bg"><i class="mdi mdi-table menu-icon"></i></span>
+                        <span class="menu-title">Nilai Prakerin</span>
+                    </a>
+                </li>
+            <?php } else { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="/nilaiprakerin">
+                        <span class="icon-bg"><i class="mdi mdi-table menu-icon"></i></span>
+                        <span class="menu-title">Nilai Prakerin</span>
+                    </a>
+                </li>
+            <?php } ?>
+
 
             <li class="nav-item nav-category">Guru Ekstrakurikuler</li>
             <li class="nav-item">
