@@ -110,13 +110,23 @@ $CurPageURL = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
             <?php } ?>
 
 
-            <li class="nav-item nav-category">Guru Ekstrakurikuler</li>
-            <li class="nav-item">
-                <a class="nav-link" href="/nilaiekstrakurikuler">
-                    <span class="icon-bg"><i class="mdi mdi-table menu-icon"></i></span>
-                    <span class="menu-title">Nilai Ekstrakurikuler</span>
-                </a>
-            </li>
+            <li class="nav-item nav-category">Pembina Ekstrakurikuler</li>
+            <?php if (strpos($CurPageURL, '/nilaiekstrakurikuler/get')) { ?>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/nilaiekstrakurikuler">
+                        <span class="icon-bg"><i class="mdi mdi-table menu-icon"></i></span>
+                        <span class="menu-title">Nilai Ekstrakurikuler</span>
+                    </a>
+                </li>
+            <?php } else { ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="/nilaiekstrakurikuler">
+                        <span class="icon-bg"><i class="mdi mdi-table menu-icon"></i></span>
+                        <span class="menu-title">Nilai Ekstrakurikuler</span>
+                    </a>
+                </li>
+            <?php } ?>
+
 
             <li class="nav-item nav-category">Guru BK</li>
             <?php if (strpos($CurPageURL, '/kepribadian/get')) { ?>
