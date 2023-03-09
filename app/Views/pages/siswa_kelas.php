@@ -12,7 +12,7 @@
           <div class="card-body">
             <h4 class="card-title d-inline">Tabel Daftar Siswa Kelas</h4>
 
-            <form class="form-inline" action="/SiswaKelas/get" method="post">
+            <form class="form-inline" action="/siswakelas/get" method="post">
               <?= csrf_field(); ?>
               <div class="form-group mr-4 my-sm-3">
                 <select name="pilih_kelas" class="form-control pr-xl-5 pilih_kelas" id="pilih_kelas">
@@ -67,7 +67,7 @@
     </div>
 
     <!-- Modal Tambah -->
-    <form action="/SiswaKelas/edit" method="post">
+    <form action="/siswakelas/edit" method="post">
       <?= csrf_field(); ?>
       <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -93,14 +93,13 @@
               </select>
               <div class="form-group">
                 <label>Siswa</label><br>
-                <label>* Kelas siswa saat ini -- Nama -- NIS</label><br>
-                <label>* Nama -- NIS</label>
+                <label>* Kelas siswa saat ini -- Nama</label><br>
                 <select name="siswa" class="form-control" required>
                   <option value="">Pilih Siswa</option>
                   <?php foreach ($siswaKelas1 as $s) : ?>
                     <option value="<?= $s->Id_Siswa; ?>">
                       <?php if ($s->Kelas != null) { ?>
-                        <?= $s->Kelas; ?>&nbsp;&nbsp;&nbsp;-- <?= $s->Nama; ?> -- <?= $s->NIS; ?>
+                        <?= $s->Kelas; ?>&nbsp;&nbsp;&nbsp;-- <?= $s->Nama; ?>
                       <?php } else { ?>
                         <?= $s->Nama; ?> -- <?= $s->NIS; ?>
                       <?php }; ?>
@@ -122,7 +121,7 @@
     <!-- End Modal Tambah -->
 
     <!-- Modal Edit -->
-    <form action="/SiswaKelas/edit/" method="post">
+    <form action="/siswakelas/edit/" method="post">
       <?= csrf_field(); ?>
       <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -175,7 +174,7 @@
     <!-- End Modal Edit -->
 
     <!-- Modal Hapus -->
-    <form action="/SiswaKelas/delete/" method="post">
+    <form action="/siswakelas/delete/" method="post">
       <?= csrf_field(); ?>
       <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

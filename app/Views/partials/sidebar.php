@@ -35,7 +35,7 @@ $CurPageURL = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
                 </a>
             </li>
 
-            <?php if (strpos($CurPageURL, '/MataPelajaranKelas/get')) { ?>
+            <?php if (strpos($CurPageURL, '/matapelajarankelas/get')) { ?>
                 <li class="nav-item active">
                     <a class="nav-link" href="/matapelajarankelas">
                         <span class="icon-bg"><i class="mdi mdi-chart-areaspline menu-icon"></i></span>
@@ -58,7 +58,7 @@ $CurPageURL = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
                 </a>
             </li>
 
-            <?php if (strpos($CurPageURL, '/SiswaKelas/get')) { ?>
+            <?php if (strpos($CurPageURL, '/siswakelas/get')) { ?>
                 <li class="nav-item active">
                     <a class="nav-link" href="/siswakelas">
                         <span class="icon-bg"><i class="mdi mdi-account-multiple-plus menu-icon"></i></span>
@@ -75,7 +75,7 @@ $CurPageURL = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
             <?php } ?>
 
             <li class="nav-item nav-category">Guru Mata Pelajaran</li>
-            <?php if (strpos($CurPageURL, '/NilaiMataPelajaran/get')) { ?>
+            <?php if (strpos($CurPageURL, '/nilaimatapelajaran/get')) { ?>
                 <li class="nav-item active">
                     <a class="nav-link" href="/nilaimatapelajaran">
                         <span class="icon-bg"><i class="mdi mdi-table menu-icon"></i></span>
@@ -92,7 +92,7 @@ $CurPageURL = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
             <?php } ?>
 
 
-            <li class="nav-item nav-category">Guru Prakerin</li>
+            <li class="nav-item nav-category">Guru Monitoring</li>
             <?php if (strpos($CurPageURL, '/nilaiprakerin/get')) { ?>
                 <li class="nav-item active">
                     <a class="nav-link" href="/nilaiprakerin">
@@ -119,7 +119,7 @@ $CurPageURL = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
             </li>
 
             <li class="nav-item nav-category">Guru BK</li>
-            <?php if (strpos($CurPageURL, '/Kepribadian/get')) { ?>
+            <?php if (strpos($CurPageURL, '/kepribadian/get')) { ?>
                 <li class="nav-item active">
                     <a class="nav-link" href="/kepribadian">
                         <span class="icon-bg"><i class="mdi mdi-table menu-icon"></i></span>

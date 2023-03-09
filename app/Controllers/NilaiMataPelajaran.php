@@ -146,7 +146,7 @@ class NilaiMataPelajaran extends BaseController
         session()->setFlashdata('jenis', $this->request->getPost('pilih_jenis'));
         session()->setFlashdata('semester', $this->request->getPost('pilih_semester'));
         session()->setFlashdata('tahun', $this->request->getPost('pilih_tahun'));
-        return redirect()->to('/NilaiMataPelajaran/get');
+        return redirect()->to('/nilaimatapelajaran/get');
     }
 
     public function edit()
@@ -169,7 +169,7 @@ class NilaiMataPelajaran extends BaseController
         session()->setFlashdata('jenis', $this->request->getPost('pilih_jenis'));
         session()->setFlashdata('semester', $this->request->getPost('pilih_semester'));
         session()->setFlashdata('tahun', $this->request->getPost('pilih_tahun'));
-        return redirect()->to('/NilaiMataPelajaran/get');
+        return redirect()->to('/nilaimatapelajaran/get');
     }
 
     // public function delete()

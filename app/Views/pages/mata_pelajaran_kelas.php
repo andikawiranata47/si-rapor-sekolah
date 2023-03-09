@@ -12,7 +12,7 @@
           <div class="card-body">
             <h4 class="card-title d-inline">Tabel Mata Pelajaran Kelas</h4>
 
-            <form class="form-inline" action="/MataPelajaranKelas/get" method="post">
+            <form class="form-inline" action="/matapelajarankelas/get" method="post">
               <?= csrf_field(); ?>
               <div class="form-group mr-4 my-sm-3">
                 <select name="pilih_kelas" class="form-control pr-xl-5 pilih_kelas" id="pilih_kelas">
@@ -123,7 +123,7 @@
     <!-- End Modal Tambah -->
 
     <!-- Modal Edit -->
-    <form action="/MataPelajaranKelas/edit/" method="post">
+    <form action="/matapelajarankelas/edit/" method="post">
       <?= csrf_field(); ?>
       <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -178,7 +178,7 @@
     <!-- End Modal Edit -->
 
     <!-- Modal Hapus -->
-    <form action="/MataPelajaranKelas/delete/" method="post">
+    <form action="/matapelajarankelas/delete/" method="post">
       <?= csrf_field(); ?>
       <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

@@ -71,7 +71,7 @@ class MataPelajaranKelas extends BaseController
         $this->mapelKelasModel->saveMapelKelas($data1);
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
         session()->setFlashdata('id', $this->request->getPost('kelas'));
-        return redirect()->to('/MataPelajaranKelas/get');
+        return redirect()->to('/matapelajarankelas/get');
     }
 
     public function edit()
@@ -85,7 +85,7 @@ class MataPelajaranKelas extends BaseController
         $this->mapelKelasModel->updateMapelKelas($data, $id);
         session()->setFlashdata('pesan', 'Data berhasil diubah');
         session()->setFlashdata('id', $this->request->getPost('kelas'));
-        return redirect()->to('/MataPelajaranKelas/get');
+        return redirect()->to('/matapelajarankelas/get');
     }
 
     public function delete()
@@ -94,6 +94,6 @@ class MataPelajaranKelas extends BaseController
         $this->mapelKelasModel->deleteMapelKelas($id);
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
         session()->setFlashdata('id', $this->request->getPost('kelas'));
-        return redirect()->to('/MataPelajaranKelas/get');
+        return redirect()->to('/matapelajarankelas/get');
     }
 }

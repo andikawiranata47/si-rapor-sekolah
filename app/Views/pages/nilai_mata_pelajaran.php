@@ -12,7 +12,7 @@
           <div class="card-body">
             <h4 class="card-title d-inline">Tabel Daftar Nilai Mata Pelajaran</h4>
 
-            <form class="form-inline" action="/NilaiMataPelajaran/get" method="post">
+            <form class="form-inline" action="/nilaimatapelajaran/get" method="post">
               <?= csrf_field(); ?>
               <div class="form-group my-sm-3">
                 <?php foreach ($general as $g) : ?>
@@ -117,7 +117,7 @@
     </div>
 
     <!-- Modal Tambah -->
-    <form action="/NilaiMataPelajaran/save" method="post">
+    <form action="/nilaimatapelajaran/save" method="post">
       <?= csrf_field(); ?>
       <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -176,7 +176,7 @@
     <!-- End Modal Tambah -->
 
     <!-- Modal Edit -->
-    <form action="/NilaiMataPelajaran/edit/" method="post">
+    <form action="/nilaimatapelajaran/edit/" method="post">
       <?= csrf_field(); ?>
       <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -236,7 +236,7 @@
     <!-- End Modal Edit -->
 
     <!-- Modal Hapus -->
-    <form action="/NilaiMataPelajaran/delete/" method="post">
+    <form action="/nilaimatapelajaran/delete/" method="post">
       <?= csrf_field(); ?>
       <div class="modal fade" id="hapusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

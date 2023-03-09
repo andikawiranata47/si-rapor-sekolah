@@ -115,7 +115,7 @@ class Kepribadian extends BaseController
         session()->setFlashdata('id', $this->request->getPost('pilih_kelas'));
         session()->setFlashdata('semester', $this->request->getPost('pilih_semester'));
         session()->setFlashdata('tahun', $this->request->getPost('pilih_tahun'));
-        return redirect()->to('/Kepribadian/get');
+        return redirect()->to('/kepribadian/get');
     }
 
     public function edit()
@@ -137,6 +137,6 @@ class Kepribadian extends BaseController
         session()->setFlashdata('id', $this->request->getPost('pilih_kelas'));
         session()->setFlashdata('semester', $this->request->getPost('pilih_semester'));
         session()->setFlashdata('tahun', $this->request->getPost('pilih_tahun'));
-        return redirect()->to('/Kepribadian/get');
+        return redirect()->to('/kepribadian/get');
     }
 }

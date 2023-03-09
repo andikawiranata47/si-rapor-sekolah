@@ -12,7 +12,7 @@
           <div class="card-body">
             <h4 class="card-title">Tabel Daftar Kepribadian & Kehadiran</h4>
 
-            <form class="form-inline" action="/Kepribadian/get" method="post">
+            <form class="form-inline" action="/kepribadian/get" method="post">
               <?= csrf_field(); ?>
               <div class="form-group my-sm-3">
                 <?php foreach ($general as $g) : ?>
@@ -96,7 +96,7 @@
     </div>
 
     <!-- Modal Tambah -->
-    <form action="/Kepribadian/save" method="post">
+    <form action="/kepribadian/save" method="post">
       <?= csrf_field(); ?>
       <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -157,7 +157,7 @@
     <!-- End Modal Tambah -->
 
     <!-- Modal Edit -->
-    <form action="/Kepribadian/edit" method="post">
+    <form action="/kepribadian/edit" method="post">
       <?= csrf_field(); ?>
       <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
