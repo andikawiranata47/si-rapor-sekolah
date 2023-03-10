@@ -36,8 +36,8 @@
                     <td> <?= $k->Kelas; ?> </td>
                     <td> <?= $k->Nama; ?> </td>
                     <td class="text-center">
-                      <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_kelas="<?= $k->Id_Kelas; ?>" data-wali_kelas="<?= $k->Wali_Kelas; ?>" data-tingkat="<?= $k->Tingkat; ?>" data-jurusan="<?= $k->Jurusan; ?>" data-abjad="<?= $k->Abjad; ?>">Edit</button>
-                      <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_kelas="<?= $k->Id_Kelas; ?>">Hapus</button>
+                      <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_kelas="<?= $k->Id_Kelas; ?>" data-wali_kelas="<?= $k->Wali_Kelas; ?>" data-tingkat="<?= $k->Tingkat; ?>" data-jurusan="<?= $k->Jurusan; ?>" data-abjad="<?= $k->Abjad; ?>" data-nama="<?= $k->Nama; ?>" data-id_lama="<?= $k->Id_User; ?>">Edit</button>
+                      <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_kelas="<?= $k->Id_Kelas; ?>" data-wali_kelas="<?= $k->Wali_Kelas; ?>">Hapus</button>
                     </td>
                   </tr>
                 <?php endforeach; ?>
@@ -72,10 +72,12 @@
               </div>
               <div class="form-group">
                 <label>Wali Kelas</label>
-                <select name="wali_kelas" class="form-control wali_kelas">
+                <select name="wali_kelas" class="form-control ">
                   <option value="">Pilih Wali Kelas</option>
                   <?php foreach ($nama as $n) : ?>
-                    <option value="<?= $n->Id_User; ?>"><?= $n->Nama; ?></option>
+                    <?php if ($n->Is_Wali_Kelas == 0) { ?>
+                      <option value="<?= $n->Id_User; ?>"><?= $n->Nama; ?></option>
+                    <?php }; ?>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -119,7 +121,10 @@
                 <select name="wali_kelas" class="form-control wali_kelas">
                   <option value="">Pilih Wali Kelas</option>
                   <?php foreach ($nama as $n) : ?>
-                    <option value="<?= $n->Id_User; ?>"><?= $n->Nama; ?></option>
+                    <?php if ($n->Is_Wali_Kelas == 0) { ?>
+                      <option value="" id="wali"></option>
+                      <option value="<?= $n->Id_User; ?>"><?= $n->Nama; ?></option>
+                    <?php }; ?>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -127,6 +132,8 @@
 
             <div class="modal-footer">
               <input type="hidden" name="id_kelas" class="id_kelas1">
+              <label for="">id lama</label>
+              <input type="text" name="id_lama" class="id_lama">
               <button type="submit" class="btn btn-success">Simpan</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
             </div>
@@ -147,6 +154,7 @@
             </div>
             <div class="modal-footer">
               <input type="hidden" name="id_kelas" class="id_kelas2">
+              <input type="hidden" name="wali_kelas" class="wali_kelas">
               <button type="submit" class="btn btn-success">Ya</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
             </div>
@@ -172,7 +180,11 @@
           $('.tingkat').val(tingkat);
           $('.jurusan').val(jurusan);
           $('.abjad').val(abjad);
+          $("#wali").val(wali_kelas);
+          $("#wali").html($(this).data('nama'));
           $('.wali_kelas').val(wali_kelas).trigger('change');
+          $('.id_lama').val($(this).data('id_lama'));
+          
           // Call Modal Edit
           $('#editModal').modal('show');
         });
@@ -183,6 +195,7 @@
           const id = $(this).data('id_kelas');
           // Set data to Form Edit
           $('.id_kelas2').val(id);
+          $('.wali_kelas').val($(this).data('wali_kelas'));
           // Call Modal Edit
           $('#deleteModal').modal('show');
         });

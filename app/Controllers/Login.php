@@ -39,7 +39,7 @@ class Login extends BaseController
                     'nama'          => $data['Nama'],
                     'email'         => $data['Email'],
                     'akses'         => $data['Akses'],
-                    'wali'          => $data['Wali_Kelas'],
+                    'wali'          => $data['Is_Wali_Kelas'],
                     'logged_in'     => TRUE
                 ];
                 $session->set($ses_data);
