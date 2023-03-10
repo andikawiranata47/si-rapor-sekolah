@@ -86,11 +86,16 @@
               </div>
               <div class="form-group">
                 <label>NIP</label>
-                <input type="text" class="form-control nip" name="nip" placeholder="" value="" required>
+                <input type="number" class="form-control nip" name="nip" placeholder="" value="" required>
               </div>
               <div class="form-group">
                 <label>Semester</label>
-                <input type="text" class="form-control semester" name="semester" placeholder="" value="" required>
+                <!-- <input type="text" class="form-control semester" name="semester" placeholder="" value="" required> -->
+                <select name="semester" class="form-control semester" required>
+                  <option value="">Pilih Semester</option>
+                  <option value="Ganjil">Ganjil</option>
+                  <option value="Genap">Genap</option>
+                </select>
               </div>
               <div class="form-group">
                 <label>Tahun Ajaran</label>

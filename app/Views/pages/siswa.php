@@ -113,11 +113,11 @@
             <div class="modal-body">
               <div class="form-group">
                 <label>NIS</label>
-                <input type="text" class="form-control" name="nis" placeholder="" required>
+                <input type="number" class="form-control" name="nis" placeholder="" required>
               </div>
               <div class="form-group">
                 <label>NISN</label>
-                <input type="text" class="form-control" name="nisn" placeholder="" required>
+                <input type="number" class="form-control" name="nisn" placeholder="" required>
               </div>
               <div class="form-group">
                 <label>Nama</label>
@@ -125,7 +125,12 @@
               </div>
               <div class="form-group">
                 <label>Jenis Kelamin</label>
-                <input type="text" class="form-control" name="jenis_kelamin" placeholder="" required>
+                <!-- <input type="text" class="form-control" name="jenis_kelamin" placeholder="" required> -->
+                <select name="jenis_kelamin" class="form-control " required>
+                  <option value="">Pilih Jenis Kelamin</option>
+                  <option value="Laki-laki">Laki-laki</option>
+                  <option value="Perempuan">Perempuan</option>
+                </select>
               </div>
               <div class="form-group">
                 <label>Tempat Lahir</label>
@@ -133,7 +138,7 @@
               </div>
               <div class="form-group">
                 <label>Tanggal Lahir</label>
-                <input type="text" class="form-control" name="tanggal_lahir" placeholder="" required>
+                <input type="date" class="form-control" name="tanggal_lahir" placeholder="" required>
               </div>
               <div class="form-group">
                 <label>Agama</label>
@@ -145,7 +150,7 @@
               </div>
               <div class="form-group">
                 <label>Nomor Telepon</label>
-                <input type="text" class="form-control" name="telp" placeholder="">
+                <input type="number" class="form-control" name="telp" placeholder="">
               </div>
               <div class="form-group">
                 <label>Sekolah Asal</label>
@@ -153,7 +158,7 @@
               </div>
               <div class="form-group">
                 <label>Tahun Lulus</label>
-                <input type="text" class="form-control" name="tahun_lulus" placeholder="" required>
+                <input type="number" class="form-control" name="tahun_lulus" placeholder="" required>
               </div>
               <div class="form-group">
                 <label>Nomor Ijazah</label>
@@ -164,8 +169,8 @@
                 <input type="text" class="form-control" name="diterima_tingkat" placeholder="" required>
               </div>
               <div class="form-group">
-                <label>Diterima pada</label>
-                <input type="text" class="form-control" name="diterima_tanggal" placeholder="" required>
+                <label>Diterima pada Tanggal</label>
+                <input type="date" class="form-control" name="diterima_tanggal" placeholder="" required>
               </div>
               <div class="form-group">
                 <label>Nama Ayah</label>
@@ -189,7 +194,7 @@
               </div>
               <div class="form-group">
                 <label>Nomor Telepon Orang Tua</label>
-                <input type="text" class="form-control" name="telp_ortu" placeholder="">
+                <input type="number" class="form-control" name="telp_ortu" placeholder="">
               </div>
               <div class="form-group">
                 <label>Nama Wali</label>
@@ -205,7 +210,7 @@
               </div>
               <div class="form-group">
                 <label>Nomor Telepon Wali</label>
-                <input type="text" class="form-control" name="telp_wali" placeholder="">
+                <input type="number" class="form-control" name="telp_wali" placeholder="">
               </div>
             </div>
             <div class="modal-footer">
@@ -231,11 +236,11 @@
             <div class="modal-body">
               <div class="form-group">
                 <label>NIS</label>
-                <input type="text" class="form-control nis" name="nis" placeholder="" required>
+                <input type="number" class="form-control nis" name="nis" placeholder="" required>
               </div>
               <div class="form-group">
                 <label>NISN</label>
-                <input type="text" class="form-control nisn" name="nisn" placeholder="" required>
+                <input type="number" class="form-control nisn" name="nisn" placeholder="" required>
               </div>
               <div class="form-group">
                 <label>Nama</label>
@@ -243,7 +248,12 @@
               </div>
               <div class="form-group">
                 <label>Jenis Kelamin</label>
-                <input type="text" class="form-control jenis_kelamin" name="jenis_kelamin" placeholder="" required>
+                <!-- <input type="text" class="form-control jenis_kelamin" name="jenis_kelamin" placeholder="" required> -->
+                <select name="jenis_kelamin" class="form-control jenis_kelamin" required>
+                  <option value="">Pilih Jenis Kelamin</option>
+                  <option value="Laki-laki">Laki-laki</option>
+                  <option value="Perempuan">Perempuan</option>
+                </select>
               </div>
               <div class="form-group">
                 <label>Tempat Lahir</label>
@@ -251,7 +261,7 @@
               </div>
               <div class="form-group">
                 <label>Tanggal Lahir</label>
-                <input type="text" class="form-control tanggal_lahir" name="tanggal_lahir" placeholder="" required>
+                <input type="date" class="form-control tanggal_lahir" name="tanggal_lahir" placeholder="" required>
               </div>
               <div class="form-group">
                 <label>Agama</label>
@@ -263,7 +273,7 @@
               </div>
               <div class="form-group">
                 <label>Nomor Telepon</label>
-                <input type="text" class="form-control telp" name="telp" placeholder="">
+                <input type="number" class="form-control telp" name="telp" placeholder="">
               </div>
               <div class="form-group">
                 <label>Sekolah Asal</label>
@@ -271,7 +281,7 @@
               </div>
               <div class="form-group">
                 <label>Tahun Lulus</label>
-                <input type="text" class="form-control tahun_lulus" name="tahun_lulus" placeholder="" required>
+                <input type="number" class="form-control tahun_lulus" name="tahun_lulus" placeholder="" required>
               </div>
               <div class="form-group">
                 <label>Nomor Ijazah</label>
@@ -282,8 +292,8 @@
                 <input type="text" class="form-control diterima_tingkat" name="diterima_tingkat" placeholder="" required>
               </div>
               <div class="form-group">
-                <label>Diterima pada</label>
-                <input type="text" class="form-control diterima_tanggal" name="diterima_tanggal" placeholder="" required>
+                <label>Diterima pada Tanggal</label>
+                <input type="date" class="form-control diterima_tanggal" name="diterima_tanggal" placeholder="" required>
               </div>
               <div class="form-group">
                 <label>Nama Ayah</label>
@@ -307,7 +317,7 @@
               </div>
               <div class="form-group">
                 <label>Nomor Telepon Orang Tua</label>
-                <input type="text" class="form-control telp_ortu" name="telp_ortu" placeholder="">
+                <input type="number" class="form-control telp_ortu" name="telp_ortu" placeholder="">
               </div>
               <div class="form-group">
                 <label>Nama Wali</label>
@@ -323,7 +333,7 @@
               </div>
               <div class="form-group">
                 <label>Nomor Telepon Wali</label>
-                <input type="text" class="form-control telp_wali" name="telp_wali" placeholder="">
+                <input type="number" class="form-control telp_wali" name="telp_wali" placeholder="">
               </div>
             </div>
             <div class="modal-footer">

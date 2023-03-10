@@ -69,7 +69,7 @@
               </div>
               <div class="form-group">
                 <label>NIP</label>
-                <input type="text" class="form-control" name="nip" placeholder="">
+                <input type="number" class="form-control" name="nip" placeholder="">
               </div>
               <div class="form-group">
                 <label>Email</label>
@@ -144,7 +144,7 @@
               </div>
               <div class="form-group">
                 <label>NIP</label>
-                <input type="text" class="form-control nip" name="nip" placeholder="" value="">
+                <input type="number" class="form-control nip" name="nip" placeholder="" value="">
               </div>
               <div class="form-group">
                 <label>Email</label>

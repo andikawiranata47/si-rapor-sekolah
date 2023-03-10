@@ -60,7 +60,7 @@
                       <td> <?= $e->Nama_Ekstrakurikuler; ?> </td>
                       <td> <?= $e->Predikat; ?> </td>
                       <td class="text-center">
-                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_ekstra="<?= $e->Id_Nilai_Ekstrakurikuler; ?>" data-nama="<?= $e->Nama_Ekstrakurikuler; ?>" data-predikat="<?= $e->Predikat; ?>">Edit</button>
+                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_ekstra="<?= $e->Id_Nilai_Ekstrakurikuler; ?>" data-nama="<?= $e->Nama_Ekstrakurikuler; ?>" data-predikat="<?= $e->Predikat; ?>" data-siswa="<?= $e->Id_Siswa; ?>">Edit</button>
                         <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_ekstra="<?= $e->Id_Nilai_Ekstrakurikuler; ?>">Hapus</button>
                       </td>
                     </tr>
@@ -134,6 +134,15 @@
               <input type="text" class="form-control " name="pilih_semester" value="<?= $psemester; ?>" hidden>
               <input type="text" class="form-control " name="pilih_tahun" value="<?= $ptahun; ?>" hidden>
               <div class="form-group">
+                <label>Siswa</label>
+                <select name="" class="form-control siswa" disabled>
+                  <option value="">Pilih Siswa</option>
+                  <?php foreach ($siswa as $s) : ?>
+                    <option value="<?= $s->Id_Siswa; ?>"><?= $s->Nama; ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
+              <div class="form-group">
                 <label>Nama Ekstrakurikuler</label>
                 <input type="text" class="form-control nama" name="nama" required>
               </div>
@@ -190,9 +199,11 @@
           const id = $(this).data('id_ekstra');
           const nama = $(this).data('nama');
           const predikat = $(this).data('predikat');
+          const siswa = $(this).data('siswa');
 
           // Set data to Form Edit
           $('.id_ekstra').val(id);
+          $('.siswa').val(siswa);
           $('.nama').val(nama);
           $('.predikat').val(predikat);
           // Call Modal Edit

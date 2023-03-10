@@ -66,11 +66,17 @@
               </div>
               <div class="form-group">
                 <label>Kelompok</label>
-                <input type="text" class="form-control" name="kelompok" placeholder="" required>
+                <!-- <input type="text" class="form-control" name="kelompok" placeholder="" required> -->
+                <select name="kelompok" class="form-control " required>
+                  <option value="">Pilih Kelompok</option>
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                </select>
               </div>
               <div class="form-group">
                 <label>KKM</label>
-                <input type="text" class="form-control" name="kkm" placeholder="" required>
+                <input type="number" class="form-control" name="kkm" placeholder="" required>
               </div>
             </div>
             <div class="modal-footer">
@@ -100,11 +106,17 @@
               </div>
               <div class="form-group">
                 <label>Kelompok</label>
-                <input type="text" class="form-control kelompok" name="kelompok" placeholder="" required>
+                <!-- <input type="text" class="form-control kelompok" name="kelompok" placeholder="" required> -->
+                <select name="kelompok" class="form-control kelompok" required>
+                  <option value="">Pilih Kelompok</option>
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                </select>
               </div>
               <div class="form-group">
                 <label>KKM</label>
-                <input type="text" class="form-control kkm" name="kkm" placeholder="" required>
+                <input type="number" class="form-control kkm" name="kkm" placeholder="" required>
               </div>
             </div>
             <div class="modal-footer">

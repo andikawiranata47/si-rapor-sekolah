@@ -95,7 +95,8 @@ class NilaiPrakerin extends BaseController
             'id_siswa' => $this->request->getPost('siswa'),
             'nama_instansi' => $this->request->getPost('nama'),
             'alamat_instansi' => $this->request->getPost('alamat'),
-            'waktu_pelaksanaan' => $this->request->getPost('waktu'),
+            'waktu_mulai' => $this->request->getPost('waktu1'),
+            'waktu_selesai' => $this->request->getPost('waktu2'),
             'nilai_prakerin' => $this->request->getPost('nilai')
         ];
         $this->nilaiPrakerinModel->saveNilaiPrakerin($data);
@@ -112,7 +113,8 @@ class NilaiPrakerin extends BaseController
         $data = array(
             'nama_instansi' => $this->request->getPost('nama'),
             'alamat_instansi' => $this->request->getPost('alamat'),
-            'waktu_pelaksanaan' => $this->request->getPost('waktu'),
+            'waktu_mulai' => $this->request->getPost('waktu1'),
+            'waktu_selesai' => $this->request->getPost('waktu2'),
             'nilai_prakerin' => $this->request->getPost('nilai')
         );
         $this->nilaiPrakerinModel->editNilaiPrakerin($data, $id);

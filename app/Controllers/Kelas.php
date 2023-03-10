@@ -34,9 +34,9 @@ class Kelas extends BaseController
         $data1 = [
             'wali_kelas' => $this->request->getPost('wali_kelas'),
             'tingkat' => $this->request->getPost('tingkat'),
-            'jurusan' => $this->request->getPost('jurusan'),
-            'abjad' => $this->request->getPost('abjad'),
-            'kelas' => strval($this->request->getPost('tingkat')).'-'.$this->request->getPost('jurusan').'-'.strval($this->request->getPost('abjad'))
+            'jurusan' => strtoupper($this->request->getPost('jurusan')),
+            'abjad' => strtoupper($this->request->getPost('abjad')),
+            'kelas' => strtoupper(strval($this->request->getPost('tingkat')).'-'.$this->request->getPost('jurusan').'-'.strval($this->request->getPost('abjad')))
         ];
         $this->kelasModel->saveKelas($data1);
         $this->masterUserModel->updateUser($data, $this->request->getPost('wali_kelas'));
@@ -58,9 +58,9 @@ class Kelas extends BaseController
         $data2 = array(
             'wali_kelas' => $this->request->getPost('wali_kelas'),
             'tingkat' => $this->request->getPost('tingkat'),
-            'jurusan' => $this->request->getPost('jurusan'),
-            'abjad' => $this->request->getPost('abjad'),
-            'kelas' => strval($this->request->getPost('tingkat')).'-'.$this->request->getPost('jurusan').'-'.strval($this->request->getPost('abjad'))
+            'jurusan' => strtoupper($this->request->getPost('jurusan')),
+            'abjad' => strtoupper($this->request->getPost('abjad')),
+            'kelas' => strtoupper(strval($this->request->getPost('tingkat')).'-'.$this->request->getPost('jurusan').'-'.strval($this->request->getPost('abjad')))
         );
         if($wali != $idLama) {
             $this->masterUserModel->updateUser($data, $wali);

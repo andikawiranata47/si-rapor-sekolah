@@ -76,16 +76,25 @@
               <h5 class="modal-title" id="exampleModalLabel" style="color: #001737 !important;">Tambah Siswa</h5>
             </div>
             <div class="modal-body">
-              <div class="form-group">
+              <div class="">
                 <!-- <label>Kelas lama</label> -->
-                <select name="kelas_lama" class="form-control kelas_lama" hidden>
+                <select name="kelas_lama" class=" kelas_lama" hidden>
                   <option value="">Pilih Kelas</option>
                   <?php foreach ($kelas as $k) : ?>
                     <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
-              <select name="kelas" class="form-control kelas" hidden>
+              <div class="form-group">
+                <label>Kelas</label>
+                <select name="kelas" class="form-control kelas" disabled>
+                  <option value="">Pilih Kelas</option>
+                  <?php foreach ($kelas as $k) : ?>
+                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
+              <select name="kelas" class=" kelas" hidden>
                 <option value="">Pilih Kelas</option>
                 <?php foreach ($kelas as $k) : ?>
                   <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
@@ -130,7 +139,15 @@
               <h5 class="modal-title" id="exampleModalLabel" style="color: #001737 !important;">Edit User</h5>
             </div>
             <div class="modal-body">
-
+              <div class="form-group">
+                <label>Siswa</label>
+                <select name="siswa" class="form-control siswa" disabled>
+                  <option value="">Pilih Siswa</option>
+                  <?php foreach ($siswa as $s) : ?>
+                    <option value="<?= $s->Id_Siswa; ?>"><?= $s->Nama; ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
               <div class="form-group">
                 <label>Kelas</label>
                 <select name="kelas" class="form-control kelas" required>

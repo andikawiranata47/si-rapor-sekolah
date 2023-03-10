@@ -61,10 +61,10 @@
                       <td> <?= $n->Nama; ?> </td>
                       <td> <?= $n->Nama_Instansi; ?> </td>
                       <td> <?= $n->Alamat_Instansi; ?> </td>
-                      <td> <?= $n->Waktu_Pelaksanaan; ?> </td>
+                      <td> <?= $n->Waktu_Mulai; ?> sampai <?= $n->Waktu_Selesai; ?> </td>
                       <td> <?= $n->Nilai_Prakerin; ?> </td>
                       <td class="text-center">
-                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_nilai="<?= $n->Id_Nilai_Prakerin; ?>" data-nama="<?= $n->Nama_Instansi; ?>" data-alamat="<?= $n->Alamat_Instansi; ?>" data-waktu="<?= $n->Waktu_Pelaksanaan; ?>" data-nilai="<?= $n->Nilai_Prakerin; ?>">Edit</button>
+                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_nilai="<?= $n->Id_Nilai_Prakerin; ?>" data-nama="<?= $n->Nama_Instansi; ?>" data-alamat="<?= $n->Alamat_Instansi; ?>" data-waktu1="<?= $n->Waktu_Mulai; ?>" data-waktu2="<?= $n->Waktu_Selesai; ?>" data-nilai="<?= $n->Nilai_Prakerin; ?>" data-siswa="<?= $n->Id_Siswa; ?>">Edit</button>
                         <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_nilai="<?= $n->Id_Nilai_Prakerin; ?>">Hapus</button>
                       </td>
                     </tr>
@@ -107,13 +107,18 @@
                 <label>Alamat Instansi</label>
                 <textarea id="" class="form-control" name="alamat" rows="4" required></textarea>
               </div>
-              <div class="form-group">
+              <div class="form-group ">
                 <label>Waktu Pelaksanaan</label>
-                <input type="text" class="form-control " name="waktu" required>
+                <div class="form-inline">
+                  <label for=""></label>
+                  <input type="date" class="form-control " name="waktu1" required>
+                  <p>&nbsp; sampai &nbsp;</p>
+                  <input type="date" class="form-control " name="waktu2" required>
+                </div>
               </div>
               <div class="form-group">
                 <label>Nilai Prakerin</label>
-                <input type="text" class="form-control " name="nilai" required>
+                <input type="number" class="form-control " name="nilai" required>
               </div>
             </div>
             <div class="modal-footer">
@@ -141,6 +146,15 @@
               <input type="text" class="form-control " name="pilih_semester" value="<?= $psemester; ?>" hidden>
               <input type="text" class="form-control " name="pilih_tahun" value="<?= $ptahun; ?>" hidden>
               <div class="form-group">
+                <label>Siswa</label>
+                <select name="siswa" class="form-control siswa" disabled>
+                  <option value="">Pilih Siswa</option>
+                  <?php foreach ($siswa as $s) : ?>
+                    <option value="<?= $s->Id_Siswa; ?>"><?= $s->Nama; ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
+              <div class="form-group">
                 <label>Nama Instansi</label>
                 <input type="text" class="form-control nama" name="nama" required>
               </div>
@@ -148,13 +162,18 @@
                 <label>Alamat Instansi</label>
                 <textarea id="" class="form-control alamat" name="alamat" rows="4" required></textarea>
               </div>
-              <div class="form-group">
+              <div class="form-group ">
                 <label>Waktu Pelaksanaan</label>
-                <input type="text" class="form-control waktu" name="waktu" required>
+                <div class="form-inline">
+                  <label for=""></label>
+                  <input type="date" class="form-control waktu1" name="waktu1" required>
+                  <p>&nbsp; sampai &nbsp;</p>
+                  <input type="date" class="form-control waktu2" name="waktu2" required>
+                </div>
               </div>
               <div class="form-group">
                 <label>Nilai Prakerin</label>
-                <input type="text" class="form-control nilai" name="nilai" required>
+                <input type="number" class="form-control nilai" name="nilai" required>
               </div>
             </div>
             <div class="modal-footer">
@@ -200,14 +219,18 @@
           const id = $(this).data('id_nilai');
           const nama = $(this).data('nama');
           const alamat = $(this).data('alamat');
-          const waktu = $(this).data('waktu');
+          const waktu1 = $(this).data('waktu1');
+          const waktu2 = $(this).data('waktu2');
           const nilai = $(this).data('nilai');
+          const siswa = $(this).data('siswa');
 
           // Set data to Form Edit
           $('.id_nilai').val(id);
+          $('.siswa').val(siswa);
           $('.nama').val(nama);
           $('.alamat').val(alamat);
-          $('.waktu').val(waktu);
+          $('.waktu1').val(waktu1);
+          $('.waktu2').val(waktu2);
           $('.nilai').val(nilai);
           // Call Modal Edit
           $('#editModal').modal('show');

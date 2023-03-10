@@ -60,7 +60,13 @@
             <div class="modal-body">
               <div class="form-group">
                 <label>Tingkat</label>
-                <input type="text" class="form-control" name="tingkat" placeholder="" required>
+                <!-- <input type="text" class="form-control" name="tingkat" placeholder="" required> -->
+                <select name="tingkat" class="form-control" required>
+                  <option value="">Pilih Tingkat</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
               </div>
               <div class="form-group">
                 <label>Jurusan</label>
@@ -106,7 +112,13 @@
             <div class="modal-body">
               <div class="form-group">
                 <label>Tingkat</label>
-                <input type="text" class="form-control tingkat" name="tingkat" placeholder="" required>
+                <!-- <input type="text" class="form-control tingkat" name="tingkat" placeholder="" required> -->
+                <select name="tingkat" class="form-control tingkat" required>
+                  <option value="">Pilih Tingkat</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
               </div>
               <div class="form-group">
                 <label>Jurusan</label>
@@ -132,8 +144,7 @@
 
             <div class="modal-footer">
               <input type="hidden" name="id_kelas" class="id_kelas1">
-              <label for="">id lama</label>
-              <input type="text" name="id_lama" class="id_lama">
+              <input type="hidden" name="id_lama" class="id_lama">
               <button type="submit" class="btn btn-success">Simpan</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
             </div>
@@ -184,7 +195,7 @@
           $("#wali").html($(this).data('nama'));
           $('.wali_kelas').val(wali_kelas).trigger('change');
           $('.id_lama').val($(this).data('id_lama'));
-          
+
           // Call Modal Edit
           $('#editModal').modal('show');
         });

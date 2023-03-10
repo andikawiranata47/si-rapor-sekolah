@@ -153,15 +153,15 @@
               </div>
               <div class="form-group">
                 <label>Nilai UH</label>
-                <input type="text" class="form-control " name="uh" required>
+                <input type="number" class="form-control " name="uh" required>
               </div>
               <div class="form-group">
                 <label>Nilai UTS</label>
-                <input type="text" class="form-control " name="uts" required>
+                <input type="number" class="form-control " name="uts" required>
               </div>
               <div class="form-group">
                 <label>Nilai UAS</label>
-                <input type="text" class="form-control " name="uas" required>
+                <input type="number" class="form-control " name="uas" required>
               </div>
             </div>
             <div class="modal-footer">
@@ -212,15 +212,15 @@
               </div>
               <div class="form-group">
                 <label>Nilai UH</label>
-                <input type="text" class="form-control uh" name="uh" required>
+                <input type="number" class="form-control uh" name="uh" required>
               </div>
               <div class="form-group">
                 <label>Nilai UTS</label>
-                <input type="text" class="form-control uts" name="uts" required>
+                <input type="number" class="form-control uts" name="uts" required>
               </div>
               <div class="form-group">
                 <label>Nilai UAS</label>
-                <input type="text" class="form-control uas" name="uas" required>
+                <input type="number" class="form-control uas" name="uas" required>
               </div>
               <div class="modal-footer">
                 <input type="hidden" name="kelas" class="kelas">

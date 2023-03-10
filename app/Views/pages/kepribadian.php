@@ -134,15 +134,15 @@
               </div>
               <div class="form-group">
                 <label>Sakit</label>
-                <input type="text" class="form-control " name="sakit" required>
+                <input type="number" class="form-control " name="sakit" required>
               </div>
               <div class="form-group">
                 <label>Izin</label>
-                <input type="text" class="form-control " name="izin" required>
+                <input type="number" class="form-control " name="izin" required>
               </div>
               <div class="form-group">
                 <label>Tanpa Keterangan</label>
-                <input type="text" class="form-control " name="tanpa_keterangan" required>
+                <input type="number" class="form-control " name="tanpa_keterangan" required>
               </div>
             </div>
             <div class="modal-footer">
@@ -195,15 +195,15 @@
               </div>
               <div class="form-group">
                 <label>Sakit</label>
-                <input type="text" class="form-control sakit" name="sakit" required>
+                <input type="number" class="form-control sakit" name="sakit" required>
               </div>
               <div class="form-group">
                 <label>Izin</label>
-                <input type="text" class="form-control izin" name="izin" required>
+                <input type="number" class="form-control izin" name="izin" required>
               </div>
               <div class="form-group">
                 <label>Tanpa Keterangan</label>
-                <input type="text" class="form-control tanpa_keterangan" name="tanpa_keterangan" required>
+                <input type="number" class="form-control tanpa_keterangan" name="tanpa_keterangan" required>
               </div>
             </div>
             <div class="modal-footer">
