@@ -104,6 +104,7 @@
             </div>
             <div class="modal-footer">
               <input type="hidden" name="id_general" class="id_general">
+              <p style="color: red;">*Jika Anda melakukan perubahan pada <b>semester</b> dan <b>tahun ajaran</b>, pastikan Anda melakukan penyesuaian kenaikan kelas pada menu <b><a href="/kelas">Kelas</a></b></p>
               <button type="submit" class="btn btn-success">Simpan</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
             </div>

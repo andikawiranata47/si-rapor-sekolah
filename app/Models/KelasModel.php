@@ -20,8 +20,9 @@ class KelasModel extends Model
 
     public function getKelas()
     {
-        $query = $this->db->table('kelas')//->select('kelas.Kelas', 'user.Nama', 'kelas.Wali_Kelas')
+        $query = $this->db->table('kelas') //->select('kelas.Kelas', 'user.Nama', 'kelas.Wali_Kelas')
             ->join('user', 'user.Id_User = kelas.Wali_Kelas', 'left')
+            ->where('kelas.Tingkat <=', 12)
             ->orderBy('tingkat')
             ->get();
         return $query;
@@ -30,6 +31,15 @@ class KelasModel extends Model
     public function saveKelas($data)
     {
         $query = $this->db->table('kelas')->insert($data);
+        return $query;
+    }
+
+    public function naikKelas()
+    {
+        // $query = $this->db->table('kelas')->update(array('Tingkat' => 'Tingkat'));
+        // return $query;
+        $myquery = "UPDATE kelas SET tingkat=tingkat+1 ";
+        $query = $this->db->query($myquery);
         return $query;
     }
 

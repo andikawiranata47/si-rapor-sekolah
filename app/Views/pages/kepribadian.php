@@ -25,7 +25,7 @@
                 <select name="pilih_kelas" class="form-control pr-xl-5 mr-2 pilih_kelas" id="pilih_kelas">
                   <option value="">Pilih Kelas</option>
                   <?php foreach ($kelas as $k) : ?>
-                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
+                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Tingkat; ?>-<?= $k->Jurusan; ?>-<?= $k->Abjad; ?></option>
                   <?php endforeach; ?>
                 </select>
               </div><button type="submit" class="btn btn-primary mb-2">Pilih</button>

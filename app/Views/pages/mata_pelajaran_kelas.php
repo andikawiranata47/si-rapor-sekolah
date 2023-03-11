@@ -18,7 +18,7 @@
                 <select name="pilih_kelas" class="form-control pr-xl-5 pilih_kelas" id="pilih_kelas">
                   <option value="">Pilih Kelas</option>
                   <?php foreach ($kelas as $k) : ?>
-                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
+                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Tingkat; ?>-<?= $k->Jurusan; ?>-<?= $k->Abjad; ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -49,7 +49,7 @@
                   <?php foreach ($mapelKelas as $m) : ?>
                     <tr>
                       <td class="number"> <?= $i++; ?> </td>
-                      <td> <?= $m->Kelas; ?> </td>
+                      <td> <?= $m->Tingkat; ?>-<?= $m->Jurusan; ?>-<?= $m->Abjad; ?> </td>
                       <td> <?= $m->Mata_Pelajaran; ?> </td>
                       <td> <?= $m->Nama; ?> </td>
                       <td class="text-center">
@@ -82,13 +82,13 @@
                 <select name="kelas" class="form-control kelas" disabled>
                   <option value="">Pilih Kelas</option>
                   <?php foreach ($kelas as $k) : ?>
-                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
+                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Tingkat; ?>-<?= $k->Jurusan; ?>-<?= $k->Abjad; ?></option>
                   <?php endforeach; ?>
                 </select>
                 <select name="kelas" class="form-control kelas" hidden>
                   <option value="">Pilih Kelas</option>
                   <?php foreach ($kelas as $k) : ?>
-                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
+                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Tingkat; ?>-<?= $k->Jurusan; ?>-<?= $k->Abjad; ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -137,13 +137,13 @@
                 <select name="kelas" class="form-control kelas" disabled>
                   <option value="">Pilih Kelas</option>
                   <?php foreach ($kelas as $k) : ?>
-                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
+                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Tingkat; ?>-<?= $k->Jurusan; ?>-<?= $k->Abjad; ?></option>
                   <?php endforeach; ?>
                 </select>
                 <select name="kelas" class="form-control kelas" hidden>
                   <option value="">Pilih Kelas</option>
                   <?php foreach ($kelas as $k) : ?>
-                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
+                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Tingkat; ?>-<?= $k->Jurusan; ?>-<?= $k->Abjad; ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -189,7 +189,7 @@
             <select name="kelas" class="form-control kelas" hidden>
               <option value="">Pilih Kelas</option>
               <?php foreach ($kelas as $k) : ?>
-                <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
+                <option value="<?= $k->Id_Kelas; ?>"><?= $k->Tingkat; ?>-<?= $k->Jurusan; ?>-<?= $k->Abjad; ?></option>
               <?php endforeach; ?>
             </select>
             <div class="modal-footer">

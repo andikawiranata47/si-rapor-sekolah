@@ -36,11 +36,20 @@ class Kelas extends BaseController
             'tingkat' => $this->request->getPost('tingkat'),
             'jurusan' => strtoupper($this->request->getPost('jurusan')),
             'abjad' => strtoupper($this->request->getPost('abjad')),
-            'kelas' => strtoupper(strval($this->request->getPost('tingkat')).'-'.$this->request->getPost('jurusan').'-'.strval($this->request->getPost('abjad')))
+            // 'kelas' => strtoupper(strval($this->request->getPost('tingkat')).'-'.$this->request->getPost('jurusan').'-'.strval($this->request->getPost('abjad')))
         ];
         $this->kelasModel->saveKelas($data1);
         $this->masterUserModel->updateUser($data, $this->request->getPost('wali_kelas'));
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
+        return redirect()->to('/kelas');
+    }
+
+    public function naik()
+    {
+        // $id = $this->request->getPost('id_kelas');
+        $this->kelasModel->naikKelas();
+        
+        session()->setFlashdata('pesan', 'Data berhasil diubah');
         return redirect()->to('/kelas');
     }
 
@@ -60,7 +69,7 @@ class Kelas extends BaseController
             'tingkat' => $this->request->getPost('tingkat'),
             'jurusan' => strtoupper($this->request->getPost('jurusan')),
             'abjad' => strtoupper($this->request->getPost('abjad')),
-            'kelas' => strtoupper(strval($this->request->getPost('tingkat')).'-'.$this->request->getPost('jurusan').'-'.strval($this->request->getPost('abjad')))
+            // 'kelas' => strtoupper(strval($this->request->getPost('tingkat')).'-'.$this->request->getPost('jurusan').'-'.strval($this->request->getPost('abjad')))
         );
         if($wali != $idLama) {
             $this->masterUserModel->updateUser($data, $wali);

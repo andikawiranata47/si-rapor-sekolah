@@ -18,7 +18,7 @@
                 <select name="pilih_kelas" class="form-control pr-xl-5 pilih_kelas" id="pilih_kelas">
                   <option value="">Pilih Kelas</option>
                   <?php foreach ($kelas as $k) : ?>
-                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
+                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Tingkat; ?>-<?= $k->Jurusan; ?>-<?= $k->Abjad; ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -49,7 +49,7 @@
                   <?php foreach ($siswaKelas as $s) : ?>
                     <tr>
                       <td class="number"> <?= $i++; ?> </td>
-                      <td> <?= $s->Kelas; ?> </td>
+                      <td> <?= $s->Tingkat; ?>-<?= $s->Jurusan; ?>-<?= $s->Abjad; ?> </td>
                       <td> <?= $s->NIS; ?> </td>
                       <td> <?= $s->Nama; ?> </td>
                       <td class="text-center">
@@ -81,7 +81,7 @@
                 <select name="kelas_lama" class=" kelas_lama" hidden>
                   <option value="">Pilih Kelas</option>
                   <?php foreach ($kelas as $k) : ?>
-                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
+                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Tingkat; ?>-<?= $k->Jurusan; ?>-<?= $k->Abjad; ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -90,14 +90,14 @@
                 <select name="kelas" class="form-control kelas" disabled>
                   <option value="">Pilih Kelas</option>
                   <?php foreach ($kelas as $k) : ?>
-                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
+                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Tingkat; ?>-<?= $k->Jurusan; ?>-<?= $k->Abjad; ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
               <select name="kelas" class=" kelas" hidden>
                 <option value="">Pilih Kelas</option>
                 <?php foreach ($kelas as $k) : ?>
-                  <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
+                  <option value="<?= $k->Id_Kelas; ?>"><?= $k->Tingkat; ?>-<?= $k->Jurusan; ?>-<?= $k->Abjad; ?></option>
                 <?php endforeach; ?>
               </select>
               <div class="form-group">
@@ -107,8 +107,8 @@
                   <option value="">Pilih Siswa</option>
                   <?php foreach ($siswaKelas1 as $s) : ?>
                     <option value="<?= $s->Id_Siswa; ?>">
-                      <?php if ($s->Kelas != null) { ?>
-                        <?= $s->Kelas; ?>&nbsp;&nbsp;&nbsp;-- <?= $s->Nama; ?>
+                      <?php if ($s->Tingkat != null) { ?>
+                        <?= $s->Tingkat; ?>-<?= $s->Jurusan; ?>-<?= $s->Abjad; ?>&nbsp;&nbsp;&nbsp;-- <?= $s->Nama; ?>
                       <?php } else { ?>
                         <?= $s->Nama; ?> -- <?= $s->NIS; ?>
                       <?php }; ?>
@@ -153,7 +153,7 @@
                 <select name="kelas" class="form-control kelas" required>
                   <option value="">Pilih Kelas</option>
                   <?php foreach ($kelas as $k) : ?>
-                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
+                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Tingkat; ?>-<?= $k->Jurusan; ?>-<?= $k->Abjad; ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -163,7 +163,7 @@
                 <select name="kelas_lama" class="form-control kelas_lama" hidden>
                   <option value="">Pilih Kelas</option>
                   <?php foreach ($kelas as $k) : ?>
-                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
+                    <option value="<?= $k->Id_Kelas; ?>"><?= $k->Tingkat; ?>-<?= $k->Jurusan; ?>-<?= $k->Abjad; ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -204,7 +204,7 @@
               <select name="kelas_lama" class="form-control kelas_lama" hidden>
                 <option value="">Pilih Kelas</option>
                 <?php foreach ($kelas as $k) : ?>
-                  <option value="<?= $k->Id_Kelas; ?>"><?= $k->Kelas; ?></option>
+                  <option value="<?= $k->Id_Kelas; ?>"><?= $k->Tingkat; ?>-<?= $k->Jurusan; ?>-<?= $k->Abjad; ?></option>
                 <?php endforeach; ?>
               </select>
             </div>

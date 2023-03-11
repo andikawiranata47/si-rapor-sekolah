@@ -61,7 +61,7 @@
                       <td> <?= $n->Nama; ?> </td>
                       <td> <?= $n->Nama_Instansi; ?> </td>
                       <td> <?= $n->Alamat_Instansi; ?> </td>
-                      <td> <?= $n->Waktu_Mulai; ?> sampai <?= $n->Waktu_Selesai; ?> </td>
+                      <td> <?= date('d F Y', strtotime("$n->Waktu_Mulai")); ?> - <?= date('d F Y', strtotime("$n->Waktu_Selesai")); ?> </td>
                       <td> <?= $n->Nilai_Prakerin; ?> </td>
                       <td class="text-center">
                         <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_nilai="<?= $n->Id_Nilai_Prakerin; ?>" data-nama="<?= $n->Nama_Instansi; ?>" data-alamat="<?= $n->Alamat_Instansi; ?>" data-waktu1="<?= $n->Waktu_Mulai; ?>" data-waktu2="<?= $n->Waktu_Selesai; ?>" data-nilai="<?= $n->Nilai_Prakerin; ?>" data-siswa="<?= $n->Id_Siswa; ?>">Edit</button>

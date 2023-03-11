@@ -17,6 +17,8 @@
                   <?= session()->getFlashdata('pesan'); ?>
                 </p>
               <?php endif; ?>
+              <!-- <input type="hidden" name="id_kelas" class="" value="1"> -->
+              <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#naikModal">Naik Kelas</button>
               <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#addModal">Tambah</button>
             </div>
 
@@ -33,7 +35,7 @@
                 <?php foreach ($kelas as $k) : ?>
                   <tr>
                     <td class="number"> <?= $i++; ?> </td>
-                    <td> <?= $k->Kelas; ?> </td>
+                    <td> <?= $k->Tingkat; ?>-<?= $k->Jurusan; ?>-<?= $k->Abjad; ?> </td>
                     <td> <?= $k->Nama; ?> </td>
                     <td class="text-center">
                       <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_kelas="<?= $k->Id_Kelas; ?>" data-wali_kelas="<?= $k->Wali_Kelas; ?>" data-tingkat="<?= $k->Tingkat; ?>" data-jurusan="<?= $k->Jurusan; ?>" data-abjad="<?= $k->Abjad; ?>" data-nama="<?= $k->Nama; ?>" data-id_lama="<?= $k->Id_User; ?>">Edit</button>
@@ -47,6 +49,28 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal Naik -->
+    <form action="/Kelas/naik" method="post">
+      <?= csrf_field(); ?>
+      <div class="modal fade" id="naikModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content bg-white">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel" style="color: #001737 !important;">Apakah anda yakin menaikkan semua kelas?</h5>
+            </div>
+
+            <div class="modal-footer">
+              <!-- <input type="hidden" name="id_user" class="id_user1"> -->
+              <p style="color: red;">*Jika Anda <b>menaikkan kelas</b>, pastikan Anda melakukan penyesuaian <b>semester</b> dan <b>tahun ajaran</b> pada menu <b><a href="/welcome">Welcome</a></b></p>
+              <button type="submit" class="btn btn-success">Ya</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <!-- End Modal Naik -->
 
     <!-- Modal Tambah -->
     <form action="/Kelas/save" method="post">
@@ -63,9 +87,9 @@
                 <!-- <input type="text" class="form-control" name="tingkat" placeholder="" required> -->
                 <select name="tingkat" class="form-control" required>
                   <option value="">Pilih Tingkat</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
                 </select>
               </div>
               <div class="form-group">
@@ -115,9 +139,9 @@
                 <!-- <input type="text" class="form-control tingkat" name="tingkat" placeholder="" required> -->
                 <select name="tingkat" class="form-control tingkat" required>
                   <option value="">Pilih Tingkat</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
                 </select>
               </div>
               <div class="form-group">
