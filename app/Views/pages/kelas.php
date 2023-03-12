@@ -156,9 +156,10 @@
                 <label>Wali Kelas</label>
                 <select name="wali_kelas" class="form-control wali_kelas">
                   <option value="">Pilih Wali Kelas</option>
+                  <option value="" id="wali" hidden></option>
                   <?php foreach ($nama as $n) : ?>
                     <?php if ($n->Is_Wali_Kelas == 0) { ?>
-                      <option value="" id="wali"></option>
+                      
                       <option value="<?= $n->Id_User; ?>"><?= $n->Nama; ?></option>
                     <?php }; ?>
                   <?php endforeach; ?>
