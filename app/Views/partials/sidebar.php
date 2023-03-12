@@ -169,12 +169,21 @@ $CurPageURL = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
 
             <?php if (session()->get('wali')) { ?>
                 <li class="nav-item nav-category">Wali Kelas</li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/rapor">
-                        <span class="icon-bg"><i class="mdi mdi-table menu-icon"></i></span>
-                        <span class="menu-title">Rapor</span>
-                    </a>
-                </li>
+                <?php if (strpos($CurPageURL, '/rapor/get')) { ?>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/rapor">
+                            <span class="icon-bg"><i class="mdi mdi-table menu-icon"></i></span>
+                            <span class="menu-title">Rapor</span>
+                        </a>
+                    </li>
+                <?php } else { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/rapor">
+                            <span class="icon-bg"><i class="mdi mdi-table menu-icon"></i></span>
+                            <span class="menu-title">Rapor</span>
+                        </a>
+                    </li>
+                <?php } ?>
             <?php } ?>
         </ul>
     </nav>

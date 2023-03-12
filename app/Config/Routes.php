@@ -40,10 +40,24 @@ $routes->get('/welcome', 'Welcome::index',['filter' => 'auth']);
 
 $routes->get('/masteruser', 'MasterUser::index',['filter' => 'auth']);
 $routes->get('/kelas', 'Kelas::index',['filter' => 'auth']);
+$routes->get('/kelas/naik', 'Kelas::naik',['filter' => 'auth']);
 $routes->get('/matapelajaran', 'MataPelajaran::index',['filter' => 'auth']);
 $routes->get('/matapelajarankelas', 'MataPelajaranKelas::index',['filter' => 'auth']);
+$routes->get('/matapelajarankelas/get', 'MataPelajaranKelas::get',['filter' => 'auth']);
 $routes->get('/siswa', 'Siswa::index',['filter' => 'auth']);
 $routes->get('/siswakelas', 'SiswaKelas::index',['filter' => 'auth']);
+$routes->get('/siswakelas/get', 'SiswaKelas::get',['filter' => 'auth']);
+
+$routes->get('/nilaimatapelajaran', 'NilaiMataPelajaran::index',['filter' => 'auth']);
+$routes->get('/nilaimatapelajaran/get', 'NilaiMataPelajaran::get',['filter' => 'auth']);
+$routes->get('/nilaiprakerin', 'NilaiPrakerin::index',['filter' => 'auth']);
+$routes->get('/nilaiprakerin/get', 'NilaiPrakerin::get',['filter' => 'auth']);
+$routes->get('/nilaiekstrakurikuler', 'NilaiEkstrakurikuler::index',['filter' => 'auth']);
+$routes->get('/nilaiekstrakurikuler/get', 'NilaiEkstrakurikuler::get',['filter' => 'auth']);
+$routes->get('/kepribadian', 'Kepribadian::index',['filter' => 'auth']);
+$routes->get('/kepribadian/get', 'Kepribadian::get',['filter' => 'auth']);
+$routes->get('/rapor', 'Rapor::index',['filter' => 'auth']);
+$routes->get('/rapor/get', 'Rapor::get',['filter' => 'auth']);
 // $routes->get('/siswaprakerin', 'SiswaPrakerin::index',['filter' => 'auth']);
 // $routes->get('/siswaekstrakurikuler', 'SiswaEkstrakurikuler::index',['filter' => 'auth']);
 
