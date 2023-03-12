@@ -75,14 +75,14 @@
                 <tbody>
                   <?php $i = 1; ?>
                   <?php foreach ($raporMapel as $r) : ?>
-                    <?php if($r->Jenis_Nilai == 'Pengetahuan') { ?>
-                    <tr>
-                      <td class="number"> <?= $i++; ?> </td>
-                      <td> <?= $r->Mata_Pelajaran; ?> </td>
-                      <td> <?= $r->Jenis_Nilai; ?> </td>
-                      <td> <?= $r->Kelompok; ?> </td>
-                      <td> <?= $r->Nilai_Akhir; ?> </td>
-                    </tr>
+                    <?php if ($r->Jenis_Nilai == 'Pengetahuan') { ?>
+                      <tr>
+                        <td class="number"> <?= $i++; ?> </td>
+                        <td> <?= $r->Mata_Pelajaran; ?> </td>
+                        <td> <?= $r->Jenis_Nilai; ?> </td>
+                        <td> <?= $r->Kelompok; ?> </td>
+                        <td> <?= $r->Nilai_Akhir; ?> </td>
+                      </tr>
                     <?php }; ?>
                   <?php endforeach; ?>
                 </tbody>
@@ -102,14 +102,14 @@
                 <tbody>
                   <?php $i = 1; ?>
                   <?php foreach ($raporMapel as $r) : ?>
-                    <?php if($r->Jenis_Nilai == 'Keterampilan') { ?>
-                    <tr>
-                      <td class="number"> <?= $i++; ?> </td>
-                      <td> <?= $r->Mata_Pelajaran; ?> </td>
-                      <td> <?= $r->Jenis_Nilai; ?> </td>
-                      <td> <?= $r->Kelompok; ?> </td>
-                      <td> <?= $r->Nilai_Akhir; ?> </td>
-                    </tr>
+                    <?php if ($r->Jenis_Nilai == 'Keterampilan') { ?>
+                      <tr>
+                        <td class="number"> <?= $i++; ?> </td>
+                        <td> <?= $r->Mata_Pelajaran; ?> </td>
+                        <td> <?= $r->Jenis_Nilai; ?> </td>
+                        <td> <?= $r->Kelompok; ?> </td>
+                        <td> <?= $r->Nilai_Akhir; ?> </td>
+                      </tr>
                     <?php }; ?>
                   <?php endforeach; ?>
                 </tbody>
@@ -198,7 +198,35 @@
               </tbody>
             </table>
           </div>
-        </div><?php }; ?>
+        </div>
+
+        <form class="" action="" method="post">
+          <?= csrf_field(); ?>
+          <div class="card">
+            <div class="card-body" style="padding-top: 0px; padding-bottom: 0px">
+              <h4 class="card-title mb-2">Catatan untuk Perhatian Orang Tua/Wali</h4>
+              <div class="form-group">
+                <textarea class="form-control catatan" name="catatan" placeholder="" row="3" required></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body" style="padding-top: 0px ;">
+              <h4 class="card-title mb-2">Keputusan</h4>
+              <div class="form-group">
+                <select name="keputusan" class="form-control pr-xl-5 keputusan" id="">
+                  <option value="">Pilih Keputusan</option>
+                  <option value="Dapat melanjutkan">Dapat melanjutkan</option>
+                  <option value="Tidak dapat melanjutkan">Tidak dapat melanjutkan</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-success mb-2 float-right"><i class="mdi mdi-printer" style="font-size: 15px;"></i>&nbsp;&nbsp;&nbsp;Cetak&nbsp;&nbsp;&nbsp;</button>
+            </div>
+          </div>
+        </form>
+
+      <?php }; ?>
 
       </div>
     </div>
