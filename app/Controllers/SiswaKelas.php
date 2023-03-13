@@ -25,12 +25,14 @@ class SiswaKelas extends BaseController
         // $id = $this->request->getPost('pilih_kelas');
         $kelas = $this->kelasModel->getKelas()->getResult();
         $siswa = $this->siswaModel->getSiswa()->getResult();
+        $siswaKelas = $this->siswaKelasModel->getPilihKelas($id)->getResult();
         $siswaKelas1 = $this->siswaKelasModel->getSiswaKelas()->getResult();
         $data = [
             'judul' => 'Siswa Kelas',
             'id' => $id,
             'kelas' => $kelas,
             'siswa' => $siswa,
+            'siswaKelas' => $siswaKelas,
             'siswaKelas1' => $siswaKelas1
         ];
         return view('pages/siswa_kelas', $data);

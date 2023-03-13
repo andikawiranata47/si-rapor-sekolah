@@ -58,6 +58,7 @@ $routes->get('/kepribadian', 'Kepribadian::index',['filter' => 'auth']);
 $routes->get('/kepribadian/get', 'Kepribadian::get',['filter' => 'auth']);
 $routes->get('/rapor', 'Rapor::index',['filter' => 'auth']);
 $routes->get('/rapor/get', 'Rapor::get',['filter' => 'auth']);
+$routes->get('/rapor/printpdf', 'Rapor::printpdf',['filter' => 'auth']);
 // $routes->get('/siswaprakerin', 'SiswaPrakerin::index',['filter' => 'auth']);
 // $routes->get('/siswaekstrakurikuler', 'SiswaEkstrakurikuler::index',['filter' => 'auth']);
 

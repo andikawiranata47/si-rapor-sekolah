@@ -21,7 +21,7 @@ class RaporModel extends Model
   //   return $query;
   // }
   
-  public function getRaporMapel($wali, $id)
+  public function getRaporMapel($wali, $id, $semester, $tahun)
   {
     $query = $this->db->table('siswa')
       ->join('nilai_mata_pelajaran', 'siswa.Id_Siswa = nilai_mata_pelajaran.Id_Siswa', 'left')
@@ -29,40 +29,48 @@ class RaporModel extends Model
       ->join('mata_pelajaran', 'nilai_mata_pelajaran.Id_Mata_Pelajaran = mata_pelajaran.Id_Mata_Pelajaran', 'left')
       ->where('siswa.Id_Siswa', $id)
       ->where('kelas.Wali_Kelas', $wali)
+      ->where('nilai_mata_pelajaran.Semester', $semester)
+      ->where('nilai_mata_pelajaran.Tahun_Ajaran', $tahun)
       ->orderBy('kelompok')
       ->get();
     return $query;
   }
 
-  public function getRaporPrakerin($wali, $id)
+  public function getRaporPrakerin($wali, $id, $semester, $tahun)
   {
     $query = $this->db->table('siswa')
       ->join('nilai_prakerin', 'siswa.Id_Siswa = nilai_prakerin.Id_Siswa', 'left')
       ->join('kelas', 'siswa.Id_Kelas = Kelas.Id_Kelas', 'left')
       ->where('siswa.Id_Siswa', $id)
       ->where('kelas.Wali_Kelas', $wali)
+      ->where('nilai_prakerin.Semester', $semester)
+      ->where('nilai_prakerin.Tahun_Ajaran', $tahun)
       ->get();
     return $query;
   }
 
-  public function getRaporEkstra($wali, $id)
+  public function getRaporEkstra($wali, $id, $semester, $tahun)
   {
     $query = $this->db->table('siswa')
       ->join('nilai_ekstrakurikuler', 'siswa.Id_Siswa = nilai_ekstrakurikuler.Id_Siswa', 'left')
       ->join('kelas', 'siswa.Id_Kelas = Kelas.Id_Kelas', 'left')
       ->where('siswa.Id_Siswa', $id)
       ->where('kelas.Wali_Kelas', $wali)
+      ->where('nilai_ekstrakurikuler.Semester', $semester)
+      ->where('nilai_ekstrakurikuler.Tahun_Ajaran', $tahun)
       ->get();
     return $query;
   }
 
-  public function getRaporKepribadian($wali, $id)
+  public function getRaporKepribadian($wali, $id, $semester, $tahun)
   {
     $query = $this->db->table('siswa')
       ->join('kepribadian', 'siswa.Id_Siswa = kepribadian.Id_Siswa', 'left')
       ->join('kelas', 'siswa.Id_Kelas = Kelas.Id_Kelas', 'left')
       ->where('siswa.Id_Siswa', $id)
       ->where('kelas.Wali_Kelas', $wali)
+      ->where('kepribadian.Semester', $semester)
+      ->where('kepribadian.Tahun_Ajaran', $tahun)
       ->get();
     return $query;
   }

@@ -14,12 +14,22 @@
             <form class="form-inline" action="/rapor/get" method="post">
               <?= csrf_field(); ?>
               <div class="form-group mr-4 mb-4">
+                <select name="pilih_semester" class="form-control pr-xl-5 pilih_semester" id="pilih_semester">
+                  <option value="">Pilih Semester</option>
+                  <option value="Ganjil">Ganjil</option>
+                  <option value="Genap">Genap</option>
+                </select>
+                <select name="pilih_tahun" class="form-control mx-2 pr-xl-5 pilih_tahun" id="pilih_tahun">
+                  <option value="">Pilih Tahun Ajaran</option>
+                  <option value="2022/2023">2022/2023</option>
+                </select>
                 <select name="pilih_siswa" class="form-control pr-xl-5 pilih_siswa" id="pilih_siswa">
                   <option value="">Pilih Siswa</option>
                   <?php foreach ($siswa as $s) : ?>
                     <option value="<?= $s->Id_Siswa; ?>"><?= $s->Nama; ?></option>
                   <?php endforeach; ?>
-                </select> <button type="submit" class="btn btn-primary ml-2">Pilih</button>
+                </select>
+                <button type="submit" class="btn btn-primary ml-2">Pilih</button>
               </div>
             </form>
 
@@ -137,7 +147,8 @@
                     <td class="number"> <?= $i++; ?> </td>
                     <td> <?= $r->Nama_Instansi; ?> </td>
                     <td> <?= $r->Alamat_Instansi; ?> </td>
-                    <td> <?= date('d F Y', strtotime("$r->Waktu_Mulai")); ?> - <?= date('d F Y', strtotime("$r->Waktu_Selesai")); ?> </td>
+                    <?php setlocale(LC_ALL, 'id-ID', 'id_ID'); ?>
+                    <td> <?= strftime("%d %B %Y", strtotime("$r->Waktu_Mulai")); ?> - <?= strftime("%d %B %Y", strtotime("$r->Waktu_Selesai")); ?> </td>
                     <td> <?= $r->Nilai_Prakerin; ?> </td>
                   </tr>
                 <?php endforeach; ?>
@@ -200,27 +211,27 @@
           </div>
         </div>
 
-        <form class="" action="" method="post">
+        <form class="" action="/rapor/printpdf" target="_blank" method="post">
           <?= csrf_field(); ?>
           <div class="card">
             <div class="card-body" style="padding-top: 0px; padding-bottom: 0px">
               <h4 class="card-title mb-2">Catatan untuk Perhatian Orang Tua/Wali</h4>
               <div class="form-group">
-                <textarea class="form-control catatan" name="catatan" placeholder="" row="3" required></textarea>
+                <textarea class="form-control catatan" name="catatan" placeholder="" row="3"></textarea>
               </div>
             </div>
           </div>
-
           <div class="card">
             <div class="card-body" style="padding-top: 0px ;">
-              <h4 class="card-title mb-2">Keputusan</h4>
+              <h4 class="card-title mb-2" id="keputusan1">Keputusan</h4>
               <div class="form-group">
-                <select name="keputusan" class="form-control pr-xl-5 keputusan" id="">
+                <select name="keputusan" class="form-control pr-xl-5 keputusan" id="keputusan2">
                   <option value="">Pilih Keputusan</option>
-                  <option value="Dapat melanjutkan">Dapat melanjutkan</option>
-                  <option value="Tidak dapat melanjutkan">Tidak dapat melanjutkan</option>
+                  <option value="Dapat melanjutkan">Naik kelas</option>
+                  <option value="Tidak dapat melanjutkan">Tinggal di kelas</option>
                 </select>
               </div>
+
               <button type="submit" class="btn btn-success mb-2 float-right"><i class="mdi mdi-printer" style="font-size: 15px;"></i>&nbsp;&nbsp;&nbsp;Cetak&nbsp;&nbsp;&nbsp;</button>
             </div>
           </div>
@@ -234,5 +245,57 @@
 
     <script src="<?php echo base_url(); ?>/assets/js/jquery-3.4.1.min.js"></script>
 
+    <script>
+      $('#pilih_siswa').on('change', function() {
+        // Save value in localstorage
+        localStorage.setItem("pilih_siswa", $(this).val());
+      });
+      $(document).ready(function() {
+        if ($('#pilih_siswa').length) {
+          $('#pilih_siswa').val(localStorage.getItem("pilih_siswa"));
+        }
+      });
+      if (!window.location.href.includes("/get")) {
+        localStorage.removeItem("pilih_siswa");
+      }
+    </script>
+
+    <script>
+      $('#pilih_semester').on('change', function() {
+        // Save value in localstorage
+        localStorage.setItem("pilih_semester", $(this).val());
+      });
+      $(document).ready(function() {
+        if (localStorage.getItem("pilih_semester") == "Ganjil") {
+          $("#keputusan1").attr("hidden", true)
+          $("#keputusan2").attr("hidden", true)
+        }
+        if (localStorage.getItem("pilih_semester") == "Genap") {
+          $("#keputusan1").removeAttr("hidden")
+          $("#keputusan2").removeAttr("hidden")
+        }
+        if ($('#pilih_semester').length) {
+          $('#pilih_semester').val(localStorage.getItem("pilih_semester"));
+        }
+      });
+      if (!window.location.href.includes("/get")) {
+        localStorage.removeItem("pilih_semester");
+      }
+    </script>
+
+    <script>
+      $('#pilih_tahun').on('change', function() {
+        // Save value in localstorage
+        localStorage.setItem("pilih_tahun", $(this).val());
+      });
+      $(document).ready(function() {
+        if ($('#pilih_tahun').length) {
+          $('#pilih_tahun').val(localStorage.getItem("pilih_tahun"));
+        }
+      });
+      if (!window.location.href.includes("/get")) {
+        localStorage.removeItem("pilih_tahun");
+      }
+    </script>
 
     <?= $this->endSection() ?>
