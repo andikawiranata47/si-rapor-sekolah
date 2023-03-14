@@ -139,8 +139,8 @@
               <tr>
                 <td class="number"> <?= $i++; ?> </td>
                 <td> <?= $r->Mata_Pelajaran; ?> </td>
-                <td class="nilai">> <?= $r->KKM; ?> </td>
-                <td class="nilai">> <?= $r->Nilai_Akhir; ?> </td>
+                <td class="nilai"> <?= $r->KKM; ?> </td>
+                <td class="nilai"> <?= $r->Nilai_Akhir; ?> </td>
                 <td class="nilai"> <?php terbilang($r->Nilai_Akhir); ?> </td>
                 <td class="nilai"> <?php predikat($r->Nilai_Akhir) ?> </td>
               </tr>

@@ -231,7 +231,11 @@
                   <option value="Tidak Naik Kelas">Tinggal di kelas</option>
                 </select>
               </div>
-
+              <?php foreach ($siswa as $s) : ?>
+                <?php if ($s->Id_Siswa == session()->get('id')) { ?>
+                  <input type="text" name="nama_siswa" value="<?= $s->Nama; ?>" hidden>
+                <?php }; ?>
+              <?php endforeach; ?>
               <button type="submit" class="btn btn-success mb-2 float-right"><i class="mdi mdi-printer" style="font-size: 15px;"></i>&nbsp;&nbsp;&nbsp;Cetak&nbsp;&nbsp;&nbsp;</button>
             </div>
           </div>

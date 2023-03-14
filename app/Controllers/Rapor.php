@@ -90,6 +90,7 @@ class Rapor extends BaseController
 
     $catatan = $this->request->getPost('catatan');
     $keputusan = $this->request->getPost('keputusan');
+    $nama_siswa = $this->request->getPost('nama_siswa');
 
     $rapor1 = $this->raporModel->getRaporMapel($wali, $id, $semester, $tahun)->getResult();
     $rapor2 = $this->raporModel->getRaporPrakerin($wali, $id, $semester, $tahun)->getResult();
@@ -115,7 +116,7 @@ class Rapor extends BaseController
     $this->dompdf->loadHtml($html);
     $this->dompdf->setPaper('A4', 'portrait');
     $this->dompdf->render();
-    $this->dompdf->stream('rapor siswa.pdf', array(
+    $this->dompdf->stream("rapor $nama_siswa.pdf", array(
       "Attachment" => false
     ));
   }
