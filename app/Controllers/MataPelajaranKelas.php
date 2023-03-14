@@ -66,7 +66,6 @@ class MataPelajaranKelas extends BaseController
         $data1 = [
             'id_kelas' => $this->request->getPost('kelas'),
             'id_mata_pelajaran' => $this->request->getPost('mapel'),
-            'guru_mapel' => $this->request->getPost('guru'),
         ];
         $this->mapelKelasModel->saveMapelKelas($data1);
         session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
@@ -80,7 +79,6 @@ class MataPelajaranKelas extends BaseController
         $data = array(
             'id_kelas' => $this->request->getPost('kelas'),
             'id_mata_pelajaran' => $this->request->getPost('mapel'),
-            'guru_mapel' => $this->request->getPost('guru'),
         );
         $this->mapelKelasModel->updateMapelKelas($data, $id);
         session()->setFlashdata('pesan', 'Data berhasil diubah');

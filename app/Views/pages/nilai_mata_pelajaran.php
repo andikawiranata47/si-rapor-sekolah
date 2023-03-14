@@ -28,7 +28,7 @@
                     <option value="<?= $k->Id_Kelas; ?>"><?= $k->Tingkat; ?>-<?= $k->Jurusan; ?>-<?= $k->Abjad; ?></option>
                   <?php endforeach; ?>
                 </select>
-                <select name="pilih_mapel" class="form-control pr-xl-5 mx-2 pilih_mapel" id="pilih_mapel">
+                <select name="pilih_mapel" class="form-control pr-xl-5 mx-2 pilih_mapel" id="pilih_mapel" style="width: 300px;">
                   <option value="">Pilih Mata Pelajaran</option>
                   <?php foreach ($mapel as $m) : ?>
                     <option value="<?= $m->Id_Mata_Pelajaran; ?>"><?= $m->Mata_Pelajaran; ?></option>
@@ -56,7 +56,7 @@
                   <tr>
                     <th> No </th>
                     <th> Nama </th>
-                    <th> Mata Pelajaran </th>
+                    <th style="width: 300px;"> Mata Pelajaran </th>
                     <th> Jenis Nilai </th>
                     <th> Nilai UH </th>
                     <th> Nilai UTS </th>
@@ -74,7 +74,7 @@
                     <tr>
                       <td class="number"> <?= $i++; ?> </td>
                       <td> <?= $n->Nama; ?> </td>
-                      <td> <?= $n->Mata_Pelajaran; ?> </td>
+                      <td style="white-space:normal;"> <?= $n->Mata_Pelajaran; ?> </td>
                       <td> <?= $n->Jenis_Nilai; ?> </td>
                       <td> <?= $n->Nilai_UH; ?> </td>
                       <td> <?= $n->Nilai_UTS; ?> </td>

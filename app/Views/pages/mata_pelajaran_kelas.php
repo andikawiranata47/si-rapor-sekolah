@@ -41,7 +41,7 @@
                     <th> No </th>
                     <th> Kelas </th>
                     <th> Mata Pelajaran </th>
-                    <th> Guru Mata Pelajaran </th>
+                    <!-- <th> Guru Mata Pelajaran </th> -->
                   </tr>
                 </thead>
                 <tbody>
@@ -51,9 +51,9 @@
                       <td class="number"> <?= $i++; ?> </td>
                       <td> <?= $m->Tingkat; ?>-<?= $m->Jurusan; ?>-<?= $m->Abjad; ?> </td>
                       <td> <?= $m->Mata_Pelajaran; ?> </td>
-                      <td> <?= $m->Nama; ?> </td>
+
                       <td class="text-center">
-                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_mapelkelas="<?= $m->Id_Mapel_Kelas; ?>" data-kelas="<?= $m->Id_Kelas; ?>" data-mapel="<?= $m->Id_Mata_Pelajaran; ?>" data-guru="<?= $m->Guru_Mapel; ?>">Edit</button>
+                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_mapelkelas="<?= $m->Id_Mapel_Kelas; ?>" data-kelas="<?= $m->Id_Kelas; ?>" data-mapel="<?= $m->Id_Mata_Pelajaran; ?>" data-nama_mapel="<?= $m->Mata_Pelajaran; ?>">Edit</button>
                         <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_mapelkelas="<?= $m->Id_Mapel_Kelas; ?>" data-kelas="<?= $m->Id_Kelas; ?>">Hapus</button>
                       </td>
                     </tr>
@@ -92,24 +92,27 @@
                   <?php endforeach; ?>
                 </select>
               </div>
+
               <div class="form-group">
                 <label>Mata Pelajaran</label>
                 <select name="mapel" class="form-control">
                   <option value="">Pilih Mata Pelajaran</option>
+
                   <?php foreach ($mapel as $m) : ?>
-                    <option value="<?= $m->Id_Mata_Pelajaran; ?>"><?= $m->Mata_Pelajaran; ?></option>
+                    <?php $a = false ?>
+                    <?php foreach ($mapelKelas as $mk) : ?>
+                      <?php if ($m->Id_Mata_Pelajaran === $mk->Id_Mata_Pelajaran) {
+                        $a = $a || true;
+                      }; ?>
+                    <?php endforeach; ?>
+                    <?php if (!$a) { ?>
+                      <option value="<?= $m->Id_Mata_Pelajaran; ?>"><?= $m->Mata_Pelajaran; ?></option>
+                    <?php }; ?>
                   <?php endforeach; ?>
+
                 </select>
               </div>
-              <div class="form-group">
-                <label>Guru Mata Pelajaran</label>
-                <select name="guru" class="form-control">
-                  <option value="">Pilih Guru Mata Pelajaran</option>
-                  <?php foreach ($user as $u) : ?>
-                    <option value="<?= $u->Id_User; ?>"><?= $u->Nama; ?></option>
-                  <?php endforeach; ?>
-                </select>
-              </div>
+
             </div>
             <div class="modal-footer">
               <!-- <input type="hidden" name="id_user" class="id_user1"> -->
@@ -151,20 +154,21 @@
                 <label>Mata Pelajaran</label>
                 <select name="mapel" class="form-control mapel">
                   <option value="">Pilih Mata Pelajaran</option>
+                  <option value="" id="mapel" hidden></option>
                   <?php foreach ($mapel as $m) : ?>
-                    <option value="<?= $m->Id_Mata_Pelajaran; ?>"><?= $m->Mata_Pelajaran; ?></option>
+                    <?php $a = false ?>
+                    <?php foreach ($mapelKelas as $mk) : ?>
+                      <?php if ($m->Id_Mata_Pelajaran === $mk->Id_Mata_Pelajaran) {
+                        $a = $a || true;
+                      }; ?>
+                    <?php endforeach; ?>
+                    <?php if (!$a) { ?>
+                      <option value="<?= $m->Id_Mata_Pelajaran; ?>"><?= $m->Mata_Pelajaran; ?></option>
+                    <?php }; ?>
                   <?php endforeach; ?>
                 </select>
               </div>
-              <div class="form-group">
-                <label>Guru Mata Pelajaran</label>
-                <select name="guru" class="form-control guru">
-                  <option value="">Pilih Guru Mata Pelajaran</option>
-                  <?php foreach ($user as $u) : ?>
-                    <option value="<?= $u->Id_User; ?>"><?= $u->Nama; ?></option>
-                  <?php endforeach; ?>
-                </select>
-              </div>
+
             </div>
             <div class="modal-footer">
               <input type="hidden" name="id_mapelkelas" class="id_mapelkelas1">
@@ -227,10 +231,13 @@
           const mapel = $(this).data('mapel');
           const guru = $(this).data('guru');
           // Set data to Form Edit
+          $("#mapel").val(mapel);
+          $("#mapel").html($(this).data('nama_mapel'));
           $('.id_mapelkelas1').val(id);
           $('.kelas').val(kelas);
           $('.mapel').val(mapel);
           $('.guru').val(guru);
+          
           // Call Modal Edit
           $('#editModal').modal('show');
         });

@@ -7,7 +7,7 @@
       <h2 class="text-dark font-weight-bold mb-2"> Halaman Mata Pelajaran </h2>
     </div>
     <div class="row">
-      <div class="col-lg-12 grid-margin stretch-card">
+      <div class="col-lg-12 grid-margin stretch-card d-block">
         <div class="card">
           <div class="card-body">
             <h4 class="card-title d-inline">Tabel Daftar Mata Pelajaran</h4>
@@ -19,7 +19,8 @@
               <?php endif; ?>
               <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#addModal">Tambah</button>
             </div>
-
+            <br><br>
+            <h5>Kelompok A</h5>
             <table class="table table-bordered">
               <thead>
                 <tr>
@@ -32,21 +33,103 @@
               <tbody>
                 <?php $i = 1; ?>
                 <?php foreach ($mapel as $m) : ?>
-                  <tr>
-                    <td class="number"> <?= $i++; ?> </td>
-                    <td> <?= $m->Mata_Pelajaran; ?> </td>
-                    <td> <?= $m->Kelompok; ?> </td>
-                    <td> <?= $m->KKM; ?> </td>
-                    <td class="text-center">
-                      <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_mapel="<?= $m->Id_Mata_Pelajaran; ?>" data-mapel="<?= $m->Mata_Pelajaran; ?>" data-kelompok="<?= $m->Kelompok; ?>" data-kkm="<?= $m->KKM; ?>">Edit</button>
-                      <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_mapel="<?= $m->Id_Mata_Pelajaran; ?>">Hapus</button>
-                    </td>
-                  </tr>
+                  <?php if ($m->Kelompok == 'A') { ?>
+                    <tr>
+                      <td class="number"> <?= $i++; ?> </td>
+                      <td> <?= $m->Mata_Pelajaran; ?> </td>
+                      <td style="width:100px;"> <?= $m->Kelompok; ?> </td>
+                      <td style="width:100px;"> <?= $m->KKM; ?> </td>
+                      <td class="text-center">
+                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_mapel="<?= $m->Id_Mata_Pelajaran; ?>" data-mapel="<?= $m->Mata_Pelajaran; ?>" data-kelompok="<?= $m->Kelompok; ?>" data-kkm="<?= $m->KKM; ?>">Edit</button>
+                        <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_mapel="<?= $m->Id_Mata_Pelajaran; ?>">Hapus</button>
+                      </td>
+                    </tr>
+                  <?php }; ?>
                 <?php endforeach; ?>
               </tbody>
             </table>
           </div>
         </div>
+
+        <div class="card">
+          <div class="card-body" style="padding-top:0px;">
+            <!-- <h4 class="card-title d-inline">Tabel Daftar Mata Pelajaran</h4> -->
+            <h5>Kelompok B</h5>
+            <table class="table table-bordered">
+              <tbody>
+                <?php $i = 1; ?>
+                <?php foreach ($mapel as $m) : ?>
+                  <?php if ($m->Kelompok == 'B') { ?>
+                    <tr>
+                      <td class="number"> <?= $i++; ?> </td>
+                      <td> <?= $m->Mata_Pelajaran; ?> </td>
+                      <td style="width:100px;"> <?= $m->Kelompok; ?> </td>
+                      <td style="width:100px;"> <?= $m->KKM; ?> </td>
+                      <td class="text-center">
+                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_mapel="<?= $m->Id_Mata_Pelajaran; ?>" data-mapel="<?= $m->Mata_Pelajaran; ?>" data-kelompok="<?= $m->Kelompok; ?>" data-kkm="<?= $m->KKM; ?>">Edit</button>
+                        <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_mapel="<?= $m->Id_Mata_Pelajaran; ?>">Hapus</button>
+                      </td>
+                    </tr>
+                  <?php }; ?>
+                <?php endforeach; ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body" style="padding-top:0px;">
+            <!-- <h4 class="card-title d-inline">Tabel Daftar Mata Pelajaran</h4> -->
+            <h5>Kelompok C</h5>
+            <table class="table table-bordered">
+              <tbody>
+                <?php $i = 1; ?>
+                <?php foreach ($mapel as $m) : ?>
+                  <?php if ($m->Kelompok == 'C') { ?>
+                    <tr>
+                      <td class="number"> <?= $i++; ?> </td>
+                      <td> <?= $m->Mata_Pelajaran; ?> </td>
+                      <td style="width:100px;"> <?= $m->Kelompok; ?> </td>
+                      <td style="width:100px;"> <?= $m->KKM; ?> </td>
+                      <td class="text-center">
+                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_mapel="<?= $m->Id_Mata_Pelajaran; ?>" data-mapel="<?= $m->Mata_Pelajaran; ?>" data-kelompok="<?= $m->Kelompok; ?>" data-kkm="<?= $m->KKM; ?>">Edit</button>
+                        <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_mapel="<?= $m->Id_Mata_Pelajaran; ?>">Hapus</button>
+                      </td>
+                    </tr>
+                  <?php }; ?>
+                <?php endforeach; ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body" style="padding-top:0px;">
+            <!-- <h4 class="card-title d-inline">Tabel Daftar Mata Pelajaran</h4> -->
+            <h5>Kelompok D</h5>
+            <table class="table table-bordered">
+              <tbody>
+                <?php $i = 1; ?>
+                <?php foreach ($mapel as $m) : ?>
+                  <?php if ($m->Kelompok == 'D') { ?>
+                    <tr>
+                      <td class="number"> <?= $i++; ?> </td>
+                      <td> <?= $m->Mata_Pelajaran; ?> </td>
+                      <td style="width:100px;"> <?= $m->Kelompok; ?> </td>
+                      <td style="width:100px;"> <?= $m->KKM; ?> </td>
+                      <td class="text-center">
+                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_mapel="<?= $m->Id_Mata_Pelajaran; ?>" data-mapel="<?= $m->Mata_Pelajaran; ?>" data-kelompok="<?= $m->Kelompok; ?>" data-kkm="<?= $m->KKM; ?>">Edit</button>
+                        <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_mapel="<?= $m->Id_Mata_Pelajaran; ?>">Hapus</button>
+                      </td>
+                    </tr>
+                  <?php }; ?>
+                <?php endforeach; ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
       </div>
     </div>
 
