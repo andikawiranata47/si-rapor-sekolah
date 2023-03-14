@@ -227,8 +227,8 @@
               <div class="form-group">
                 <select name="keputusan" class="form-control pr-xl-5 keputusan" id="keputusan2">
                   <option value="">Pilih Keputusan</option>
-                  <option value="Dapat melanjutkan">Naik kelas</option>
-                  <option value="Tidak dapat melanjutkan">Tinggal di kelas</option>
+                  <option value="Naik Kelas">Naik kelas</option>
+                  <option value="Tidak Naik Kelas">Tinggal di kelas</option>
                 </select>
               </div>
 

@@ -5,18 +5,20 @@ namespace App\Controllers;
 use App\Models\RaporModel;
 use App\Models\KelasModel;
 use App\Models\GeneralModel;
+use App\Models\MasterUserModel;
 
 use \Dompdf\Dompdf;
 
 class Rapor extends BaseController
 {
-  protected $raporModel, $kelasModel, $generalModel, $dompdf;
+  protected $raporModel, $kelasModel, $generalModel, $dompdf, $userModel;
   public function __construct()
   {
     $this->raporModel = new RaporModel();
     $this->kelasModel = new KelasModel();
     $this->generalModel = new GeneralModel();
     $this->dompdf = new Dompdf();
+    $this->userModel = new MasterUserModel();
   }
 
   public function index()
@@ -86,6 +88,9 @@ class Rapor extends BaseController
     $semester = session()->get('semester');
     $tahun = session()->get('tahun');
 
+    $catatan = $this->request->getPost('catatan');
+    $keputusan = $this->request->getPost('keputusan');
+
     $rapor1 = $this->raporModel->getRaporMapel($wali, $id, $semester, $tahun)->getResult();
     $rapor2 = $this->raporModel->getRaporPrakerin($wali, $id, $semester, $tahun)->getResult();
     $rapor3 = $this->raporModel->getRaporEkstra($wali, $id, $semester, $tahun)->getResult();
@@ -101,7 +106,10 @@ class Rapor extends BaseController
       'raporKepribadian' => $rapor4,
       'siswa' => $siswa,
       'id'    => $id,
-      'general'    => $general
+      'general'    => $general,
+      'catatan'    => $catatan,
+      'keputusan'    => $keputusan,
+      'user' => $this->userModel->getUser()->getResult()
     ];
     $html =  view('pages/print_rapor', $data);
     $this->dompdf->loadHtml($html);

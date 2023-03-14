@@ -405,7 +405,7 @@
     <table class="table table-bordered">
       <tbody>
         <tr>
-          <td style="height: 30px;"></td>
+          <td style="height: 30px;"><?= $catatan; ?></td>
         </tr>
       </tbody>
     </table>
@@ -417,14 +417,86 @@
       <table class="table table-bordered">
         <tbody>
           <tr>
-            <td style="height: 30px;">Dengan ini siswa bersangkutan dinyatakan: <b><?php  ?></b></td>
+            <td style="height: 30px;">Dengan ini siswa bersangkutan dinyatakan: <b><?= $keputusan; ?></b></td>
           </tr>
         </tbody>
       </table>
     </div>
   <?php }; ?>
 
-  
+  <div class="row">
+    <div class="col-lg-12 grid-margin stretch-card d-block">
+      <table class="table table-borderless mb-4 p-5" style="border: none; padding:2px 5px; margin-top:30px;">
+        <tbody>
+          <tr>
+            <td style="border: none; width:33%;"></td>
+            <td style="border: none; width:34%;"></td>
+            <td style="text-align:left; border: none; padding:2px 5px; width:33%;">Pare, </td>
+          </tr>
+          <tr>
+            <th style="text-align:left; border: none; padding:2px 5px;"> Mengetahui </th>
+            <td style="border: none;"></td>
+            <th style="text-align:left; border: none; padding:2px 5px;"> Mengetahui </th>
+          </tr>
+          <tr>
+            <th style="text-align:left; border: none; padding:2px 5px;"> Orang Tua/Wali </th>
+            <td style="border: none;"></td>
+            <th style="text-align:left; border: none; padding:2px 5px;"> Wali Kelas </th>
+          </tr>
+          <tr>
+            <td style="border: none; height:60px;"></td>
+          </tr>
+          <tr>
+            <td style="text-align:left; border: none; padding:2px 5px;"> ......................... </td>
+            <td style="border: none;"></td>
+            <?php foreach ($user as $u) : ?>
+              <?php if ($u->Id_User == session()->get('wali_kelas')) { ?>
+                <th style="text-align:left; border: none; padding:2px 5px;"> <?= $u->Nama; ?> </th>
+              <?php }; ?>
+            <?php endforeach; ?>
+
+          </tr>
+          <tr>
+            <th style="border: none;"></th>
+            <td style="border: none;"></td>
+            <?php foreach ($user as $u) : ?>
+              <?php if ($u->Id_User == session()->get('wali_kelas')) { ?>
+                <td style="text-align:left; border: none; padding:2px 5px;"> NIP. <?= $u->NIP; ?> </td>
+              <?php }; ?>
+            <?php endforeach; ?>
+          </tr>
+          <tr>
+            <td style="border: none;"></td>
+            <th style="text-align:left; border: none; padding:2px 5px;"> Mengetahui </th>
+            <td style="border: none;"></td>
+          </tr>
+          <tr>
+            <td style="border: none;"></td>
+            <th style="text-align:left; border: none; padding:2px 5px;"> Kepala Sekolah </th>
+            <td style="border: none;"></td>
+          </tr>
+          <tr>
+            <td style="border: none; height:60px;"></td>
+          </tr>
+          <tr>
+            <td style="border: none;"></td>
+            <?php foreach ($general as $g) : ?>
+              <th style="text-align:left; border: none; padding:2px 5px;"> <?= $g->Nama_Kepsek; ?> </th>
+            <?php endforeach; ?>
+            <td style="border: none;"></td>
+          </tr>
+          <tr>
+            <td style="border: none;"></td>
+            <?php foreach ($general as $g) : ?>
+              <td style="text-align:left; border: none; padding:2px 5px;"> NIP. <?= $g->NIP_Kepsek; ?> </td>
+            <?php endforeach; ?>
+            <td style="border: none;"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 </div>
 
 
