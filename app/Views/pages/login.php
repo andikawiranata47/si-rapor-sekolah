@@ -36,8 +36,8 @@
               <div class="brand-logo">
                 <img src="../../assets/images/logo-dark.svg">
               </div>
-              <h4>Hello! let's get started</h4>
-              <h6 class="font-weight-light">Sign in to continue.</h6>
+              <!-- <h4>Silakan Login untuk Masuk ke dalam Sistem</h4> -->
+              <!-- <h6 class="font-weight-light">Sign in to continue.</h6> -->
               <?php if (session()->getFlashdata('pesan')) : ?>
                 <div class="alert alert-danger"><?= session()->getFlashdata('pesan') ?></div>
               <?php endif; ?>
