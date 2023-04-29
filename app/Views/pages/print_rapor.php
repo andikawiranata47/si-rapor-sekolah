@@ -476,19 +476,28 @@
             <td style="border: none;"></td>
           </tr>
           <tr>
-            <td style="border: none; height:60px;"></td>
+            <td style="border: none; height:60px;">
+            <img src="https://www.w3schools.com/images/picture.jpg" alt="image">
+            <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('https://www.w3schools.com/images/picture.jpg'))) }}">
+            </td>
           </tr>
           <tr>
             <td style="border: none;"></td>
-            <?php foreach ($general as $g) : ?>
-              <th style="text-align:left; border: none; padding:2px 5px;"> <?= $g->Nama_Kepsek; ?> </th>
+            <?php foreach ($user as $u) : ?>
+              <?php if (is_int(strpos($u->Akses, 'Kepala Sekolah'))) { ?>
+                <th style="text-align:left; border: none; padding:2px 5px;"> <?= $u->Nama; ?> </th>
+              <?php }; ?>
+
             <?php endforeach; ?>
             <td style="border: none;"></td>
           </tr>
           <tr>
             <td style="border: none;"></td>
-            <?php foreach ($general as $g) : ?>
-              <td style="text-align:left; border: none; padding:2px 5px;"> NIP. <?= $g->NIP_Kepsek; ?> </td>
+            <?php foreach ($user as $u) : ?>
+              <?php if (is_int(strpos($u->Akses, 'Kepala Sekolah'))) { ?>
+                <td style="text-align:left; border: none; padding:2px 5px;"> NIP. <?= $u->NIP; ?> </td>
+              <?php }; ?>
+
             <?php endforeach; ?>
             <td style="border: none;"></td>
           </tr>

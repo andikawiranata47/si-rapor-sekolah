@@ -20,7 +20,7 @@ class RaporModel extends Model
   //     ->get();
   //   return $query;
   // }
-  
+
   public function getRaporMapel($wali, $id, $semester, $tahun)
   {
     $query = $this->db->table('siswa')
@@ -84,9 +84,16 @@ class RaporModel extends Model
     return $query;
   }
 
-  // public function validRapor($data, $id)
-  // {
-  //   $query = $this->db->table('rapor')->update($data, array('Id_Siswa' => $id));
-  //   return $query;
-  // }
+  public function getValid()
+  {
+    $query = $this->db->table('rapor')
+      ->get();
+    return $query;
+  }
+
+  public function addValid($data)
+  {
+    $query = $this->db->table('rapor')->insert($data);
+    return $query;
+  }
 }

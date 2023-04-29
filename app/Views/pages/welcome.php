@@ -26,7 +26,7 @@
                   </p>
                 <?php endif; ?>
                 <?php foreach ($general as $g) : ?>
-                  <button type="button" class="btn btn-success mb-2 btn-edit" data-toggle="modal" data-target="#editModal" data-id_general="<?= $g->Id_General; ?>" data-nama_sekolah="<?= $g->Nama_Sekolah; ?>" data-nama_kepsek="<?= $g->Nama_Kepsek; ?>" data-nip="<?= $g->NIP_Kepsek; ?>" data-semester="<?= $g->Semester; ?>" data-tahun_ajaran="<?= $g->Tahun_Ajaran; ?>">Edit</button>
+                  <button type="button" class="btn btn-success mb-2 btn-edit" data-toggle="modal" data-target="#editModal" data-id_general="<?= $g->Id_General; ?>" data-nama_sekolah="<?= $g->Nama_Sekolah; ?>"  data-semester="<?= $g->Semester; ?>" data-tahun_ajaran="<?= $g->Tahun_Ajaran; ?>">Edit</button>
                 <?php endforeach; ?>
               </div>
               <table class="table table-borderless mt-3">
@@ -89,14 +89,14 @@
                 <label>Nama Sekolah</label>
                 <input type="text" class="form-control nama_sekolah" name="nama_sekolah" placeholder="" value="" required>
               </div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label>Nama Kepala Sekolah</label>
                 <input type="text" class="form-control nama_kepsek" name="nama_kepsek" placeholder="" value="" required>
               </div>
               <div class="form-group">
                 <label>NIP</label>
                 <input type="number" class="form-control nip" name="nip" placeholder="" value="" required>
-              </div>
+              </div> -->
               <div class="form-group">
                 <label>Semester</label>
                 <!-- <input type="text" class="form-control semester" name="semester" placeholder="" value="" required> -->
@@ -132,15 +132,15 @@
           // get data from button edit
           const id = $(this).data('id_general');
           const sekolah = $(this).data('nama_sekolah');
-          const kepsek = $(this).data('nama_kepsek');
-          const nip = $(this).data('nip');
+          // const kepsek = $(this).data('nama_kepsek');
+          // const nip = $(this).data('nip');
           const semester = $(this).data('semester');
           const tahun = $(this).data('tahun_ajaran');
           // Set data to Form Edit
           $('.id_general').val(id);
           $('.nama_sekolah').val(sekolah);
-          $('.nama_kepsek').val(kepsek);
-          $('.nip').val(nip);
+          // $('.nama_kepsek').val(kepsek);
+          // $('.nip').val(nip);
           $('.semester').val(semester);
           $('.tahun_ajaran').val(tahun);
           // Call Modal Edit

@@ -31,8 +31,8 @@ class Welcome extends BaseController
         $id = $this->request->getPost('id_general');
         $data = array(
             'Nama_Sekolah' => $this->request->getPost('nama_sekolah'),
-            'Nama_Kepsek' => $this->request->getPost('nama_kepsek'),
-            'NIP_Kepsek' => $this->request->getPost('nip'),
+            // 'Nama_Kepsek' => $this->request->getPost('nama_kepsek'),
+            // 'NIP_Kepsek' => $this->request->getPost('nip'),
             'Semester' => $this->request->getPost('semester'),
             'Tahun_Ajaran' => $this->request->getPost('tahun_ajaran'),
         );

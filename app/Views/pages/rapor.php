@@ -211,7 +211,7 @@
           </div>
         </div>
 
-        <form class="" action="/rapor/printpdf" target="_blank" method="post">
+        <form class="" action="/rapor/printpdf"  method="post">
           <?= csrf_field(); ?>
           <div class="card">
             <div class="card-body" style="padding-top: 0px; padding-bottom: 0px">
@@ -236,7 +236,9 @@
                   <input type="text" name="nama_siswa" value="<?= $s->Nama; ?>" hidden>
                 <?php }; ?>
               <?php endforeach; ?>
-              <button type="submit" class="btn btn-success mb-2 float-right"><i class="mdi mdi-printer" style="font-size: 15px;"></i>&nbsp;&nbsp;&nbsp;Cetak&nbsp;&nbsp;&nbsp;</button>
+              
+              <button type="submit" class="btn btn-success mb-2 float-right" formtarget="_blank"><i class="mdi mdi-printer" style="font-size: 15px;"></i>&nbsp;&nbsp;&nbsp;Cetak&nbsp;&nbsp;&nbsp;</button>
+              <button type="submit" class="btn btn-primary mb-2 float-right mr-3" formaction="/rapor/validasi"><i class="mdi mdi-clipboard-text" style="font-size: 15px;"></i>&nbsp;&nbsp;&nbsp;Ajukan Verifikasi</button>
             </div>
           </div>
         </form>

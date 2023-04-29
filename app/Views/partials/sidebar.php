@@ -185,6 +185,28 @@ $CurPageURL = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
                     </li>
                 <?php } ?>
             <?php } ?>
+
+            <?php if (
+                is_int(strpos(session()->get('akses'), 'Kepala Sekolah'))
+                // || is_int(strpos(session()->get('akses'), 'Admin'))
+            ) { ?>
+                <li class="nav-item nav-category">Kepala Sekolah</li>
+                <?php if (strpos($CurPageURL, '/validasirapor/get')) { ?>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/validasirapor">
+                            <span class="icon-bg"><i class="mdi mdi-table menu-icon"></i></span>
+                            <span class="menu-title">Validasi Rapor</span>
+                        </a>
+                    </li>
+                <?php } else { ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/validasirapor">
+                            <span class="icon-bg"><i class="mdi mdi-table menu-icon"></i></span>
+                            <span class="menu-title">Validasi Rapor</span>
+                        </a>
+                    </li>
+                <?php } ?>
+            <?php }; ?>
         </ul>
     </nav>
     <!-- partial -->

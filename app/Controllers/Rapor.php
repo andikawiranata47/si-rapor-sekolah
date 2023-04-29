@@ -8,6 +8,7 @@ use App\Models\GeneralModel;
 use App\Models\MasterUserModel;
 
 use \Dompdf\Dompdf;
+use \Dompdf\Options;
 
 class Rapor extends BaseController
 {
@@ -19,6 +20,20 @@ class Rapor extends BaseController
     $this->generalModel = new GeneralModel();
     $this->dompdf = new Dompdf();
     $this->userModel = new MasterUserModel();
+
+
+
+    // $options = new Options();
+    // $options->set('isRemoteEnabled', TRUE);
+    // $this->dompdf = new Dompdf($options);
+    // $contxt = stream_context_create([
+    //   'ssl' => [
+    //     'verify_peer' => FALSE,
+    //     'verify_peer_name' => FALSE,
+    //     'allow_self_signed' => TRUE
+    //   ]
+    // ]);
+    // $this->dompdf->setHttpContext($contxt);
   }
 
   public function index()
@@ -114,10 +129,26 @@ class Rapor extends BaseController
     ];
     $html =  view('pages/print_rapor', $data);
     $this->dompdf->loadHtml($html);
+    // $this->dompdf->set_option('isRemoteEnabled', TRUE);
     $this->dompdf->setPaper('A4', 'portrait');
     $this->dompdf->render();
     $this->dompdf->stream("rapor $nama_siswa.pdf", array(
       "Attachment" => false
     ));
+  }
+
+  public function validasi()
+  {
+    $id = session()->get('id');
+    $semester = session()->get('semester');
+    $tahun = session()->get('tahun');
+    $data = [
+      'semester' => $semester,
+      'tahun_ajaran' => $tahun,
+      'id_siswa' => $id
+    ];
+    $this->raporModel->addValid($data);
+    session()->setFlashdata('pesan', 'Data berhasil ditambahkan');
+    return redirect()->to('/rapor/get');
   }
 }
