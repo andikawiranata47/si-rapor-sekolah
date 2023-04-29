@@ -84,9 +84,9 @@ class RaporModel extends Model
     return $query;
   }
 
-  public function validRapor($data, $id)
-  {
-    $query = $this->db->table('rapor')->update($data, array('Id_Siswa' => $id));
-    return $query;
-  }
+  // public function validRapor($data, $id)
+  // {
+  //   $query = $this->db->table('rapor')->update($data, array('Id_Siswa' => $id));
+  //   return $query;
+  // }
 }

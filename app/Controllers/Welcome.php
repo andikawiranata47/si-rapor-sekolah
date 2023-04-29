@@ -3,21 +3,25 @@
 namespace App\Controllers;
 
 use App\Models\GeneralModel;
+use App\Models\MasterUserModel;
 
 class Welcome extends BaseController
 {
-    protected $generalModel;
+    protected $generalModel, $masterUserModel;
     public function __construct()
     {
         $this->generalModel = new GeneralModel();
+        $this->masterUserModel = new MasterUserModel();
     }
 
     public function index()
     {
         $general = $this->generalModel->getGeneral()->getResult();
+        $user = $this->masterUserModel->getUser()->getResult();
         $data = [
             'judul' => 'Welcome',
-            'general' => $general
+            'general' => $general,
+            'user' => $user
         ];
         return view('pages/welcome', $data);
     }

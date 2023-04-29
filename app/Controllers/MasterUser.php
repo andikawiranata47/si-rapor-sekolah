@@ -25,21 +25,48 @@ class MasterUser extends BaseController
 
     public function save()
     {
-        if ($this->request->getPost('akses') !== null) {
-            $data = [
-                'email' => $this->request->getPost('email'),
-                'password' => $this->request->getPost('password'),
-                'nama' => $this->request->getPost('nama'),
-                'nip' => $this->request->getPost('nip'),
-                'akses' => implode(", ", $this->request->getPost('akses'))
-            ];
-        } else {
-            $data = [
-                'email' => $this->request->getPost('email'),
-                'password' => $this->request->getPost('password'),
-                'nama' => $this->request->getPost('nama'),
-                'nip' => $this->request->getPost('nip')
-            ];
+        $ttd = $this->request->getFile('ttd');
+
+        if ($ttd != null) {
+            $ttd->move('uploads/ttd/', $ttd->getName());
+            if ($this->request->getPost('akses') !== null) {
+                $data = [
+                    'email' => $this->request->getPost('email'),
+                    'password' => $this->request->getPost('password'),
+                    'nama' => $this->request->getPost('nama'),
+                    'nip' => $this->request->getPost('nip'),
+                    'ttd' => $ttd->getName(),
+                    'akses' => implode(", ", $this->request->getPost('akses'))
+                ];
+            } else {
+                $data = [
+                    'email' => $this->request->getPost('email'),
+                    'password' => $this->request->getPost('password'),
+                    'nama' => $this->request->getPost('nama'),
+                    'ttd' => $ttd->getName(),
+                    'nip' => $this->request->getPost('nip')
+                ];
+            }
+        }
+        if ($ttd == null) {
+            if ($this->request->getPost('akses') !== null) {
+                $data = [
+                    'email' => $this->request->getPost('email'),
+                    'password' => $this->request->getPost('password'),
+                    'nama' => $this->request->getPost('nama'),
+                    'nip' => $this->request->getPost('nip'),
+                    // 'ttd' => $ttd->getName(),
+                    'akses' => implode(", ", $this->request->getPost('akses'))
+                ];
+            } else {
+                $data = [
+                    'email' => $this->request->getPost('email'),
+                    'password' => $this->request->getPost('password'),
+                    'nama' => $this->request->getPost('nama'),
+                    // 'ttd' => $ttd->getName(),
+                    'nip' => $this->request->getPost('nip')
+                ];
+            }
         }
 
         $this->masterUserModel->saveUser($data);
@@ -49,13 +76,21 @@ class MasterUser extends BaseController
 
     public function edit()
     {
+        $old = $this->request->getPost('ttd_old');
+        unlink("uploads/ttd/$old");
+        $ttd = $this->request->getFile('ttd');
+
         $id = $this->request->getPost('id_user');
+        if (file_exists($ttd)) {
+            $ttd->move('uploads/ttd/', $ttd->getName());
+        }
         if ($this->request->getPost('akses') !== null) {
             $data = [
                 'email' => $this->request->getPost('email'),
                 'password' => $this->request->getPost('password'),
                 'nama' => $this->request->getPost('nama'),
                 'nip' => $this->request->getPost('nip'),
+                'ttd' => $ttd->getName(),
                 'akses' => implode(", ", $this->request->getPost('akses'))
             ];
         } else {
@@ -63,9 +98,11 @@ class MasterUser extends BaseController
                 'email' => $this->request->getPost('email'),
                 'password' => $this->request->getPost('password'),
                 'nama' => $this->request->getPost('nama'),
+                'ttd' => $ttd->getName(),
                 'nip' => $this->request->getPost('nip')
             ];
         }
+
         $this->masterUserModel->updateUser($data, $id);
         session()->setFlashdata('pesan', 'Data berhasil diubah');
         return redirect()->to('/masteruser');

@@ -41,13 +41,22 @@
                     <tr>
                       <th> Nama Kepala Sekolah </th>
                       <td>:</td>
-                      <td> <?= $g->Nama_Kepsek; ?> </td>
+                      <?php foreach ($user as $u) :
+                        if (is_int(strpos($u->Akses, 'Kepala Sekolah'))) { ?>
+                          <td> <?= $u->Nama; ?> </td>
+                      <?php };
+                      endforeach; ?>
                     </tr>
                     <tr>
                       <th> NIP </th>
                       <td>:</td>
-                      <td> <?= $g->NIP_Kepsek; ?> </td>
+                      <?php foreach ($user as $u) :
+                        if (is_int(strpos($u->Akses, 'Kepala Sekolah'))) { ?>
+                          <td> <?= $u->NIP; ?> </td>
+                      <?php };
+                      endforeach; ?>
                     </tr>
+
                     <tr>
                       <th> Semester </th>
                       <td>:</td>

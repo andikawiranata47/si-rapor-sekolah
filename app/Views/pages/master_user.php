@@ -25,9 +25,10 @@
                 <tr>
                   <th> No </th>
                   <th> Nama </th>
-                  <th> NIP </th>
+                  <th> NIP/NIK </th>
                   <th> Email </th>
                   <th> Akses </th>
+                  <th> TTD </th>
                   <th> </th>
                 </tr>
               </thead>
@@ -39,9 +40,19 @@
                     <td> <?= $u->Nama; ?> </td>
                     <td> <?= $u->NIP; ?> </td>
                     <td> <?= $u->Email; ?> </td>
-                    <td style="max-width: 200px; white-space: normal !important;"> <?= $u->Akses; ?> </td>
+                    <td style="max-width: 120px; white-space: normal !important;">
+                      <?php foreach (explode(", ", $u->Akses) as $a) :
+                        echo $a; ?>
+                        <br>
+                      <?php endforeach; ?>
+                    </td>
+                    <td style="width: 50px;">
+                      <?php if ($u->TTD != null) { ?>
+                        <i class="mdi mdi-check"></i>
+                      <?php }; ?>
+                    </td>
                     <td class="text-center">
-                      <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_user="<?= $u->Id_User; ?>" data-email="<?= $u->Email; ?>" data-password="<?= $u->Password; ?>" data-nama="<?= $u->Nama; ?>" data-nip="<?= $u->NIP; ?>" data-akses="<?= $u->Akses; ?>">Edit</button>
+                      <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_user="<?= $u->Id_User; ?>" data-email="<?= $u->Email; ?>" data-password="<?= $u->Password; ?>" data-nama="<?= $u->Nama; ?>" data-nip="<?= $u->NIP; ?>" data-akses="<?= $u->Akses; ?>" data-ttd="<?= $u->TTD; ?>">Edit</button>
                       <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_user="<?= $u->Id_User; ?>">Hapus</button>
                     </td>
                   </tr>
@@ -80,6 +91,10 @@
                 <input type="text" class="form-control" name="password" placeholder="" required>
               </div>
               <div class="form-group">
+                <label>Tanda Tangan</label>
+                <input type="file" class="form-control" name="ttd" placeholder="" accept="image/*">
+              </div>
+              <div class="form-group">
                 <!-- <label>Admin</label> -->
                 <!-- <select name="hak_akses" class="form-control hak_akses" required>
                   <option value="">Pilih</option>
@@ -91,6 +106,10 @@
                   <option value="Wali Kelas">Wali Kelas</option>
                 </select> -->
                 <!-- <input type="checkbox" class="admin" name="admin" value="1" required> -->
+                <div class="form-check form-check-flat form-check-primary">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input akses" name="akses[]" value="Kepala Sekolah"> Kepala Sekolah </label>
+                </div>
                 <div class="form-check form-check-flat form-check-primary">
                   <label class="form-check-label">
                     <input type="checkbox" class="form-check-input akses" name="akses[]" value="Admin"> Admin </label>
@@ -129,7 +148,7 @@
     <!-- End Modal Tambah -->
 
     <!-- Modal Edit -->
-    <form action="/MasterUser/edit/" method="post">
+    <form action="/MasterUser/edit/" method="post" enctype="multipart/form-data">
       <?= csrf_field(); ?>
       <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -154,7 +173,11 @@
                 <label>Password</label>
                 <input type="text" class="form-control password" name="password" placeholder="" value="" required>
               </div>
-
+              <div class="form-group">
+                <label>Tanda Tangan</label>
+                <input type="file" class="form-control" name="ttd" placeholder="" accept="image/*">
+                <input type="text" class="form-control ttd_old" name="ttd_old" placeholder="" value="" hidden>
+              </div>
               <div class="form-group">
                 <label>Akses</label><br>
                 <!-- <select name="akses" class="form-control akses" required>
@@ -168,6 +191,10 @@
                   <option value="1">1</option>
                   <option value="0">0</option>
                 </select> -->
+                <div class="form-check form-check-flat form-check-primary">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input akses" name="akses[]" value="Kepala Sekolah"> Kepala Sekolah </label>
+                </div>
                 <div class="form-check form-check-flat form-check-primary">
                   <label class="form-check-label">
                     <input type="checkbox" class="form-check-input akses" name="akses[]" value="Admin"> Admin </label>
@@ -236,12 +263,14 @@
           const password = $(this).data('password');
           const nama = $(this).data('nama');
           const nip = $(this).data('nip');
+          const ttd = $(this).data('ttd');
           // Set data to Form Edit
           $('.id_user1').val(id);
           $('.email').val(email);
           $('.password').val(password);
           $('.nama').val(nama);
           $('.nip').val(nip);
+          $('.ttd_old').val(ttd);
           // Call Modal Edit
           $('#editModal').modal('show');
         });

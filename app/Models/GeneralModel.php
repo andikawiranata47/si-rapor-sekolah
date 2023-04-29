@@ -8,7 +8,7 @@ class GeneralModel extends Model
 {
     protected $table = 'general';
     protected $primaryKey = 'Id_General';
-    protected $allowedFields = ['Nama_Sekolah', 'Nama_Kepsek', 'NIP_Kepsek', 'Semester', 'Tahun_Ajaran'];
+    // protected $allowedFields = ['Nama_Sekolah', 'Nama_Kepsek', 'NIP_Kepsek', 'Semester', 'Tahun_Ajaran'];
 
     public function getGeneral()
     {
