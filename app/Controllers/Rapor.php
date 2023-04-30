@@ -49,6 +49,8 @@ class Rapor extends BaseController
     $rapor3 = $this->raporModel->getRaporEkstra($wali, $id, $semester, $tahun)->getResult();
     $rapor4 = $this->raporModel->getRaporKepribadian($wali, $id, $semester, $tahun)->getResult();
 
+    $valid = $this->raporModel->getValid2()->getResult();
+
     $siswa = $this->raporModel->pilihSiswa($wali)->getResult();
     $general = $this->generalModel->getGeneral()->getResult();
     $data = [
@@ -59,7 +61,8 @@ class Rapor extends BaseController
       'raporKepribadian' => $rapor4,
       'siswa' => $siswa,
       'id'    => $id,
-      'general'    => $general
+      'general'    => $general,
+      'valid'    => $valid
     ];
     return view('pages/rapor', $data);
   }
@@ -77,6 +80,8 @@ class Rapor extends BaseController
     $rapor3 = $this->raporModel->getRaporEkstra($wali, $id, $semester, $tahun)->getResult();
     $rapor4 = $this->raporModel->getRaporKepribadian($wali, $id, $semester, $tahun)->getResult();
 
+    $valid = $this->raporModel->getValid2()->getResult();
+
     $siswa = $this->raporModel->pilihSiswa($wali)->getResult();
     $general = $this->generalModel->getGeneral()->getResult();
     $data = [
@@ -87,7 +92,8 @@ class Rapor extends BaseController
       'raporKepribadian' => $rapor4,
       'siswa' => $siswa,
       'id'    => $id,
-      'general'    => $general
+      'general'    => $general,
+      'valid'    => $valid
     ];
     session()->set('wali_kelas', session()->get('id_user'));
     session()->set('id', $this->request->getPost('pilih_siswa'));

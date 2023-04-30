@@ -87,6 +87,15 @@ class RaporModel extends Model
   public function getValid()
   {
     $query = $this->db->table('rapor')
+      ->join('siswa', 'siswa.Id_Siswa = rapor.Id_Siswa')
+      ->join('kelas', 'kelas.Id_Kelas = siswa.Id_Kelas')
+      ->where('rapor.Is_Validasi', 0)
+      ->get();
+    return $query;
+  }
+  public function getValid2()
+  {
+    $query = $this->db->table('rapor')
       ->get();
     return $query;
   }
@@ -96,4 +105,18 @@ class RaporModel extends Model
     $query = $this->db->table('rapor')->insert($data);
     return $query;
   }
+
+  public function allValid($data)
+  {
+    $query = $this->db->table('rapor')->update($data);
+    return $query;
+  }
+
+  public function oneValid($data, $id)
+  {
+    $query = $this->db->table('rapor')->update($data, array('Id_Rapor' => $id));
+    return $query;
+  }
+
+
 }
