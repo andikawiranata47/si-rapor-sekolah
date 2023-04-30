@@ -21,7 +21,7 @@
             </div>
             <br><br>
             <h5>Kelompok A</h5>
-            <table class="table table-bordered">
+            <table class="table table-bordered table-responsive-sm">
               <thead>
                 <tr>
                   <th> No </th>
@@ -55,7 +55,7 @@
           <div class="card-body" style="padding-top:0px;">
             <!-- <h4 class="card-title d-inline">Tabel Daftar Mata Pelajaran</h4> -->
             <h5>Kelompok B</h5>
-            <table class="table table-bordered">
+            <table class="table table-bordered table-responsive-sm">
               <tbody>
                 <?php $i = 1; ?>
                 <?php foreach ($mapel as $m) : ?>
@@ -81,7 +81,7 @@
           <div class="card-body" style="padding-top:0px;">
             <!-- <h4 class="card-title d-inline">Tabel Daftar Mata Pelajaran</h4> -->
             <h5>Kelompok C</h5>
-            <table class="table table-bordered">
+            <table class="table table-bordered table-responsive-sm">
               <tbody>
                 <?php $i = 1; ?>
                 <?php foreach ($mapel as $m) : ?>
@@ -107,7 +107,7 @@
           <div class="card-body" style="padding-top:0px;">
             <!-- <h4 class="card-title d-inline">Tabel Daftar Mata Pelajaran</h4> -->
             <h5>Kelompok D</h5>
-            <table class="table table-bordered">
+            <table class="table table-bordered table-responsive-sm">
               <tbody>
                 <?php $i = 1; ?>
                 <?php foreach ($mapel as $m) : ?>

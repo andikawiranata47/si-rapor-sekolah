@@ -20,7 +20,7 @@
               <button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#allModal">Validasi Semua Rapor</button>
             </div>
 
-            <table class="table table-bordered">
+            <table class="table table-bordered table-responsive-sm">
               <thead>
                 <tr>
                   <th> No </th>

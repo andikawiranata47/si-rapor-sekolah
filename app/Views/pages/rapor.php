@@ -72,7 +72,7 @@
                 <?php endif; ?>
               </div>
               <h4 class="card-title mb-2">Tabel Daftar Nilai Mata Pelajaran: Pengetahuan</h4>
-              <table class="table table-bordered">
+              <table class="table table-bordered table-responsive-sm">
                 <thead>
                   <tr>
                     <th> No </th>
@@ -99,7 +99,7 @@
               </table>
 
               <h4 class="card-title mb-2 mt-4">Tabel Daftar Nilai Mata Pelajaran: Keterampilan</h4>
-              <table class="table table-bordered">
+              <table class="table table-bordered table-responsive-sm">
                 <thead>
                   <tr>
                     <th> No </th>
@@ -130,7 +130,7 @@
         <div class="card">
           <div class="card-body" style="padding-top: 0px ;">
             <h4 class="card-title mb-2">Tabel Daftar Nilai Prakerin</h4>
-            <table class="table table-bordered">
+            <table class="table table-bordered table-responsive-sm">
               <thead>
                 <tr>
                   <th> No </th>
@@ -160,7 +160,7 @@
         <div class="card">
           <div class="card-body" style="padding-top: 0px ;">
             <h4 class="card-title mb-2">Tabel Daftar Nilai Ekstrakurikuler</h4>
-            <table class="table table-bordered">
+            <table class="table table-bordered table-responsive-sm">
               <thead>
                 <tr>
                   <th> No </th>
@@ -185,7 +185,7 @@
         <div class="card">
           <div class="card-body" style="padding-top: 0px ;">
             <h4 class="card-title mb-2">Tabel Daftar Nilai Kepribadian & Ketidakhadiran</h4>
-            <table class="table table-bordered">
+            <table class="table table-bordered table-responsive-sm">
               <thead>
                 <tr>
                   <th> No </th>

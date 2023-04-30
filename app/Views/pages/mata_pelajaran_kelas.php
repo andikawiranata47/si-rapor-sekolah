@@ -35,7 +35,7 @@
                 <?php endif; ?>
                 <button type="button" class="btn btn-success mb-2 btn-add" data-toggle="modal" data-target="#addModal" data-kelas="<?= $id; ?>">Tambah</button>
               </div>
-              <table class="table table-bordered">
+              <table class="table table-bordered table-responsive-sm">
                 <thead>
                   <tr>
                     <th> No </th>
