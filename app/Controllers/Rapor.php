@@ -131,7 +131,7 @@ class Rapor extends BaseController
       'general'    => $general,
       'catatan'    => $catatan,
       'keputusan'    => $keputusan,
-      'user' => $this->userModel->getUser()->getResult()
+      'user' => $this->userModel->getUser()->getResult(),
     ];
     $html =  view('pages/print_rapor', $data);
     $this->dompdf->loadHtml($html);

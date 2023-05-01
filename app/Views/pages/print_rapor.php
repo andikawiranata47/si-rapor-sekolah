@@ -444,7 +444,17 @@
             <th style="text-align:left; border: none; padding:2px 5px;"> Wali Kelas </th>
           </tr>
           <tr>
-            <td style="border: none; height:60px;"></td>
+            <td style="border: none;">
+            <td style="border: none;">
+            <td style="border: none; height:60px;">
+
+              <?php foreach ($user as $u) : ?>
+                <?php if ($u->Id_User == session()->get('wali_kelas')) { ?>
+                  <img style="height: 60px;" src="data:image/png;base64,<?php echo base64_encode(file_get_contents(ROOTPATH . '/public//uploads/ttd/' . $u->TTD)) ?>" alt="">
+                <?php }; ?>
+              <?php endforeach; ?>
+
+            </td>
           </tr>
           <tr>
             <td style="text-align:left; border: none; padding:2px 5px;"> ......................... </td>
@@ -476,9 +486,15 @@
             <td style="border: none;"></td>
           </tr>
           <tr>
+            <td style="border: none;">
             <td style="border: none; height:60px;">
-            <img src="https://www.w3schools.com/images/picture.jpg" alt="image">
-            <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path('https://www.w3schools.com/images/picture.jpg'))) }}">
+
+              <?php foreach ($user as $u) : ?>
+                <?php if (is_int(strpos($u->Akses, 'Kepala Sekolah'))) { ?>
+                  <img style="height: 60px;" src="data:image/png;base64,<?php echo base64_encode(file_get_contents(ROOTPATH . '/public//uploads/ttd/' . $u->TTD)) ?>" alt="">
+                <?php }; ?>
+              <?php endforeach; ?>
+
             </td>
           </tr>
           <tr>
