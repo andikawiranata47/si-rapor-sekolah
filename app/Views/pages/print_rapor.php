@@ -449,9 +449,10 @@
             <td style="border: none; height:60px;">
 
               <?php foreach ($user as $u) : ?>
-                <?php if ($u->Id_User == session()->get('wali_kelas')) { ?>
+                <?php if ($u->Id_User == session()->get('wali_kelas')) { 
+                  if ($u->TTD != null) {?>
                   <img style="height: 60px;" src="data:image/png;base64,<?php echo base64_encode(file_get_contents(ROOTPATH . '/public//uploads/ttd/' . $u->TTD)) ?>" alt="">
-                <?php }; ?>
+                <?php };}; ?>
               <?php endforeach; ?>
 
             </td>
@@ -490,9 +491,10 @@
             <td style="border: none; height:60px;">
 
               <?php foreach ($user as $u) : ?>
-                <?php if (is_int(strpos($u->Akses, 'Kepala Sekolah'))) { ?>
+                <?php if (is_int(strpos($u->Akses, 'Kepala Sekolah'))) { 
+                  if ($u->TTD != null) {?>
                   <img style="height: 60px;" src="data:image/png;base64,<?php echo base64_encode(file_get_contents(ROOTPATH . '/public//uploads/ttd/' . $u->TTD)) ?>" alt="">
-                <?php }; ?>
+                <?php };}; ?>
               <?php endforeach; ?>
 
             </td>
