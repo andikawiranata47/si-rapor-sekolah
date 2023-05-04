@@ -95,7 +95,7 @@
 
               <div class="form-group">
                 <label>Mata Pelajaran</label>
-                <select name="mapel" class="form-control">
+                <select name="mapel" class="form-control" required>
                   <option value="">Pilih Mata Pelajaran</option>
 
                   <?php foreach ($mapel as $m) : ?>
@@ -152,7 +152,7 @@
               </div>
               <div class="form-group">
                 <label>Mata Pelajaran</label>
-                <select name="mapel" class="form-control mapel">
+                <select name="mapel" class="form-control mapel" required>
                   <option value="">Pilih Mata Pelajaran</option>
                   <option value="" id="mapel" hidden></option>
                   <?php foreach ($mapel as $m) : ?>

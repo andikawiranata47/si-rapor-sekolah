@@ -25,14 +25,14 @@ class MasterUser extends BaseController
 
     public function save()
     {
-        $old = $this->request->getPost('ttd_old');
+        // $old = $this->request->getPost('ttd_old');
 
         $ttd = $this->request->getFile('ttd');
 
         // $id = $this->request->getPost('id_user');
         if (file_exists($ttd)) {
             $ttd->move('uploads/ttd/', $ttd->getName());
-            unlink("uploads/ttd/$old");
+            // unlink("uploads/ttd/$old");
         }
         if ($this->request->getPost('akses') !== null) {
             $data = [

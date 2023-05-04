@@ -49,7 +49,7 @@ class Login extends BaseController
                 return redirect()->to('/login');
             }
         } else {
-            $session->setFlashdata('pesan', 'Email tidak ditemukan');
+            $session->setFlashdata('pesan', 'Email tidak terdaftar');
             return redirect()->to('/login');
         }
     }
