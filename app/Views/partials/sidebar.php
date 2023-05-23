@@ -23,7 +23,7 @@ $CurPageURL = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
                 <li class="nav-item">
                     <a class="nav-link" href="/masteruser">
                         <span class="icon-bg"><i class="mdi mdi-account menu-icon"></i></span>
-                        <span class="menu-title">Master User</span>
+                        <span class="menu-title">User</span>
                     </a>
                 </li>
                 <li class="nav-item">

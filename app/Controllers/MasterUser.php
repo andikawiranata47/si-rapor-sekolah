@@ -17,7 +17,7 @@ class MasterUser extends BaseController
     {
         $user = $this->masterUserModel->getUser()->getResult();
         $data = [
-            'judul' => 'Master User',
+            'judul' => 'User',
             'user' => $user,
         ];
         return view('pages/master_user', $data);
