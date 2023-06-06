@@ -22,7 +22,7 @@
                   <input type="text" class="form-control mx-2 pilih_tahun" style="width: 120px;" name="" value="<?= $g->Tahun_Ajaran; ?>" disabled>
                   <input type="text" class="form-control mx-2 pilih_tahun" name="pilih_tahun" value="<?= $g->Tahun_Ajaran; ?>" hidden>
 
-                  <input type="text" class="form-control mr-2 " style="width: 120px;" name="" id="" value="<?= session()->get('nama'); ?>" disabled>
+                  
                   <input type="text" class="pilih_guru" name="pilih_guru" id="pilih_guru" value="<?= session()->get('id_user'); ?>" hidden>
                 <?php endforeach; ?>
 
