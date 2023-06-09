@@ -240,14 +240,14 @@
               <?php foreach ($valid as $v) : ?>
                 <?php if ($v->Id_Siswa . $v->Semester . $v->Tahun_Ajaran == session()->get('id') . session()->get('semester') . session()->get('tahun') && $v->Is_Validasi == 0) { ?>
                   
-                  <button type="submit" class="btn btn-success mb-2 float-right" formtarget="_blank" disabled><i class="mdi mdi-printer" style="font-size: 15px;"></i>&nbsp;&nbsp;&nbsp;Cetak&nbsp;&nbsp;&nbsp;</button>
-                  <button type="submit" class="btn btn-primary mb-2 float-right mr-3" formaction="/rapor/validasi" disabled><i class="mdi mdi-clipboard-text" style="font-size: 15px;"></i>&nbsp;&nbsp;&nbsp;Validasi</button>
+                  <button type="submit" class="btn btn-success mb-2 float-right" formtarget="_blank" hidden><i class="mdi mdi-printer" style="font-size: 15px;"></i>&nbsp;&nbsp;&nbsp;Cetak&nbsp;&nbsp;&nbsp;</button>
+                  <button type="submit" class="btn btn-primary mb-2 float-right mr-3" formaction="/rapor/validasi" hidden><i class="mdi mdi-clipboard-text" style="font-size: 15px;"></i>&nbsp;&nbsp;&nbsp;Validasi</button>
                   <p style="color: red;" class="float-right mr-5">Status:<br>Menunggu validasi kepala sekolah</p>
                 <?php }; ?>
 
                 <?php if ($v->Id_Siswa . $v->Semester . $v->Tahun_Ajaran == session()->get('id') . session()->get('semester') . session()->get('tahun') && $v->Is_Validasi == 1) { ?>
                   <button type="submit" class="btn btn-success mb-2 float-right" formtarget="_blank"><i class="mdi mdi-printer" style="font-size: 15px;"></i>&nbsp;&nbsp;&nbsp;Cetak&nbsp;&nbsp;&nbsp;</button>
-                  <button type="submit" class="btn btn-primary mb-2 float-right mr-3" formaction="/rapor/validasi" disabled><i class="mdi mdi-clipboard-text" style="font-size: 15px;"></i>&nbsp;&nbsp;&nbsp;Validasi</button>
+                  <button type="submit" class="btn btn-primary mb-2 float-right mr-3" formaction="/rapor/validasi" hidden><i class="mdi mdi-clipboard-text" style="font-size: 15px;"></i>&nbsp;&nbsp;&nbsp;Validasi</button>
                   <p style="color: green;" class="float-right mr-5">Status:<br>Sudah tervalidasi</p>
                 <?php }; ?>
               <?php endforeach; ?>
@@ -262,7 +262,7 @@
               <?php endforeach; ?>
               <?php if (!$a) { ?>
                 
-                <button type="submit" class="btn btn-success mb-2 float-right" formtarget="_blank" disabled><i class="mdi mdi-printer" style="font-size: 15px;"></i>&nbsp;&nbsp;&nbsp;Cetak&nbsp;&nbsp;&nbsp;</button>
+                <button type="submit" class="btn btn-success mb-2 float-right" formtarget="_blank" hidden><i class="mdi mdi-printer" style="font-size: 15px;"></i>&nbsp;&nbsp;&nbsp;Cetak&nbsp;&nbsp;&nbsp;</button>
                 <button type="submit" class="btn btn-primary mb-2 float-right mr-3" formaction="/rapor/validasi"><i class="mdi mdi-clipboard-text" style="font-size: 15px;"></i>&nbsp;&nbsp;&nbsp;Validasi</button>
                 <p style="color: red;" class="float-right mr-5">Status:<br>Belum melakukan validasi nilai rapor</p>
               <?php }; ?>
