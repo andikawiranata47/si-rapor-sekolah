@@ -24,10 +24,9 @@
               <thead>
                 <tr>
                   <th> No </th>
+                  <th> NISN </th>
                   <th> NIS </th>
                   <th> Nama </th>
-                  <th> Jenis Kelamin </th>
-                  <th> Tempat dan Tanggal Lahir </th>
                   <th>  </th>
                   <!-- <th> Jenis Kelamin </th>
                   <th> Tempat Lahir </th>
@@ -57,37 +56,16 @@
                 <?php foreach ($siswa as $s) : ?>
                   <tr>
                     <td class="number"> <?= $i++; ?> </td>
+                    <td> <?= $s->NISN; ?> </td>
                     <td> <?= $s->NIS; ?> </td>
                     <td> <?= $s->Nama; ?> </td>
-                    <td> <?= $s->Jenis_Kelamin; ?> </td>
-                    <td> <?= $s->Tempat_Lahir; ?>, <?= date('d F Y', strtotime("$s->Tanggal_Lahir")); ?> </td>
                     <td class="text-center">
                       <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" 
                       data-id_siswa="<?= $s->Id_Siswa; ?>" 
                       data-nis="<?= $s->NIS; ?>" 
                       data-nisn="<?= $s->NISN; ?>" 
                       data-nama="<?= $s->Nama; ?>" 
-                      data-jenis_kelamin="<?= $s->Jenis_Kelamin; ?>" 
-                      data-tempat_lahir="<?= $s->Tempat_Lahir; ?>" 
-                      data-tanggal_lahir="<?= $s->Tanggal_Lahir; ?>" 
-                      data-agama="<?= $s->Agama; ?>" 
-                      data-alamat="<?= $s->Alamat; ?>"
-                      data-telp="<?= $s->Telp; ?>"
-                      data-sekolah_asal="<?= $s->Sekolah_Asal; ?>"
-                      data-tahun_lulus="<?= $s->Tahun_Lulus; ?>"
-                      data-nomor_lulus="<?= $s->Nomor_Lulus; ?>"
-                      data-diterima_tingkat="<?= $s->Diterima_Tingkat; ?>"
-                      data-diterima_tanggal="<?= $s->Diterima_Tanggal; ?>"
-                      data-nama_ayah="<?= $s->Nama_Ayah; ?>"
-                      data-kerja_ayah="<?= $s->Kerja_Ayah; ?>"
-                      data-nama_ibu="<?= $s->Nama_Ibu; ?>"
-                      data-kerja_ibu="<?= $s->Kerja_Ibu; ?>"
-                      data-alamat_ortu="<?= $s->Alamat_Ortu; ?>"
-                      data-telp_ortu="<?= $s->Telp_Ortu; ?>"
-                      data-nama_wali="<?= $s->Nama_Wali; ?>"
-                      data-alamat_wali="<?= $s->Alamat_Wali; ?>"
-                      data-telp_wali="<?= $s->Telp_Wali; ?>"
-                      data-kerja_wali="<?= $s->Kerja_Wali; ?>"
+                      
                       >Edit</button>
 
                       <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_siswa="<?= $s->Id_Siswa; ?>">Hapus</button>
@@ -123,9 +101,9 @@
                 <label>Nama</label>
                 <input type="text" class="form-control" name="nama" placeholder="" required>
               </div>
-              <div class="form-group">
+
+              <!-- <div class="form-group">
                 <label>Jenis Kelamin</label>
-                <!-- <input type="text" class="form-control" name="jenis_kelamin" placeholder="" required> -->
                 <select name="jenis_kelamin" class="form-control " required>
                   <option value="">Pilih Jenis Kelamin</option>
                   <option value="Laki-laki">Laki-laki</option>
@@ -211,7 +189,7 @@
               <div class="form-group">
                 <label>Nomor Telepon Wali</label>
                 <input type="number" class="form-control" name="telp_wali" placeholder="">
-              </div>
+              </div> -->
             </div>
             <div class="modal-footer">
               <!-- <input type="hidden" name="id_user" class="id_user1"> -->
@@ -246,9 +224,9 @@
                 <label>Nama</label>
                 <input type="text" class="form-control nama" name="nama" placeholder="" required>
               </div>
-              <div class="form-group">
+
+              <!-- <div class="form-group">
                 <label>Jenis Kelamin</label>
-                <!-- <input type="text" class="form-control jenis_kelamin" name="jenis_kelamin" placeholder="" required> -->
                 <select name="jenis_kelamin" class="form-control jenis_kelamin" required>
                   <option value="">Pilih Jenis Kelamin</option>
                   <option value="Laki-laki">Laki-laki</option>
@@ -335,7 +313,7 @@
                 <label>Nomor Telepon Wali</label>
                 <input type="number" class="form-control telp_wali" name="telp_wali" placeholder="">
               </div>
-            </div>
+            </div> -->
             <div class="modal-footer">
               <input type="hidden" name="id_siswa" class="id_siswa1">
               <button type="submit" class="btn btn-success">Simpan</button>
@@ -377,54 +355,54 @@
           const nis = $(this).data('nis');
           const nisn = $(this).data('nisn');
           const nama = $(this).data('nama');
-          const jenis_kelamin = $(this).data('jenis_kelamin');
-          const tempat_lahir = $(this).data('tempat_lahir');
-          const tanggal_lahir = $(this).data('tanggal_lahir');
-          const agama = $(this).data('agama');
-          const alamat = $(this).data('alamat');
-          const telp = $(this).data('telp');
-          const sekolah_asal = $(this).data('sekolah_asal');
-          const tahun_lulus = $(this).data('tahun_lulus');
-          const nomor_lulus = $(this).data('nomor_lulus');
-          const diterima_tingkat = $(this).data('diterima_tingkat');
-          const diterima_tanggal = $(this).data('diterima_tanggal');
-          const nama_ayah = $(this).data('nama_ayah');
-          const kerja_ayah = $(this).data('kerja_ayah');
-          const nama_ibu = $(this).data('nama_ibu');
-          const kerja_ibu = $(this).data('kerja_ibu');
-          const alamat_ortu = $(this).data('alamat_ortu');
-          const telp_ortu = $(this).data('telp_ortu');
-          const nama_wali = $(this).data('nama_wali');
-          const alamat_wali = $(this).data('alamat_wali');
-          const telp_wali = $(this).data('telp_wali');
-          const kerja_wali = $(this).data('kerja_wali');
+          // const jenis_kelamin = $(this).data('jenis_kelamin');
+          // const tempat_lahir = $(this).data('tempat_lahir');
+          // const tanggal_lahir = $(this).data('tanggal_lahir');
+          // const agama = $(this).data('agama');
+          // const alamat = $(this).data('alamat');
+          // const telp = $(this).data('telp');
+          // const sekolah_asal = $(this).data('sekolah_asal');
+          // const tahun_lulus = $(this).data('tahun_lulus');
+          // const nomor_lulus = $(this).data('nomor_lulus');
+          // const diterima_tingkat = $(this).data('diterima_tingkat');
+          // const diterima_tanggal = $(this).data('diterima_tanggal');
+          // const nama_ayah = $(this).data('nama_ayah');
+          // const kerja_ayah = $(this).data('kerja_ayah');
+          // const nama_ibu = $(this).data('nama_ibu');
+          // const kerja_ibu = $(this).data('kerja_ibu');
+          // const alamat_ortu = $(this).data('alamat_ortu');
+          // const telp_ortu = $(this).data('telp_ortu');
+          // const nama_wali = $(this).data('nama_wali');
+          // const alamat_wali = $(this).data('alamat_wali');
+          // const telp_wali = $(this).data('telp_wali');
+          // const kerja_wali = $(this).data('kerja_wali');
                       
           // Set data to Form Edit
           $('.id_siswa1').val(id_siswa);
           $('.nis').val(nis);
           $('.nisn').val(nisn);
           $('.nama').val(nama);
-          $('.jenis_kelamin').val(jenis_kelamin);
-          $('.tempat_lahir').val(tempat_lahir);
-          $('.tanggal_lahir').val(tanggal_lahir);
-          $('.agama').val(agama);
-          $('.alamat').val(alamat);
-          $('.telp').val(telp);
-          $('.sekolah_asal').val(sekolah_asal);
-          $('.tahun_lulus').val(tahun_lulus);
-          $('.nomor_lulus').val(nomor_lulus);
-          $('.diterima_tingkat').val(diterima_tingkat);
-          $('.diterima_tanggal').val(diterima_tanggal);
-          $('.nama_ayah').val(nama_ayah);
-          $('.kerja_ayah').val(kerja_ayah);
-          $('.nama_ibu').val(nama_ibu);
-          $('.kerja_ibu').val(kerja_ibu);
-          $('.alamat_ortu').val(alamat_ortu);
-          $('.telp_ortu').val(telp_ortu);
-          $('.nama_wali').val(nama_wali);
-          $('.alamat_wali').val(alamat_wali);
-          $('.telp_wali').val(telp_wali);
-          $('.kerja_wali').val(kerja_wali);
+          // $('.jenis_kelamin').val(jenis_kelamin);
+          // $('.tempat_lahir').val(tempat_lahir);
+          // $('.tanggal_lahir').val(tanggal_lahir);
+          // $('.agama').val(agama);
+          // $('.alamat').val(alamat);
+          // $('.telp').val(telp);
+          // $('.sekolah_asal').val(sekolah_asal);
+          // $('.tahun_lulus').val(tahun_lulus);
+          // $('.nomor_lulus').val(nomor_lulus);
+          // $('.diterima_tingkat').val(diterima_tingkat);
+          // $('.diterima_tanggal').val(diterima_tanggal);
+          // $('.nama_ayah').val(nama_ayah);
+          // $('.kerja_ayah').val(kerja_ayah);
+          // $('.nama_ibu').val(nama_ibu);
+          // $('.kerja_ibu').val(kerja_ibu);
+          // $('.alamat_ortu').val(alamat_ortu);
+          // $('.telp_ortu').val(telp_ortu);
+          // $('.nama_wali').val(nama_wali);
+          // $('.alamat_wali').val(alamat_wali);
+          // $('.telp_wali').val(telp_wali);
+          // $('.kerja_wali').val(kerja_wali);
           // Call Modal Edit
           $('#editModal').modal('show');
         });

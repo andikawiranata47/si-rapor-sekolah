@@ -7,74 +7,72 @@
       <h2 class="text-dark font-weight-bold mb-3"> Selamat Datang <?= session()->get('nama'); ?> </h2>
     </div>
 
-    <?php if (is_bool(strpos(session()->get('akses'), 'Admin'))) { ?>
-      <br><br><br><br><br><br>
-      <br><br><br><br><br><br>
-      <br><br><br><br><br><br>
-    <?php }; ?>
 
-    <?php if (is_int(strpos(session()->get('akses'), 'Admin'))) { ?>
-      <div class="row">
-        <div class="col-lg-12 grid-margin stretch-card">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title d-inline">Informasi Umum</h4>
-              <div class="float-right">
-                <?php if (session()->getFlashdata('pesan')) : ?>
-                  <p class="card-description mr-3 text-success d-inline">
-                    <?= session()->getFlashdata('pesan'); ?>
-                  </p>
-                <?php endif; ?>
+
+
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title d-inline">Informasi Umum</h4>
+            <div class="float-right">
+              <?php if (session()->getFlashdata('pesan')) : ?>
+                <p class="card-description mr-3 text-success d-inline">
+                  <?= session()->getFlashdata('pesan'); ?>
+                </p>
+              <?php endif; ?>
+              <?php if (is_int(strpos(session()->get('akses'), 'Admin'))) { ?>
                 <?php foreach ($general as $g) : ?>
-                  <button type="button" class="btn btn-success mb-2 btn-edit" data-toggle="modal" data-target="#editModal" data-id_general="<?= $g->Id_General; ?>" data-nama_sekolah="<?= $g->Nama_Sekolah; ?>"  data-semester="<?= $g->Semester; ?>" data-tahun_ajaran="<?= $g->Tahun_Ajaran; ?>">Edit</button>
+                  <button type="button" class="btn btn-success mb-2 btn-edit" data-toggle="modal" data-target="#editModal" data-id_general="<?= $g->Id_General; ?>" data-nama_sekolah="<?= $g->Nama_Sekolah; ?>" data-semester="<?= $g->Semester; ?>" data-tahun_ajaran="<?= $g->Tahun_Ajaran; ?>">Edit</button>
                 <?php endforeach; ?>
-              </div>
-              <table class="table table-borderless mt-3">
-                <tbody>
-                  <?php $i = 1; ?>
-                  <?php foreach ($general as $g) : ?>
-                    <tr>
-                      <th style="width: 250px;"> Nama Sekolah </th>
-                      <td style="width: 50px;">:</td>
-                      <td> <?= $g->Nama_Sekolah; ?> </td>
-                    </tr>
-                    <tr>
-                      <th> Nama Kepala Sekolah </th>
-                      <td>:</td>
-                      <?php foreach ($user as $u) :
-                        if (is_int(strpos($u->Akses, 'Kepala Sekolah'))) { ?>
-                          <td> <?= $u->Nama; ?> </td>
-                      <?php };
-                      endforeach; ?>
-                    </tr>
-                    <tr>
-                      <th> NIP </th>
-                      <td>:</td>
-                      <?php foreach ($user as $u) :
-                        if (is_int(strpos($u->Akses, 'Kepala Sekolah'))) { ?>
-                          <td> <?= $u->NIP; ?> </td>
-                      <?php };
-                      endforeach; ?>
-                    </tr>
-
-                    <tr>
-                      <th> Semester </th>
-                      <td>:</td>
-                      <td> <?= $g->Semester; ?> </td>
-                    </tr>
-                    <tr>
-                      <th> Tahun Ajaran </th>
-                      <td>:</td>
-                      <td> <?= $g->Tahun_Ajaran; ?> </td>
-                    </tr>
-                  <?php endforeach; ?>
-                </tbody>
-              </table>
+              <?php }; ?>
             </div>
+            <table class="table table-borderless mt-3">
+              <tbody>
+                <?php $i = 1; ?>
+                <?php foreach ($general as $g) : ?>
+                  <tr>
+                    <th style="width: 250px;"> Nama Sekolah </th>
+                    <td style="width: 50px;">:</td>
+                    <td> <?= $g->Nama_Sekolah; ?> </td>
+                  </tr>
+                  <tr>
+                    <th> Nama Kepala Sekolah </th>
+                    <td>:</td>
+                    <?php foreach ($user as $u) :
+                      if (is_int(strpos($u->Akses, 'Kepala Sekolah'))) { ?>
+                        <td> <?= $u->Nama; ?> </td>
+                    <?php };
+                    endforeach; ?>
+                  </tr>
+                  <tr>
+                    <th> NIP </th>
+                    <td>:</td>
+                    <?php foreach ($user as $u) :
+                      if (is_int(strpos($u->Akses, 'Kepala Sekolah'))) { ?>
+                        <td> <?= $u->NIP; ?> </td>
+                    <?php };
+                    endforeach; ?>
+                  </tr>
+
+                  <tr>
+                    <th> Semester </th>
+                    <td>:</td>
+                    <td> <?= $g->Semester; ?> </td>
+                  </tr>
+                  <tr>
+                    <th> Tahun Ajaran </th>
+                    <td>:</td>
+                    <td> <?= $g->Tahun_Ajaran; ?> </td>
+                  </tr>
+                <?php endforeach; ?>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-    <?php }; ?>
+    </div>
+
 
     <form action="/Welcome/edit/" method="post">
       <?= csrf_field(); ?>
