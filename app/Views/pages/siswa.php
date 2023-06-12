@@ -27,7 +27,8 @@
                   <th> NISN </th>
                   <th> NIS </th>
                   <th> Nama </th>
-                  <th>  </th>
+                  <th> Fase </th>
+                  <th> </th>
                   <!-- <th> Jenis Kelamin </th>
                   <th> Tempat Lahir </th>
                   <th> Tanggal Lahir </th>
@@ -59,14 +60,9 @@
                     <td> <?= $s->NISN; ?> </td>
                     <td> <?= $s->NIS; ?> </td>
                     <td> <?= $s->Nama; ?> </td>
+                    <td> <?= $s->Fase; ?> </td>
                     <td class="text-center">
-                      <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" 
-                      data-id_siswa="<?= $s->Id_Siswa; ?>" 
-                      data-nis="<?= $s->NIS; ?>" 
-                      data-nisn="<?= $s->NISN; ?>" 
-                      data-nama="<?= $s->Nama; ?>" 
-                      
-                      >Edit</button>
+                      <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_siswa="<?= $s->Id_Siswa; ?>" data-nis="<?= $s->NIS; ?>" data-nisn="<?= $s->NISN; ?>" data-nama="<?= $s->Nama; ?>" data-fase="<?= $s->Fase; ?>">Edit</button>
 
                       <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_siswa="<?= $s->Id_Siswa; ?>">Hapus</button>
                     </td>
@@ -101,7 +97,18 @@
                 <label>Nama</label>
                 <input type="text" class="form-control" name="nama" placeholder="" required>
               </div>
-
+              <div class="form-group">
+                <label>Fase</label>
+                <select name="fase" class="form-control mr-2 pr-xl-5" id="">
+                  <option value="">Fase</option>
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                  <option value="D">D</option>
+                  <option value="E">E</option>
+                  <option value="F">F</option>
+                </select>
+              </div>
               <!-- <div class="form-group">
                 <label>Jenis Kelamin</label>
                 <select name="jenis_kelamin" class="form-control " required>
@@ -224,6 +231,18 @@
                 <label>Nama</label>
                 <input type="text" class="form-control nama" name="nama" placeholder="" required>
               </div>
+              <div class="form-group">
+                <label>Fase</label>
+                <select name="fase" class="form-control mr-2 pr-xl-5 fase" id="fase">
+                  <option value="">Fase</option>
+                  <option value="A">A</option>
+                  <option value="B">B</option>
+                  <option value="C">C</option>
+                  <option value="D">D</option>
+                  <option value="E">E</option>
+                  <option value="F">F</option>
+                </select>
+              </div>
 
               <!-- <div class="form-group">
                 <label>Jenis Kelamin</label>
@@ -312,8 +331,8 @@
               <div class="form-group">
                 <label>Nomor Telepon Wali</label>
                 <input type="number" class="form-control telp_wali" name="telp_wali" placeholder="">
-              </div>
-            </div> -->
+              </div> -->
+            </div>
             <div class="modal-footer">
               <input type="hidden" name="id_siswa" class="id_siswa1">
               <button type="submit" class="btn btn-success">Simpan</button>
@@ -355,6 +374,7 @@
           const nis = $(this).data('nis');
           const nisn = $(this).data('nisn');
           const nama = $(this).data('nama');
+          const fase = $(this).data('fase');
           // const jenis_kelamin = $(this).data('jenis_kelamin');
           // const tempat_lahir = $(this).data('tempat_lahir');
           // const tanggal_lahir = $(this).data('tanggal_lahir');
@@ -376,12 +396,13 @@
           // const alamat_wali = $(this).data('alamat_wali');
           // const telp_wali = $(this).data('telp_wali');
           // const kerja_wali = $(this).data('kerja_wali');
-                      
+
           // Set data to Form Edit
           $('.id_siswa1').val(id_siswa);
           $('.nis').val(nis);
           $('.nisn').val(nisn);
           $('.nama').val(nama);
+          $('.fase').val(fase);
           // $('.jenis_kelamin').val(jenis_kelamin);
           // $('.tempat_lahir').val(tempat_lahir);
           // $('.tanggal_lahir').val(tanggal_lahir);

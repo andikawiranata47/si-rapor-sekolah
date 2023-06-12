@@ -59,7 +59,7 @@
                     <tr>
                       <td class="number"> <?= $i++; ?> </td>
                       <td> <?= $k->Nama; ?> </td>
-                      <td> <?= $k->Kepribadian; ?> </td>
+                      <td style="width: 300px; white-space: normal !important;"> <?= $k->Kepribadian; ?> </td>
                       <td> <?= $k->Sakit; ?> </td>
                       <td> <?= $k->Izin; ?> </td>
                       <td> <?= $k->Tanpa_Keterangan; ?> </td>

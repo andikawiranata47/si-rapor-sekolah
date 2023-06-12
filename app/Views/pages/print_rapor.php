@@ -38,25 +38,34 @@
                 <td style="width: 230px; display:block; word-wrap:break-word; border: none; padding:3px;"> <?= $g->Nama_Sekolah; ?> </td>
               <?php endforeach; ?>
 
-              <th style="width: 125px; text-align:left; border: none; padding:3px;"> Nomor Induk </th>
+              <th style="width: 125px; text-align:left; border: none; padding:3px;"> Kelas </th>
               <td style="width: 7px; border: none; padding:3px;">:</td>
-              <td style="width: 200px; border: none; padding:3px;"> <?= $r->NIS; ?> / <?= $r->NISN; ?> </td>
+              <td style="width: 200px; border: none; padding:3px;"> <?= $r->Tingkat; ?>-<?= $r->Jurusan; ?>-<?= $r->Abjad; ?> / <?= $r->Semester; ?> </td>
+            </tr>
+            <tr>
+              <th style="text-align:left; border: none; padding:3px;"> Nomor Induk </th>
+              <td style="border: none; padding:3px;">:</td>
+              <td style="border: none; padding:3px;"> <?= $r->NIS; ?> / <?= $r->NISN; ?> </td>
+
+              <th style="text-align:left; border: none; padding:3px;"> Fase </th>
+              <td style="border: none; padding:3px;">:</td>
+              <td style="border: none; padding:3px;"> <?= $r->Fase; ?></td>
             </tr>
             <tr>
               <th style="text-align:left; border: none; padding:3px;"> Nama Peserta Didik </th>
               <td style="border: none; padding:3px;">:</td>
               <td style="border: none; padding:3px;"> <?= $r->Nama; ?> </td>
 
-              <th style="text-align:left; border: none; padding:3px;"> Kelas/Semester </th>
+              <th style="text-align:left; border: none; padding:3px;"> Semester </th>
               <td style="border: none; padding:3px;">:</td>
-              <td style="border: none; padding:3px;"> <?= $r->Tingkat; ?>-<?= $r->Jurusan; ?>-<?= $r->Abjad; ?> / <?= $r->Semester; ?></td>
+              <td style="border: none; padding:3px;"> <?= $r->Semester; ?> </td>
             </tr>
             <tr>
               <th style="text-align:left; border: none; padding:3px;"> Bidang Keahlian </th>
               <td style="border: none; padding:3px;">:</td>
               <td style="border: none; padding:3px;"> <?php jurusan($r->Jurusan); ?> </td>
 
-              <th style="text-align:left; border: none; padding:3px;"> Tahun Pelajaran </th>
+              <th style="text-align:left; border: none; padding:3px;"> Tahun Ajaran </th>
               <td style="border: none; padding:3px;">:</td>
               <td style="border: none; padding:3px;"> <?= $r->Tahun_Ajaran; ?> </td>
             </tr>
@@ -69,211 +78,80 @@
 
   <div class="row">
     <div class="col-lg-12 grid-margin stretch-card d-block">
-      <h4 style="margin: 20px 0 5px 5px;">1. PENGETAHUAN</h4>
+      <h4 style="margin: 20px 0 5px 5px;">1. NILAI MATA PELAJARAN</h4>
       <table class="table table-bordered">
         <thead>
           <tr>
             <th style="padding: 10px 5px; width:25px"> No </th>
-            <th style="width:230px;"> Mata Pelajaran </th>
-            <th style="width:50px"> KKM </th>
-            <th style="width:50px"> Angka </th>
-            <th style="width:auto"> Huruf </th>
-            <th style="width:100px"> Predikat </th>
+            <th style="width:200px;"> Mata Pelajaran </th>
+            <th style="width:60px"> Nilai Akhir </th>
+            <th> Capaian Kompetensi </th>
           </tr>
         </thead>
         <tbody>
           <?php $i = 1; ?>
           <tr>
-            <th style="text-align:left;" colspan="6">Normatif</th>
+            <th style="text-align:left;" colspan="4">Normatif</th>
           </tr>
           <?php foreach ($raporMapel as $r) : ?>
-            <?php if ($r->Jenis_Nilai == 'Pengetahuan' && $r->Kelompok == 'A') { ?>
+            <?php if ($r->Kelompok == 'A') { ?>
               <tr>
                 <td class="number"> <?= $i++; ?> </td>
                 <td> <?= $r->Mata_Pelajaran; ?> </td>
-                <td class="nilai"> <?= $r->KKM; ?> </td>
                 <td class="nilai"> <?= $r->Nilai_Akhir; ?> </td>
-                <td class="nilai"> <?php terbilang($r->Nilai_Akhir); ?> </td>
-                <td class="nilai"> <?php predikat($r->Nilai_Akhir) ?> </td>
+                <td style=""> <?= $r->Capaian_Kompetensi; ?> </td>
               </tr>
             <?php }; ?>
           <?php endforeach; ?>
+
           <?php $i = 1; ?>
           <tr>
-            <th style="text-align:left;" colspan="6">Adaptif</th>
+            <th style="text-align:left;" colspan="4">Adaptif</th>
           </tr>
           <?php foreach ($raporMapel as $r) : ?>
-            <?php if ($r->Jenis_Nilai == 'Pengetahuan' && $r->Kelompok == 'B') { ?>
+            <?php if ($r->Kelompok == 'B') { ?>
               <tr>
                 <td class="number"> <?= $i++; ?> </td>
                 <td> <?= $r->Mata_Pelajaran; ?> </td>
-                <td class="nilai"> <?= $r->KKM; ?> </td>
                 <td class="nilai"> <?= $r->Nilai_Akhir; ?> </td>
-                <td class="nilai"> <?php terbilang($r->Nilai_Akhir); ?> </td>
-                <td class="nilai"> <?php predikat($r->Nilai_Akhir) ?> </td>
+                <td style=""> <?= $r->Capaian_Kompetensi; ?> </td>
               </tr>
             <?php }; ?>
           <?php endforeach; ?>
+          
           <?php $i = 1; ?>
           <tr>
-            <th style="text-align:left;" colspan="6">Produktif</th>
+            <th style="text-align:left;" colspan="4">Produktif</th>
           </tr>
           <?php foreach ($raporMapel as $r) : ?>
-            <?php if ($r->Jenis_Nilai == 'Pengetahuan' && $r->Kelompok == 'C') { ?>
+            <?php if ($r->Kelompok == 'C') { ?>
               <tr>
                 <td class="number"> <?= $i++; ?> </td>
                 <td> <?= $r->Mata_Pelajaran; ?> </td>
-                <td class="nilai"> <?= $r->KKM; ?> </td>
                 <td class="nilai"> <?= $r->Nilai_Akhir; ?> </td>
-                <td class="nilai"> <?php terbilang($r->Nilai_Akhir); ?> </td>
-                <td class="nilai"> <?php predikat2($r->Nilai_Akhir) ?> </td>
+                <td style=""> <?= $r->Capaian_Kompetensi; ?> </td>
               </tr>
             <?php }; ?>
           <?php endforeach; ?>
+
           <?php $i = 1; ?>
           <tr>
-            <th style="text-align:left;" colspan="6">Muatan Lokal</th>
+            <th style="text-align:left;" colspan="4">Muatan Lokal</th>
           </tr>
           <?php foreach ($raporMapel as $r) : ?>
-            <?php if ($r->Jenis_Nilai == 'Pengetahuan' && $r->Kelompok == 'D') { ?>
+            <?php if ($r->Kelompok == 'A') { ?>
               <tr>
                 <td class="number"> <?= $i++; ?> </td>
                 <td> <?= $r->Mata_Pelajaran; ?> </td>
-                <td class="nilai"> <?= $r->KKM; ?> </td>
                 <td class="nilai"> <?= $r->Nilai_Akhir; ?> </td>
-                <td class="nilai"> <?php terbilang($r->Nilai_Akhir); ?> </td>
-                <td class="nilai"> <?php predikat($r->Nilai_Akhir) ?> </td>
+                <td style=""> <?= $r->Capaian_Kompetensi; ?> </td>
               </tr>
             <?php }; ?>
           <?php endforeach; ?>
+
         </tbody>
       </table>
     </div>
-  </div>
-</div>
-
-<div class="row" style="page-break-after: always">
-  <div class="row">
-    <div class="col-lg-12 grid-margin stretch-card d-block">
-      <table class="table table-borderless mb-4 p-5" style="border: none; padding:3px;">
-        <tbody>
-          <?php $i = 1; ?>
-          <?php foreach ($raporMapel as $r) : ?>
-            <tr>
-              <?php foreach ($general as $g) : ?>
-                <th style="width: 155px; text-align:left; border: none; padding:3px;"> Nama Sekolah </th>
-                <td style="width: 7px; border: none; padding:3px;">:</td>
-                <td style="width: 230px; display:block; word-wrap:break-word; border: none; padding:3px;"> <?= $g->Nama_Sekolah; ?> </td>
-              <?php endforeach; ?>
-
-              <th style="width: 125px; text-align:left; border: none; padding:3px;"> Nomor Induk </th>
-              <td style="width: 7px; border: none; padding:3px;">:</td>
-              <td style="width: 200px; border: none; padding:3px;"> <?= $r->NIS; ?> / <?= $r->NISN; ?> </td>
-            </tr>
-            <tr>
-              <th style="text-align:left; border: none; padding:3px;"> Nama Peserta Didik </th>
-              <td style="border: none; padding:3px;">:</td>
-              <td style="border: none; padding:3px;"> <?= $r->Nama; ?> </td>
-
-              <th style="text-align:left; border: none; padding:3px;"> Kelas/Semester </th>
-              <td style="border: none; padding:3px;">:</td>
-              <td style="border: none; padding:3px;"> <?= $r->Tingkat; ?>-<?= $r->Jurusan; ?>-<?= $r->Abjad; ?> / <?= $r->Semester; ?></td>
-            </tr>
-            <tr>
-              <th style="text-align:left; border: none; padding:3px;"> Bidang Keahlian </th>
-              <td style="border: none; padding:3px;">:</td>
-              <td style="border: none; padding:3px;"> <?php jurusan($r->Jurusan); ?> </td>
-
-              <th style="text-align:left; border: none; padding:3px;"> Tahun Pelajaran </th>
-              <td style="border: none; padding:3px;">:</td>
-              <td style="border: none; padding:3px;"> <?= $r->Tahun_Ajaran; ?> </td>
-            </tr>
-          <?php break;
-          endforeach; ?>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div class="col-lg-12 grid-margin stretch-card d-block">
-    <h4 style="margin: 20px 0 5px 5px;">2. KETERAMPILAN</h4>
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th style="padding: 10px 5px; width:25px"> No </th>
-          <th style="width:230px;"> Mata Pelajaran </th>
-          <th style="width:50px"> KKM </th>
-          <th style="width:50px"> Angka </th>
-          <th style="width:auto"> Huruf </th>
-          <th style="width:100px"> Predikat </th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php $i = 1; ?>
-        <tr>
-          <th style="text-align:left;" colspan="6">Normatif</th>
-        </tr>
-        <?php foreach ($raporMapel as $r) : ?>
-          <?php if ($r->Jenis_Nilai == 'Keterampilan' && $r->Kelompok == 'A') { ?>
-            <tr>
-              <td class="number"> <?= $i++; ?> </td>
-              <td> <?= $r->Mata_Pelajaran; ?> </td>
-              <td class="nilai"> <?= $r->KKM; ?> </td>
-              <td class="nilai"> <?= $r->Nilai_Akhir; ?> </td>
-              <td class="nilai"> <?php terbilang($r->Nilai_Akhir); ?> </td>
-              <td class="nilai"> <?php predikat($r->Nilai_Akhir) ?> </td>
-            </tr>
-          <?php }; ?>
-        <?php endforeach; ?>
-        <?php $i = 1; ?>
-        <tr>
-          <th style="text-align:left;" colspan="6">Adaptif</th>
-        </tr>
-        <?php foreach ($raporMapel as $r) : ?>
-          <?php if ($r->Jenis_Nilai == 'Keterampilan' && $r->Kelompok == 'B') { ?>
-            <tr>
-              <td class="number"> <?= $i++; ?> </td>
-              <td> <?= $r->Mata_Pelajaran; ?> </td>
-              <td class="nilai"> <?= $r->KKM; ?> </td>
-              <td class="nilai"> <?= $r->Nilai_Akhir; ?> </td>
-              <td class="nilai"> <?php terbilang($r->Nilai_Akhir); ?> </td>
-              <td class="nilai"> <?php predikat($r->Nilai_Akhir) ?> </td>
-            </tr>
-          <?php }; ?>
-        <?php endforeach; ?>
-        <?php $i = 1; ?>
-        <tr>
-          <th style="text-align:left;" colspan="6">Produktif</th>
-        </tr>
-        <?php foreach ($raporMapel as $r) : ?>
-          <?php if ($r->Jenis_Nilai == 'Keterampilan' && $r->Kelompok == 'C') { ?>
-            <tr>
-              <td class="number"> <?= $i++; ?> </td>
-              <td> <?= $r->Mata_Pelajaran; ?> </td>
-              <td class="nilai"> <?= $r->KKM; ?> </td>
-              <td class="nilai"> <?= $r->Nilai_Akhir; ?> </td>
-              <td class="nilai"> <?php terbilang($r->Nilai_Akhir); ?> </td>
-              <td class="nilai"> <?php predikat2($r->Nilai_Akhir) ?> </td>
-            </tr>
-          <?php }; ?>
-        <?php endforeach; ?>
-        <?php $i = 1; ?>
-        <tr>
-          <th style="text-align:left;" colspan="6">Muatan Lokal</th>
-        </tr>
-        <?php foreach ($raporMapel as $r) : ?>
-          <?php if ($r->Jenis_Nilai == 'Keterampilan' && $r->Kelompok == 'D') { ?>
-            <tr>
-              <td class="number"> <?= $i++; ?> </td>
-              <td> <?= $r->Mata_Pelajaran; ?> </td>
-              <td class="nilai"> <?= $r->KKM; ?> </td>
-              <td class="nilai"> <?= $r->Nilai_Akhir; ?> </td>
-              <td class="nilai"> <?php terbilang($r->Nilai_Akhir); ?> </td>
-              <td class="nilai"> <?php predikat($r->Nilai_Akhir) ?> </td>
-            </tr>
-          <?php }; ?>
-        <?php endforeach; ?>
-      </tbody>
-    </table>
   </div>
 </div>
 
@@ -291,25 +169,34 @@
                 <td style="width: 230px; display:block; word-wrap:break-word; border: none; padding:3px;"> <?= $g->Nama_Sekolah; ?> </td>
               <?php endforeach; ?>
 
-              <th style="width: 125px; text-align:left; border: none; padding:3px;"> Nomor Induk </th>
+              <th style="width: 125px; text-align:left; border: none; padding:3px;"> Kelas </th>
               <td style="width: 7px; border: none; padding:3px;">:</td>
-              <td style="width: 200px; border: none; padding:3px;"> <?= $r->NIS; ?> / <?= $r->NISN; ?> </td>
+              <td style="width: 200px; border: none; padding:3px;"> <?= $r->Tingkat; ?>-<?= $r->Jurusan; ?>-<?= $r->Abjad; ?> / <?= $r->Semester; ?> </td>
+            </tr>
+            <tr>
+              <th style="text-align:left; border: none; padding:3px;"> Nomor Induk </th>
+              <td style="border: none; padding:3px;">:</td>
+              <td style="border: none; padding:3px;"> <?= $r->NIS; ?> / <?= $r->NISN; ?> </td>
+
+              <th style="text-align:left; border: none; padding:3px;"> Fase </th>
+              <td style="border: none; padding:3px;">:</td>
+              <td style="border: none; padding:3px;"> <?= $r->Fase; ?></td>
             </tr>
             <tr>
               <th style="text-align:left; border: none; padding:3px;"> Nama Peserta Didik </th>
               <td style="border: none; padding:3px;">:</td>
               <td style="border: none; padding:3px;"> <?= $r->Nama; ?> </td>
 
-              <th style="text-align:left; border: none; padding:3px;"> Kelas/Semester </th>
+              <th style="text-align:left; border: none; padding:3px;"> Semester </th>
               <td style="border: none; padding:3px;">:</td>
-              <td style="border: none; padding:3px;"> <?= $r->Tingkat; ?>-<?= $r->Jurusan; ?>-<?= $r->Abjad; ?> / <?= $r->Semester; ?></td>
+              <td style="border: none; padding:3px;"> <?= $r->Semester; ?> </td>
             </tr>
             <tr>
               <th style="text-align:left; border: none; padding:3px;"> Bidang Keahlian </th>
               <td style="border: none; padding:3px;">:</td>
               <td style="border: none; padding:3px;"> <?php jurusan($r->Jurusan); ?> </td>
 
-              <th style="text-align:left; border: none; padding:3px;"> Tahun Pelajaran </th>
+              <th style="text-align:left; border: none; padding:3px;"> Tahun Ajaran </th>
               <td style="border: none; padding:3px;">:</td>
               <td style="border: none; padding:3px;"> <?= $r->Tahun_Ajaran; ?> </td>
             </tr>
@@ -320,7 +207,7 @@
     </div>
   </div>
   <div class="col-lg-12 grid-margin stretch-card d-block">
-    <h4 style="margin: 20px 0 5px 5px;">3. PRAKTIK KERJA INDUSTRI DAN/ATAU INSTANSI RELEVAN</h4>
+    <h4 style="margin: 20px 0 5px 5px;">2. PRAKTIK KERJA INDUSTRI DAN/ATAU INSTANSI RELEVAN</h4>
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -349,7 +236,7 @@
     </table>
   </div>
   <div class="col-lg-12 grid-margin stretch-card d-block">
-    <h4 style="margin: 20px 0 5px 5px;">4. EKSTRAKURIKULER</h4>
+    <h4 style="margin: 20px 0 5px 5px;">3. EKSTRAKURIKULER</h4>
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -371,7 +258,7 @@
     </table>
   </div>
   <div class="col-lg-12 grid-margin stretch-card d-block">
-    <h4 style="margin: 20px 0 5px 5px;">5. KEPRIBADIAN DAN KETIDAKHADIRAN</h4>
+    <h4 style="margin: 20px 0 5px 5px;">4. KEPRIBADIAN DAN KETIDAKHADIRAN</h4>
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -401,7 +288,7 @@
     </table>
   </div>
   <div class="col-lg-12 grid-margin stretch-card d-block">
-    <h4 style="margin: 20px 0 5px 5px;">6. CATATAN UNTUK PERHATIAN ORANG TUA/WALI</h4>
+    <h4 style="margin: 20px 0 5px 5px;">5. CATATAN UNTUK PERHATIAN ORANG TUA/WALI</h4>
     <table class="table table-bordered">
       <tbody>
         <tr>

@@ -71,59 +71,36 @@
                   </p>
                 <?php endif; ?>
               </div>
-              <h4 class="card-title mb-2">Tabel Daftar Nilai Mata Pelajaran: Pengetahuan</h4>
+              <h4 class="card-title mb-2">Tabel Daftar Nilai Mata Pelajaran</h4>
               <table class="table table-bordered table-responsive-sm">
                 <thead>
                   <tr>
                     <th> No </th>
                     <th> Mata Pelajaran </th>
-                    <th> Jenis Nilai </th>
+                    <!-- <th> Jenis Nilai </th> -->
                     <th> Kelompok </th>
-                    <th> Nilai </th>
+                    <th> Nilai Akhir </th>
+                    <th> Capaian Kompetensi </th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php $i = 1; ?>
                   <?php foreach ($raporMapel as $r) : ?>
-                    <?php if ($r->Jenis_Nilai == 'Pengetahuan') { ?>
+                    
                       <tr>
                         <td class="number"> <?= $i++; ?> </td>
-                        <td> <?= $r->Mata_Pelajaran; ?> </td>
-                        <td> <?= $r->Jenis_Nilai; ?> </td>
+                        <td style="width: 500px; white-space: normal !important;"> <?= $r->Mata_Pelajaran; ?> </td>
+                        
                         <td> <?= $r->Kelompok; ?> </td>
                         <td> <?= $r->Nilai_Akhir; ?> </td>
+                        <td style="width: 700px; white-space: normal !important;"> <?= $r->Capaian_Kompetensi; ?> </td>
                       </tr>
-                    <?php }; ?>
+    
                   <?php endforeach; ?>
                 </tbody>
               </table>
 
-              <h4 class="card-title mb-2 mt-4">Tabel Daftar Nilai Mata Pelajaran: Keterampilan</h4>
-              <table class="table table-bordered table-responsive-sm">
-                <thead>
-                  <tr>
-                    <th> No </th>
-                    <th> Mata Pelajaran </th>
-                    <th> Jenis Nilai </th>
-                    <th> Kelompok </th>
-                    <th> Nilai </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php $i = 1; ?>
-                  <?php foreach ($raporMapel as $r) : ?>
-                    <?php if ($r->Jenis_Nilai == 'Keterampilan') { ?>
-                      <tr>
-                        <td class="number"> <?= $i++; ?> </td>
-                        <td> <?= $r->Mata_Pelajaran; ?> </td>
-                        <td> <?= $r->Jenis_Nilai; ?> </td>
-                        <td> <?= $r->Kelompok; ?> </td>
-                        <td> <?= $r->Nilai_Akhir; ?> </td>
-                      </tr>
-                    <?php }; ?>
-                  <?php endforeach; ?>
-                </tbody>
-              </table>
+              
           </div>
         </div>
 

@@ -34,15 +34,15 @@
                     <option value="<?= $m->Id_Mata_Pelajaran; ?>"><?= $m->Mata_Pelajaran; ?></option>
                   <?php endforeach; ?>
                 </select>
-                <select name="pilih_jenis" class="form-control mr-2 pr-xl-5 pilih_jenis" id="pilih_jenis">
+                <!-- <select name="pilih_jenis" class="form-control mr-2 pr-xl-5 pilih_jenis" id="pilih_jenis">
                   <option value="">Pilih Jenis Nilai</option>
                   <option value="Pengetahuan">Pengetahuan</option>
                   <option value="Keterampilan">Keterampilan</option>
-                </select>
+                </select> -->
               </div><button type="submit" class="btn btn-primary mb-2">Pilih</button>
             </form><br>
 
-            <?php if ($id != null && $pmapel != null && $pjenis != null && $psemester != null && $ptahun != null) { ?>
+            <?php if ($id != null && $pmapel != null && $psemester != null && $ptahun != null) { ?>
               <div class="float-right">
                 <?php if (session()->getFlashdata('pesan')) : ?>
                   <p class="card-description mr-3 text-success d-inline">
@@ -55,13 +55,14 @@
                 <thead>
                   <tr>
                     <th> No </th>
-                    <th style="width: 300px;"> Nama </th>
+                    <th > Nama </th>
                     <!-- <th style="width: 300px;"> Mata Pelajaran </th> -->
-                    <th style="width: 150px;"> Jenis Nilai </th>
-                    <th> Nilai UH </th>
+                    <!-- <th style="width: 150px;"> Jenis Nilai </th> -->
+                    <!-- <th> Nilai UH </th>
                     <th> Nilai UTS </th>
-                    <th> Nilai UAS </th>
+                    <th> Nilai UAS </th> -->
                     <th> Nilai Akhir </th>
+                    <th> Capaian Kompetensi </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -73,15 +74,11 @@
 
                     <tr>
                       <td class="number"> <?= $i++; ?> </td>
-                      <td> <?= $n->Nama; ?> </td>
-                      
-                      <td> <?= $n->Jenis_Nilai; ?> </td>
-                      <td> <?= $n->Nilai_UH; ?> </td>
-                      <td> <?= $n->Nilai_UTS; ?> </td>
-                      <td> <?= $n->Nilai_UAS; ?> </td>
+                      <td style="width: 300px; white-space: normal !important;"> <?= $n->Nama; ?> </td>
                       <td> <?= $n->Nilai_Akhir; ?> </td>
+                      <td style="width: 500px; white-space: normal !important;"> <?= $n->Capaian_Kompetensi; ?> </td>
                       <td class="text-center">
-                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_nilaimapel="<?= $n->Id_Nilai_Mata_Pelajaran; ?>" data-kelas="<?= $n->Id_Kelas; ?>" data-id_siswa="<?= $n->Id_Siswa; ?>" data-id_mapel="<?= $n->Id_Mata_Pelajaran; ?>" data-jenis_nilai="<?= $n->Jenis_Nilai; ?>" data-semester="<?= $n->Semester; ?>" data-tahun_ajaran="<?= $n->Tahun_Ajaran; ?>" data-nilai_uh="<?= $n->Nilai_UH; ?>" data-nilai_uts="<?= $n->Nilai_UTS; ?>" data-nilai_uas="<?= $n->Nilai_UAS; ?>" data-nilai_akhir="<?= $n->Nilai_Akhir; ?>">Edit</button>
+                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_nilaimapel="<?= $n->Id_Nilai_Mata_Pelajaran; ?>" data-kelas="<?= $n->Id_Kelas; ?>" data-id_siswa="<?= $n->Id_Siswa; ?>" data-id_mapel="<?= $n->Id_Mata_Pelajaran; ?>"  data-semester="<?= $n->Semester; ?>" data-tahun_ajaran="<?= $n->Tahun_Ajaran; ?>" data-nilai_akhir="<?= $n->Nilai_Akhir; ?>" data-capaian="<?= $n->Capaian_Kompetensi; ?>">Edit</button>
 
                       </td>
                     </tr>
@@ -99,9 +96,7 @@
                         <td><?= $s->Nama; ?></td>
                         <td> </td>
                         <td> </td>
-                        <td> </td>
-                        <td> </td>
-                        <td> </td>
+                 
                         <td> <button type="button" class="btn btn-inverse-success  mb-2 btn-add" data-toggle="modal" data-target="#addModal" data-siswa="<?= $s->Id_Siswa; ?>" data-kelas="<?= $s->Id_Kelas; ?>">Tambah</button> </td>
                       </tr>
                     <?php }; ?>
@@ -128,7 +123,6 @@
               <div>
                 <input type="text" class="form-control " name="pilih_kelas" value="<?= $id; ?>" hidden>
                 <input type="text" class="form-control " name="pilih_mapel" value="<?= $pmapel; ?>" hidden>
-                <input type="text" class="form-control " name="pilih_jenis" value="<?= $pjenis; ?>" hidden>
                 <input type="text" class="form-control " name="pilih_semester" value="<?= $psemester; ?>" hidden>
                 <input type="text" class="form-control " name="pilih_tahun" value="<?= $ptahun; ?>" hidden>
               </div>
@@ -151,16 +145,12 @@
                 </select>
               </div>
               <div class="form-group">
-                <label>Nilai UH</label>
-                <input type="number" class="form-control " name="uh" required>
+                <label>Nilai Akhir</label>
+                <input type="number" class="form-control " name="nilai_akhir" required>
               </div>
               <div class="form-group">
-                <label>Nilai UTS</label>
-                <input type="number" class="form-control " name="uts" required>
-              </div>
-              <div class="form-group">
-                <label>Nilai UAS</label>
-                <input type="number" class="form-control " name="uas" required>
+                <label>Capaian Kompetensi</label>
+                <textarea id="" class="form-control" name="capaian" rows="4"></textarea>
               </div>
             </div>
             <div class="modal-footer">
@@ -187,7 +177,6 @@
               <div>
                 <input type="text" class="form-control " name="pilih_kelas" value="<?= $id; ?>" hidden>
                 <input type="text" class="form-control " name="pilih_mapel" value="<?= $pmapel; ?>" hidden>
-                <input type="text" class="form-control " name="pilih_jenis" value="<?= $pjenis; ?>" hidden>
                 <input type="text" class="form-control " name="pilih_semester" value="<?= $psemester; ?>" hidden>
                 <input type="text" class="form-control " name="pilih_tahun" value="<?= $ptahun; ?>" hidden>
               </div>
@@ -210,16 +199,12 @@
                 </select>
               </div>
               <div class="form-group">
-                <label>Nilai UH</label>
-                <input type="number" class="form-control uh" name="uh" required>
+                <label>Nilai Akhir</label>
+                <input type="number" class="form-control nilai_akhir" name="nilai_akhir" required>
               </div>
               <div class="form-group">
-                <label>Nilai UTS</label>
-                <input type="number" class="form-control uts" name="uts" required>
-              </div>
-              <div class="form-group">
-                <label>Nilai UAS</label>
-                <input type="number" class="form-control uas" name="uas" required>
+                <label>Capaian Kompetensi</label>
+                <textarea id="" class="form-control capaian" name="capaian" rows="4"></textarea>
               </div>
               <div class="modal-footer">
                 <input type="hidden" name="kelas" class="kelas">
@@ -278,17 +263,15 @@
           const id = $(this).data('id_nilaimapel');
           const siswa = $(this).data('id_siswa');
           const kelas = $(this).data('kelas');
-          const uh = $(this).data('nilai_uh');
-          const uts = $(this).data('nilai_uts');
-          const uas = $(this).data('nilai_uas');
+          const akhir = $(this).data('nilai_akhir');
+          const capaian = $(this).data('capaian');
           // const akhir = $(this).data('akhir');
           // Set data to Form Edit
           $('.id_nilaimapel').val(id);
           $('.siswa').val(siswa);
           $('.kelas').val(kelas);
-          $('.uh').val(uh);
-          $('.uts').val(uts);
-          $('.uas').val(uas);
+          $('.nilai_akhir').val(akhir);
+          $('.capaian').val(capaian);
           // $('.akhir').val(akhir);
           // Call Modal Edit
           $('#editModal').modal('show');
@@ -334,18 +317,7 @@
         localStorage.removeItem("pilih_mapel");
       }
 
-      $('#pilih_jenis').on('change', function() {
-        // Save value in localstorage
-        localStorage.setItem("pilih_jenis", $(this).val());
-      });
-      $(document).ready(function() {
-        if ($('#pilih_jenis').length) {
-          $('#pilih_jenis').val(localStorage.getItem("pilih_jenis"));
-        }
-      });
-      if (!window.location.href.includes("/get")) {
-        localStorage.removeItem("pilih_jenis");
-      }
+
     </script>
 
     <?= $this->endSection() ?>

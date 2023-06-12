@@ -19,14 +19,14 @@ class NilaiMataPelajaranModel extends Model
         return $query;
     }
 
-    public function getPilihKelas($id, $mapel, $jenis, $semester, $tahun)
+    public function getPilihKelas($id, $mapel, $semester, $tahun)
     {
         $query = $this->db->table('nilai_mata_pelajaran')
             ->join('siswa', 'siswa.Id_Siswa = nilai_mata_pelajaran.Id_Siswa', 'left')
             ->join('mata_pelajaran', 'mata_pelajaran.Id_Mata_Pelajaran = nilai_mata_pelajaran.Id_Mata_Pelajaran', 'left')
             ->where('siswa.Id_Kelas', $id)
             ->where('nilai_mata_pelajaran.Id_Mata_Pelajaran', $mapel)
-            ->where('nilai_mata_pelajaran.Jenis_Nilai', $jenis)
+            // ->where('nilai_mata_pelajaran.Jenis_Nilai', $jenis)
             ->where('nilai_mata_pelajaran.Semester', $semester)
             ->where('nilai_mata_pelajaran.Tahun_Ajaran', $tahun)
             ->get();
