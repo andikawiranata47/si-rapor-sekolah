@@ -177,7 +177,12 @@
                 <label>Tanda Tangan</label>
                 <input type="file" class="form-control" name="ttd" placeholder="" accept="image/*">
                 <input type="text" class="form-control ttd_old" name="ttd_old" placeholder="" value="" hidden>
+                <img style="height: 100px;" src="" alt="" id="ttd">
               </div>
+
+              <!-- <input type="text" id="ttd"> -->
+              
+
               <div class="form-group">
                 <label>Akses</label><br>
                 <!-- <select name="akses" class="form-control akses" required>
@@ -271,6 +276,7 @@
           $('.nama').val(nama);
           $('.nip').val(nip);
           $('.ttd_old').val(ttd);
+          $('#ttd').attr('src','<?php echo base_url(); ?>/uploads/ttd/'+ttd);
           // Call Modal Edit
           $('#editModal').modal('show');
         });
