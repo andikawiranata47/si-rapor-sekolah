@@ -16,10 +16,29 @@
               <?= csrf_field(); ?>
               <div class="form-group my-sm-3">
                 <?php foreach ($general as $g) : ?>
-                  <input type="text" class="form-control pilih_semester" style="width: 85px;" name="" value="<?= $g->Semester; ?>" disabled>
-                  <input type="text" class="form-control pilih_semester" name="pilih_semester" value="<?= $g->Semester; ?>" hidden>
-                  <input type="text" class="form-control mx-2 pilih_tahun" style="width: 120px;" name="" value="<?= $g->Tahun_Ajaran; ?>" disabled>
-                  <input type="text" class="form-control mx-2 pilih_tahun" name="pilih_tahun" value="<?= $g->Tahun_Ajaran; ?>" hidden>
+                  <select name="pilih_semester" class="form-control pilih_semester" style="width: 85px;" id="">
+                    <option value="<?= $g->Semester; ?>"><?= $g->Semester; ?></option>
+                    <?php if ($g->Semester != 'Ganjil') { ?>
+                      <option value="Ganjil">Ganjil</option>
+                    <?php } ?>
+                    <?php if ($g->Semester != 'Genap') { ?>
+                      <option value="Genap">Genap</option>
+                    <?php } ?>
+                    
+                  </select>
+
+                  <select name="pilih_tahun" class="form-control mx-2 pilih_tahun" style="width: 120px;" id="">
+                    <option value="<?= $g->Tahun_Ajaran; ?>"><?= $g->Tahun_Ajaran; ?></option>
+                    <?php if ($g->Tahun_Ajaran != '2022/2023') { ?>
+                      <option value="2022/2023">2022/2023</option>
+                    <?php } ?>
+                    <?php if ($g->Tahun_Ajaran != '2023/2024') { ?>
+                      <option value="2023/2024">2023/2024</option>
+                    <?php } ?>
+                    <?php if ($g->Tahun_Ajaran != '2024/2025') { ?>
+                      <option value="2024/2025">2024/2025</option>
+                    <?php } ?>
+                  </select>
                 <?php endforeach; ?>
 
                 <select name="pilih_kelas" class="form-control pr-xl-5 mr-2 pilih_kelas" id="pilih_kelas">

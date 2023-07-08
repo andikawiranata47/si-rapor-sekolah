@@ -22,6 +22,8 @@
                 <select name="pilih_tahun" class="form-control mx-2 pr-xl-5 pilih_tahun" id="pilih_tahun">
                   <option value="">Pilih Tahun Ajaran</option>
                   <option value="2022/2023">2022/2023</option>
+                  <option value="2022/2023">2023/2024</option>
+                  <option value="2022/2023">2024/2025</option>
                 </select>
                 <select name="pilih_siswa" class="form-control pr-xl-5 pilih_siswa" id="pilih_siswa">
                   <option value="">Pilih Siswa</option>

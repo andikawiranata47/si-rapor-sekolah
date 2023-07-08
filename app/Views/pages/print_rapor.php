@@ -139,7 +139,7 @@
             <th style="text-align:left;" colspan="4">Muatan Lokal</th>
           </tr>
           <?php foreach ($raporMapel as $r) : ?>
-            <?php if ($r->Kelompok == 'A') { ?>
+            <?php if ($r->Kelompok == 'D') { ?>
               <tr>
                 <td class="number"> <?= $i++; ?> </td>
                 <td> <?= $r->Mata_Pelajaran; ?> </td>

@@ -16,10 +16,33 @@
               <?= csrf_field(); ?>
               <div class="form-group my-sm-3">
                 <?php foreach ($general as $g) : ?>
-                  <input type="text" class="form-control pilih_semester" style="width: 85px;" name="" value="<?= $g->Semester; ?>" disabled>
-                  <input type="text" class="form-control pilih_semester" name="pilih_semester" value="<?= $g->Semester; ?>" hidden>
-                  <input type="text" class="form-control mx-2 pilih_tahun" style="width: 120px;" name="" value="<?= $g->Tahun_Ajaran; ?>" disabled>
-                  <input type="text" class="form-control mx-2 pilih_tahun" name="pilih_tahun" value="<?= $g->Tahun_Ajaran; ?>" hidden>
+
+
+                  <select name="pilih_semester" class="form-control pilih_semester" style="width: 85px;" id="">
+                    <option value="<?= $g->Semester; ?>"><?= $g->Semester; ?></option>
+                    <?php if ($g->Semester != 'Ganjil') { ?>
+                      <option value="Ganjil">Ganjil</option>
+                    <?php } ?>
+                    <?php if ($g->Semester != 'Genap') { ?>
+                      <option value="Genap">Genap</option>
+                    <?php } ?>
+                    
+                  </select>
+
+                  <select name="pilih_tahun" class="form-control mx-2 pilih_tahun" style="width: 120px;" id="">
+                    <option value="<?= $g->Tahun_Ajaran; ?>"><?= $g->Tahun_Ajaran; ?></option>
+                    <?php if ($g->Tahun_Ajaran != '2022/2023') { ?>
+                      <option value="2022/2023">2022/2023</option>
+                    <?php } ?>
+                    <?php if ($g->Tahun_Ajaran != '2023/2024') { ?>
+                      <option value="2023/2024">2023/2024</option>
+                    <?php } ?>
+                    <?php if ($g->Tahun_Ajaran != '2024/2025') { ?>
+                      <option value="2024/2025">2024/2025</option>
+                    <?php } ?>
+                  </select>
+
+
                 <?php endforeach; ?>
 
                 <select name="pilih_kelas" class="form-control pr-xl-5 pilih_kelas" id="pilih_kelas">
@@ -55,7 +78,7 @@
                 <thead>
                   <tr>
                     <th> No </th>
-                    <th > Nama </th>
+                    <th> Nama </th>
                     <!-- <th style="width: 300px;"> Mata Pelajaran </th> -->
                     <!-- <th style="width: 150px;"> Jenis Nilai </th> -->
                     <!-- <th> Nilai UH </th>
@@ -78,7 +101,7 @@
                       <td> <?= $n->Nilai_Akhir; ?> </td>
                       <td style="width: 500px; white-space: normal !important;"> <?= $n->Capaian_Kompetensi; ?> </td>
                       <td class="text-center">
-                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_nilaimapel="<?= $n->Id_Nilai_Mata_Pelajaran; ?>" data-kelas="<?= $n->Id_Kelas; ?>" data-id_siswa="<?= $n->Id_Siswa; ?>" data-id_mapel="<?= $n->Id_Mata_Pelajaran; ?>"  data-semester="<?= $n->Semester; ?>" data-tahun_ajaran="<?= $n->Tahun_Ajaran; ?>" data-nilai_akhir="<?= $n->Nilai_Akhir; ?>" data-capaian="<?= $n->Capaian_Kompetensi; ?>">Edit</button>
+                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_nilaimapel="<?= $n->Id_Nilai_Mata_Pelajaran; ?>" data-kelas="<?= $n->Id_Kelas; ?>" data-id_siswa="<?= $n->Id_Siswa; ?>" data-id_mapel="<?= $n->Id_Mata_Pelajaran; ?>" data-semester="<?= $n->Semester; ?>" data-tahun_ajaran="<?= $n->Tahun_Ajaran; ?>" data-nilai_akhir="<?= $n->Nilai_Akhir; ?>" data-capaian="<?= $n->Capaian_Kompetensi; ?>">Edit</button>
 
                       </td>
                     </tr>
@@ -96,7 +119,7 @@
                         <td><?= $s->Nama; ?></td>
                         <td> </td>
                         <td> </td>
-                 
+
                         <td> <button type="button" class="btn btn-inverse-success  mb-2 btn-add" data-toggle="modal" data-target="#addModal" data-siswa="<?= $s->Id_Siswa; ?>" data-kelas="<?= $s->Id_Kelas; ?>">Tambah</button> </td>
                       </tr>
                     <?php }; ?>
@@ -316,8 +339,6 @@
       if (!window.location.href.includes("/get")) {
         localStorage.removeItem("pilih_mapel");
       }
-
-
     </script>
 
     <?= $this->endSection() ?>
