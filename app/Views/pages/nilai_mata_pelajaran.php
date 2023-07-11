@@ -26,7 +26,7 @@
                     <?php if ($g->Semester != 'Genap') { ?>
                       <option value="Genap">Genap</option>
                     <?php } ?>
-                    
+
                   </select>
 
                   <select name="pilih_tahun" class="form-control mx-2 pilih_tahun" style="width: 120px;" id="">
@@ -84,6 +84,13 @@
                     <!-- <th> Nilai UH </th>
                     <th> Nilai UTS </th>
                     <th> Nilai UAS </th> -->
+                    <th> TP1 </th>
+                    <th> TP2 </th>
+                    <th> TP3 </th>
+                    <th> TP4 </th>
+                    <th> TP5 </th>
+                    <th> TP6 </th>
+                    <th> TP7 </th>
                     <th> Nilai Akhir </th>
                     <th> Capaian Kompetensi </th>
                   </tr>
@@ -98,10 +105,32 @@
                     <tr>
                       <td class="number"> <?= $i++; ?> </td>
                       <td style="width: 300px; white-space: normal !important;"> <?= $n->Nama; ?> </td>
-                      <td> <?= $n->Nilai_Akhir; ?> </td>
+                      <td> <?= $n->TP1; ?> </td>
+                      <td> <?= $n->TP2; ?> </td>
+                      <td> <?= $n->TP3; ?> </td>
+                      <td> <?= $n->TP4; ?> </td>
+                      <td> <?= $n->TP5; ?> </td>
+                      <td> <?= $n->TP6; ?> </td>
+                      <td> <?= $n->TP7; ?> </td>
+                      <td style="width: 30px;"><b><?= $n->Nilai_Akhir; ?></b></td>
                       <td style="width: 500px; white-space: normal !important;"> <?= $n->Capaian_Kompetensi; ?> </td>
                       <td class="text-center">
-                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_nilaimapel="<?= $n->Id_Nilai_Mata_Pelajaran; ?>" data-kelas="<?= $n->Id_Kelas; ?>" data-id_siswa="<?= $n->Id_Siswa; ?>" data-id_mapel="<?= $n->Id_Mata_Pelajaran; ?>" data-semester="<?= $n->Semester; ?>" data-tahun_ajaran="<?= $n->Tahun_Ajaran; ?>" data-nilai_akhir="<?= $n->Nilai_Akhir; ?>" data-capaian="<?= $n->Capaian_Kompetensi; ?>">Edit</button>
+                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" 
+                        data-id_nilaimapel="<?= $n->Id_Nilai_Mata_Pelajaran; ?>" 
+                        data-kelas="<?= $n->Id_Kelas; ?>" 
+                        data-id_siswa="<?= $n->Id_Siswa; ?>" 
+                        data-id_mapel="<?= $n->Id_Mata_Pelajaran; ?>" 
+                        data-semester="<?= $n->Semester; ?>" 
+                        data-tahun_ajaran="<?= $n->Tahun_Ajaran; ?>" 
+                        data-tp1="<?= $n->TP1; ?>" 
+                        data-tp2="<?= $n->TP2; ?>" 
+                        data-tp3="<?= $n->TP3; ?>" 
+                        data-tp4="<?= $n->TP4; ?>" 
+                        data-tp5="<?= $n->TP5; ?>" 
+                        data-tp6="<?= $n->TP6; ?>" 
+                        data-tp7="<?= $n->TP7; ?>" 
+                        data-nilai_akhir="<?= $n->Nilai_Akhir; ?>" 
+                        data-capaian="<?= $n->Capaian_Kompetensi; ?>">Edit</button>
 
                       </td>
                     </tr>
@@ -117,7 +146,14 @@
                       <tr>
                         <td class="number"> <?= $i++; ?> </td>
                         <td><?= $s->Nama; ?></td>
-                        <td> </td>
+                        <td style="width: 20px;"> </td>
+                        <td style="width: 20px;"> </td>
+                        <td style="width: 20px;"> </td>
+                        <td style="width: 20px;"> </td>
+                        <td style="width: 20px;"> </td>
+                        <td style="width: 20px;"> </td>
+                        <td style="width: 20px;"> </td>
+                        <td style="width: 30px;"> </td>
                         <td> </td>
 
                         <td> <button type="button" class="btn btn-inverse-success  mb-2 btn-add" data-toggle="modal" data-target="#addModal" data-siswa="<?= $s->Id_Siswa; ?>" data-kelas="<?= $s->Id_Kelas; ?>">Tambah</button> </td>
@@ -167,10 +203,36 @@
                   <?php endforeach; ?>
                 </select>
               </div>
+
               <div class="form-group">
-                <label>Nilai Akhir</label>
-                <input type="number" class="form-control " name="nilai_akhir" required>
+                <label>TP 1</label>
+                <input type="number" class="form-control " name="tp1">
               </div>
+              <div class="form-group">
+                <label>TP 2</label>
+                <input type="number" class="form-control " name="tp2">
+              </div>
+              <div class="form-group">
+                <label>TP 3</label>
+                <input type="number" class="form-control " name="tp3">
+              </div>
+              <div class="form-group">
+                <label>TP 4</label>
+                <input type="number" class="form-control " name="tp4">
+              </div>
+              <div class="form-group">
+                <label>TP 5</label>
+                <input type="number" class="form-control " name="tp5">
+              </div>
+              <div class="form-group">
+                <label>TP 6</label>
+                <input type="number" class="form-control " name="tp6">
+              </div>
+              <div class="form-group">
+                <label>TP 7</label>
+                <input type="number" class="form-control " name="tp7">
+              </div>
+
               <div class="form-group">
                 <label>Capaian Kompetensi</label>
                 <textarea id="" class="form-control" name="capaian" rows="4"></textarea>
@@ -221,10 +283,36 @@
                   <?php endforeach; ?>
                 </select>
               </div>
+
               <div class="form-group">
-                <label>Nilai Akhir</label>
-                <input type="number" class="form-control nilai_akhir" name="nilai_akhir" required>
+                <label>TP 1</label>
+                <input type="number" class="form-control tp1" name="tp1">
               </div>
+              <div class="form-group">
+                <label>TP 2</label>
+                <input type="number" class="form-control tp2" name="tp2">
+              </div>
+              <div class="form-group">
+                <label>TP 3</label>
+                <input type="number" class="form-control tp3" name="tp3">
+              </div>
+              <div class="form-group">
+                <label>TP 4</label>
+                <input type="number" class="form-control tp4" name="tp4">
+              </div>
+              <div class="form-group">
+                <label>TP 5</label>
+                <input type="number" class="form-control tp5" name="tp5">
+              </div>
+              <div class="form-group">
+                <label>TP 6</label>
+                <input type="number" class="form-control tp6" name="tp6">
+              </div>
+              <div class="form-group">
+                <label>TP 7</label>
+                <input type="number" class="form-control tp7" name="tp7">
+              </div>
+
               <div class="form-group">
                 <label>Capaian Kompetensi</label>
                 <textarea id="" class="form-control capaian" name="capaian" rows="4"></textarea>
@@ -286,6 +374,13 @@
           const id = $(this).data('id_nilaimapel');
           const siswa = $(this).data('id_siswa');
           const kelas = $(this).data('kelas');
+          const tp1 = $(this).data('tp1');
+          const tp2 = $(this).data('tp2');
+          const tp3 = $(this).data('tp3');
+          const tp4 = $(this).data('tp4');
+          const tp5 = $(this).data('tp5');
+          const tp6 = $(this).data('tp6');
+          const tp7 = $(this).data('tp7');
           const akhir = $(this).data('nilai_akhir');
           const capaian = $(this).data('capaian');
           // const akhir = $(this).data('akhir');
@@ -293,6 +388,13 @@
           $('.id_nilaimapel').val(id);
           $('.siswa').val(siswa);
           $('.kelas').val(kelas);
+          $('.tp1').val(tp1);
+          $('.tp2').val(tp2);
+          $('.tp3').val(tp3);
+          $('.tp4').val(tp4);
+          $('.tp5').val(tp5);
+          $('.tp6').val(tp6);
+          $('.tp7').val(tp7);
           $('.nilai_akhir').val(akhir);
           $('.capaian').val(capaian);
           // $('.akhir').val(akhir);

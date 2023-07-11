@@ -27,7 +27,7 @@
                   <th> No </th>
                   <th> Mata Pelajaran </th>
                   <th> Kelompok </th>
-                  <th> KKM </th>
+                  <!-- <th> KKM </th> -->
                 </tr>
               </thead>
               <tbody>
@@ -38,9 +38,9 @@
                       <td class="number"> <?= $i++; ?> </td>
                       <td> <?= $m->Mata_Pelajaran; ?> </td>
                       <td style="width:100px;"> <?= $m->Kelompok; ?> </td>
-                      <td style="width:100px;"> <?= $m->KKM; ?> </td>
+                      
                       <td class="text-center">
-                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_mapel="<?= $m->Id_Mata_Pelajaran; ?>" data-mapel="<?= $m->Mata_Pelajaran; ?>" data-kelompok="<?= $m->Kelompok; ?>" data-kkm="<?= $m->KKM; ?>">Edit</button>
+                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_mapel="<?= $m->Id_Mata_Pelajaran; ?>" data-mapel="<?= $m->Mata_Pelajaran; ?>" data-kelompok="<?= $m->Kelompok; ?>">Edit</button>
                         <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_mapel="<?= $m->Id_Mata_Pelajaran; ?>">Hapus</button>
                       </td>
                     </tr>
@@ -64,9 +64,9 @@
                       <td class="number"> <?= $i++; ?> </td>
                       <td> <?= $m->Mata_Pelajaran; ?> </td>
                       <td style="width:100px;"> <?= $m->Kelompok; ?> </td>
-                      <td style="width:100px;"> <?= $m->KKM; ?> </td>
+                      
                       <td class="text-center">
-                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_mapel="<?= $m->Id_Mata_Pelajaran; ?>" data-mapel="<?= $m->Mata_Pelajaran; ?>" data-kelompok="<?= $m->Kelompok; ?>" data-kkm="<?= $m->KKM; ?>">Edit</button>
+                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_mapel="<?= $m->Id_Mata_Pelajaran; ?>" data-mapel="<?= $m->Mata_Pelajaran; ?>" data-kelompok="<?= $m->Kelompok; ?>">Edit</button>
                         <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_mapel="<?= $m->Id_Mata_Pelajaran; ?>">Hapus</button>
                       </td>
                     </tr>
@@ -90,9 +90,9 @@
                       <td class="number"> <?= $i++; ?> </td>
                       <td> <?= $m->Mata_Pelajaran; ?> </td>
                       <td style="width:100px;"> <?= $m->Kelompok; ?> </td>
-                      <td style="width:100px;"> <?= $m->KKM; ?> </td>
+                      
                       <td class="text-center">
-                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_mapel="<?= $m->Id_Mata_Pelajaran; ?>" data-mapel="<?= $m->Mata_Pelajaran; ?>" data-kelompok="<?= $m->Kelompok; ?>" data-kkm="<?= $m->KKM; ?>">Edit</button>
+                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_mapel="<?= $m->Id_Mata_Pelajaran; ?>" data-mapel="<?= $m->Mata_Pelajaran; ?>" data-kelompok="<?= $m->Kelompok; ?>">Edit</button>
                         <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_mapel="<?= $m->Id_Mata_Pelajaran; ?>">Hapus</button>
                       </td>
                     </tr>
@@ -116,9 +116,9 @@
                       <td class="number"> <?= $i++; ?> </td>
                       <td> <?= $m->Mata_Pelajaran; ?> </td>
                       <td style="width:100px;"> <?= $m->Kelompok; ?> </td>
-                      <td style="width:100px;"> <?= $m->KKM; ?> </td>
+                      
                       <td class="text-center">
-                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_mapel="<?= $m->Id_Mata_Pelajaran; ?>" data-mapel="<?= $m->Mata_Pelajaran; ?>" data-kelompok="<?= $m->Kelompok; ?>" data-kkm="<?= $m->KKM; ?>">Edit</button>
+                        <button type="button" class="btn btn-inverse-primary btn-icon btn-edit" data-toggle="modal" data-target="#editModal" data-id_mapel="<?= $m->Id_Mata_Pelajaran; ?>" data-mapel="<?= $m->Mata_Pelajaran; ?>" data-kelompok="<?= $m->Kelompok; ?>" >Edit</button>
                         <button type="button" class="btn btn-inverse-danger btn-icon btn-delete" data-toggle="modal" data-target="#hapusModal" data-id_mapel="<?= $m->Id_Mata_Pelajaran; ?>">Hapus</button>
                       </td>
                     </tr>
@@ -158,10 +158,10 @@
                   <option value="D">D</option>
                 </select>
               </div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label>KKM</label>
                 <input type="number" class="form-control" name="kkm" placeholder="" required>
-              </div>
+              </div> -->
             </div>
             <div class="modal-footer">
               <!-- <input type="hidden" name="id_user" class="id_user1"> -->
@@ -199,10 +199,10 @@
                   <option value="D">D</option>
                 </select>
               </div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label>KKM</label>
                 <input type="number" class="form-control kkm" name="kkm" placeholder="" required>
-              </div>
+              </div> -->
             </div>
             <div class="modal-footer">
               <input type="hidden" name="id_mapel" class="id_mapel1">
@@ -244,12 +244,12 @@
           const id = $(this).data('id_mapel');
           const mapel = $(this).data('mapel');
           const kelompok = $(this).data('kelompok');
-          const kkm = $(this).data('kkm');
+          // const kkm = $(this).data('kkm');
           // Set data to Form Edit
           $('.id_mapel1').val(id);
           $('.mapel').val(mapel);
           $('.kelompok').val(kelompok);
-          $('.kkm').val(kkm);
+          // $('.kkm').val(kkm);
           // Call Modal Edit
           $('#editModal').modal('show');
         });

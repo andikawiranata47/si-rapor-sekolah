@@ -128,7 +128,45 @@ class NilaiMataPelajaran extends BaseController
         // $nilai_uh = $this->request->getPost('uh');
         // $nilai_uts = $this->request->getPost('uts');
         // $nilai_uas = $this->request->getPost('uas');
-        $nilai_akhir = $this->request->getPost('nilai_akhir');
+        $tp1 = $this->request->getPost('tp1');
+        $tp2 = $this->request->getPost('tp2');
+        $tp3 = $this->request->getPost('tp3');
+        $tp4 = $this->request->getPost('tp4');
+        $tp5 = $this->request->getPost('tp5');
+        $tp6 = $this->request->getPost('tp6');
+        $tp7 = $this->request->getPost('tp7');
+        $nilai = 0;
+        $pembagi = 0;
+        if ($tp1 != 0){
+            $nilai = $nilai + $tp1;
+            $pembagi = $pembagi + 1;
+        }
+        if ($tp2 != 0){
+            $nilai = $nilai + $tp2;
+            $pembagi = $pembagi + 1;
+        }
+        if ($tp3 != 0){
+            $nilai = $nilai + $tp3;
+            $pembagi = $pembagi + 1;
+        }
+        if ($tp4 != 0){
+            $nilai = $nilai + $tp4;
+            $pembagi = $pembagi + 1;
+        }
+        if ($tp5 != 0){
+            $nilai = $nilai + $tp5;
+            $pembagi = $pembagi + 1;
+        }
+        if ($tp6 != 0){
+            $nilai = $nilai + $tp6;
+            $pembagi = $pembagi + 1;
+        }
+        if ($tp7 != 0){
+            $nilai = $nilai + $tp7;
+            $pembagi = $pembagi + 1;
+        }
+        $nilai_akhir = $nilai/$pembagi;
+        // $nilai_akhir = $this->request->getPost('nilai_akhir');
         $capaian = $this->request->getPost('capaian');
         $capaian2 = nl2br($capaian);
         $data = [
@@ -141,6 +179,13 @@ class NilaiMataPelajaran extends BaseController
             // 'nilai_uts' => $nilai_uts,
             // 'nilai_uas' => $nilai_uas,
             // 'nilai_akhir' => round(($nilai_uh + $nilai_uts + $nilai_uas) / 3, 1)
+            'tp1' => $tp1,
+            'tp2' => $tp2,
+            'tp3' => $tp3,
+            'tp4' => $tp4,
+            'tp5' => $tp5,
+            'tp6' => $tp6,
+            'tp7' => $tp7,
             'nilai_akhir' => $nilai_akhir,
             'capaian_kompetensi' => $capaian2
         ];
@@ -161,7 +206,45 @@ class NilaiMataPelajaran extends BaseController
         // $nilai_uh = $this->request->getPost('uh');
         // $nilai_uts = $this->request->getPost('uts');
         // $nilai_uas = $this->request->getPost('uas');
-        $nilai_akhir = $this->request->getPost('nilai_akhir');
+        $tp1 = $this->request->getPost('tp1');
+        $tp2 = $this->request->getPost('tp2');
+        $tp3 = $this->request->getPost('tp3');
+        $tp4 = $this->request->getPost('tp4');
+        $tp5 = $this->request->getPost('tp5');
+        $tp6 = $this->request->getPost('tp6');
+        $tp7 = $this->request->getPost('tp7');
+        $nilai = 0;
+        $pembagi = 0;
+        if ($tp1 != 0){
+            $nilai = $nilai + $tp1;
+            $pembagi = $pembagi + 1;
+        }
+        if ($tp2 != 0){
+            $nilai = $nilai + $tp2;
+            $pembagi = $pembagi + 1;
+        }
+        if ($tp3 != 0){
+            $nilai = $nilai + $tp3;
+            $pembagi = $pembagi + 1;
+        }
+        if ($tp4 != 0){
+            $nilai = $nilai + $tp4;
+            $pembagi = $pembagi + 1;
+        }
+        if ($tp5 != 0){
+            $nilai = $nilai + $tp5;
+            $pembagi = $pembagi + 1;
+        }
+        if ($tp6 != 0){
+            $nilai = $nilai + $tp6;
+            $pembagi = $pembagi + 1;
+        }
+        if ($tp7 != 0){
+            $nilai = $nilai + $tp7;
+            $pembagi = $pembagi + 1;
+        }
+        $nilai_akhir = $nilai/$pembagi;
+        // $nilai_akhir = $this->request->getPost('nilai_akhir');
         $capaian = $this->request->getPost('capaian');
         $capaian2 = nl2br($capaian);
         $data = array(
@@ -169,6 +252,14 @@ class NilaiMataPelajaran extends BaseController
             // 'nilai_uts' => $this->request->getPost('uts'),
             // 'nilai_uas' => $this->request->getPost('uas'),
             // 'nilai_akhir' => round(($nilai_uh + $nilai_uts + $nilai_uas) / 3, 1)
+            // 'nilai_akhir' => $nilai_akhir,
+            'tp1' => $tp1,
+            'tp2' => $tp2,
+            'tp3' => $tp3,
+            'tp4' => $tp4,
+            'tp5' => $tp5,
+            'tp6' => $tp6,
+            'tp7' => $tp7,
             'nilai_akhir' => $nilai_akhir,
             'capaian_kompetensi' => $capaian2
         );
