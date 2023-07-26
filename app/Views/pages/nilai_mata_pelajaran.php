@@ -18,28 +18,30 @@
                 <?php foreach ($general as $g) : ?>
 
 
-                  <select name="pilih_semester" class="form-control pilih_semester" style="width: 85px;" id="">
-                    <option value="<?= $g->Semester; ?>"><?= $g->Semester; ?></option>
-                    <?php if ($g->Semester != 'Ganjil') { ?>
+                  <select name="pilih_semester" class="form-control pilih_semester" style="" id="">
+                    
+                    <option value="">Pilih Semester</option>
+                    <?php //if ($g->Semester != 'Ganjil') { ?>
                       <option value="Ganjil">Ganjil</option>
-                    <?php } ?>
-                    <?php if ($g->Semester != 'Genap') { ?>
+                    <?php //} ?>
+                    <?php //if ($g->Semester != 'Genap') { ?>
                       <option value="Genap">Genap</option>
-                    <?php } ?>
+                    <?php //} ?>
 
                   </select>
 
-                  <select name="pilih_tahun" class="form-control mx-2 pilih_tahun" style="width: 120px;" id="">
-                    <option value="<?= $g->Tahun_Ajaran; ?>"><?= $g->Tahun_Ajaran; ?></option>
-                    <?php if ($g->Tahun_Ajaran != '2022/2023') { ?>
+                  <select name="pilih_tahun" class="form-control mx-2 pilih_tahun" style="" id="">
+                    
+                    <option value="">Pilih Tahun Ajaran</option>
+                    <?php //if ($g->Tahun_Ajaran != '2022/2023') { ?>
                       <option value="2022/2023">2022/2023</option>
-                    <?php } ?>
-                    <?php if ($g->Tahun_Ajaran != '2023/2024') { ?>
+                    <?php //} ?>
+                    <?php //if ($g->Tahun_Ajaran != '2023/2024') { ?>
                       <option value="2023/2024">2023/2024</option>
-                    <?php } ?>
-                    <?php if ($g->Tahun_Ajaran != '2024/2025') { ?>
+                    <?php //} ?>
+                    <?php //if ($g->Tahun_Ajaran != '2024/2025') { ?>
                       <option value="2024/2025">2024/2025</option>
-                    <?php } ?>
+                    <?php //} ?>
                   </select>
 
 

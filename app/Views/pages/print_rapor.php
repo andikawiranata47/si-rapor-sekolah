@@ -91,7 +91,7 @@
         <tbody>
           <?php $i = 1; ?>
           <tr>
-            <th style="text-align:left;" colspan="4">Normatif</th>
+            <th style="text-align:left;" colspan="4">Normatif (A)</th>
           </tr>
           <?php foreach ($raporMapel as $r) : ?>
             <?php if ($r->Kelompok == 'A') { ?>
@@ -106,7 +106,7 @@
 
           <?php $i = 1; ?>
           <tr>
-            <th style="text-align:left;" colspan="4">Adaptif</th>
+            <th style="text-align:left;" colspan="4">Adaptif (B)</th>
           </tr>
           <?php foreach ($raporMapel as $r) : ?>
             <?php if ($r->Kelompok == 'B') { ?>
@@ -121,7 +121,7 @@
           
           <?php $i = 1; ?>
           <tr>
-            <th style="text-align:left;" colspan="4">Produktif</th>
+            <th style="text-align:left;" colspan="4">Produktif (C)</th>
           </tr>
           <?php foreach ($raporMapel as $r) : ?>
             <?php if ($r->Kelompok == 'C') { ?>
@@ -136,7 +136,7 @@
 
           <?php $i = 1; ?>
           <tr>
-            <th style="text-align:left;" colspan="4">Muatan Lokal</th>
+            <th style="text-align:left;" colspan="4">Muatan Lokal (D)</th>
           </tr>
           <?php foreach ($raporMapel as $r) : ?>
             <?php if ($r->Kelompok == 'D') { ?>
