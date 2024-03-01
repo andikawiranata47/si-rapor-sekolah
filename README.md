@@ -1,3 +1,12 @@
+# Sistem Informasi Rapor Sekolah
+Code in **master branch**
+
+Sistem Informasi Rapor Sekolah Menengah Kejuruan Berbasis Kurikulum Merdeka dikembangkan dengan menggunakan bahasa pemrograman PHP dengan menggunakan framework CodeIgniter versi 4. Sistem informasi ini digunakan untuk membantu pembuatan rapor berbasis Kurikulum Merdeka pada Sekolah Menengah Kejuruan dengan sampel sekolah adalah SMK Kosgoro Pare. Diharapkan dengan adanya sistem informasi ini dapat mempermudah proses pembuatan rapor tersebut dan sekaligus meningkatkan efisiensi dalam pembuatan rapor tersebut.
+
+![2023-03-31](https://github.com/andikawiranata47/si-rapor-sekolah/assets/95659184/3762ecb4-46b8-4e29-835c-314808bfcaa8)
+![2023-03-31 (9)](https://github.com/andikawiranata47/si-rapor-sekolah/assets/95659184/e2cfb4f6-5c9d-4483-817b-d9290a64f071)
+
+
 # CodeIgniter 4 Application Starter
 
 ## What is CodeIgniter?
